@@ -1,5 +1,7 @@
 <?php
-    define("KEY", "key");
+    define("ADMINKEY", "noel");
     define("CODE", "code");
-    define("USER", "user");
+    define("KEY", "key");
+    define("NAME", "name");
+    define("VALUE", "value");
 ?>

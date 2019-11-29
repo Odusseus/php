@@ -2,38 +2,65 @@
 
 require_once("constant.php");
 require_once("item.php");
+require_once("user.php");
+require_once("checkip.php");
 
 header('Access-Control-Allow-Origin: *');
 
-$user = "";
+$checkip = new CheckIp();
+
+$name = "";
 $key = "";
 $code = "";
 
-if(isset($_POST[USER])){
-  $user = $_POST[USER];
+if(isset($_POST[NAME]))
+{
+  $name = $_POST[NAME];
+  $users = new Users();
+  if(!$users->getUser($name))
+  {
+    exit("Bad name ".$name);
+  }
 }
 else
 {
-  echo "USER is missing";
-  return;
+  exit("NAME is missing");
 }
 
-if(isset($_POST[KEY])){
-  $key = $_POST[KEY];
+if(isset($_POST[VALUE]))
+{
+  $value = $_POST[VALUE];
 }
 else
 {
-  echo "KEY is missing";
-  return;
+  exit("VALUE is missing");
 }
 
-if(isset($_POSt[CODE])){
-  $code = $_POST[CODE];
+if(!isset($_POST[KEY]) and !isset($_POST[CODE]))
+{
+  $items = new Items();
+
+
 }
 else
 {
-  echo "POST is missing";
-  return;
+  if(isset($_POST[KEY])){
+    $key = $_POST[KEY];
+  }
+  else
+  {
+    exit("KEY is missing");
+  }
+  
+  if(isset($_POSt[CODE])){
+    $code = $_POST[CODE];
+  }
+  else
+  {
+    exit("POST is missing");
+  }
 }
+
+
 
 ?>

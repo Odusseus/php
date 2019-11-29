@@ -4,26 +4,22 @@ require_once("constant.php");
 
 date_default_timezone_set('Europe/Amsterdam');
 
-class Item {
+class User {
     
-    public $key,
-           $code,
-           $name,
+    public $name,
            $timestamp;
    
-    function __construct($key, $code, $name){
-        $this->key = $key;
-        $this->code = $code;
+    function __construct($name){        
         $this->name = $name;
         $this->timestamp = date("d-m-Y H:i:s");
     }
 }
 
-class Items {
+class Users {
 
   public 
       $list = [],
-      $filename = "json/item.json";
+      $filename = "json/user.json";
   
   function __construct(){
       if(file_exists($this->filename)){
@@ -47,18 +43,18 @@ class Items {
       unlink($this->filename);
   }
 
-  public function push($item){
+  public function add($item){
       $this->list[] = $item;
   }  
 
-  public function getItem($key, $code){
+  public function getUser($name){
     foreach($this->list as $item)
     {
-      if($item->key == $item and $item->code == $code){
+      if($item->name == $name){
         return $item;
         }
     }
-    return "No items";
+    return null;
   }
 
   public function getList(){
