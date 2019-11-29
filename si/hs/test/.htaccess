@@ -1,0 +1,6 @@
+AuthGroupFile /dev/null
+AuthType Basic
+AuthUserFile /home/id02753/domains/odusseus.org/.htpasswd/public_html/js/si/hs/test/.htpasswd
+AuthName "TestHS"
+require valid-user
+ErrorDocument 401 "Unauthorized Access"
