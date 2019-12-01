@@ -17,7 +17,7 @@ if(isset($_POST[NAME]))
 {
   $name = $_POST[NAME];
   $users = new Users();
-  if(!$users->getUser($name))
+  if(!$users->getName($name))
   {
     exit("Bad name ".$name);
   }
@@ -39,7 +39,11 @@ else
 if(!isset($_POST[KEY]) and !isset($_POST[CODE]))
 {
   $items = new Items();
-
+  $item = new Item(null, null, $name);
+  $items->add($item);
+  $items->save();
+  $item->saveValue($value);
+  echo "{$item->key}:{$item->code}";
 
 }
 else

@@ -1,55 +1,42 @@
 <?php
-
 require_once("constant.php");
+require_once("common.php");
+require_once("entity.php");
 
-date_default_timezone_set('Europe/Amsterdam');
-
-class Item {
+class Item extends Entity{
     
     public $key,
-           $code,
-           $name,
-           $timestamp;
+           $code;
    
     function __construct($key, $code, $name){
+        parent::__construct($name);
+        if(!isset($key))
+        {
+            $key = GUID(); 
+        }
+
+        if(!isset($code))
+        {
+            $code = GUID(); 
+        }
         $this->key = $key;
         $this->code = $code;
-        $this->name = $name;
-        $this->timestamp = date("d-m-Y H:i:s");
     }
+
+    function saveValue($value)
+    {
+        $filename = "value/{$this->key}.txt";
+        $file = fopen($filename, "wb") or die("Unable to open file!");
+        fwrite($file, $value);
+        fclose($file);
+    }  
 }
 
-class Items {
+class Items extends Entities {
 
-  public 
-      $list = [],
-      $filename = "json/item.json";
-  
-  function __construct(){
-      if(file_exists($this->filename)){
-          $str = file_get_contents($this->filename);
-          $this->list = json_decode($str);
-      }
-  }
-  
-  public function getJson(){
-      return json_encode($this->list);
-  }
-
-  public function save() {
-      $str = json_encode($this->list);
-      $myfile = fopen($this->filename, "w") or die("Unable to open file!");
-      fwrite($myfile, $str);
-      fclose($myfile);
-  }
-
-  public function delete(){
-      unlink($this->filename);
-  }
-
-  public function push($item){
-      $this->list[] = $item;
-  }  
+    function __construct() {
+        parent::__construct(ITEM);
+    }
 
   public function getItem($key, $code){
     foreach($this->list as $item)
@@ -59,9 +46,5 @@ class Items {
         }
     }
     return "No items";
-  }
-
-  public function getList(){
-      return $this->list;
   }
 }

@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "ed61faef-be5e-4ad7-aee6-f49bf68bb77b",
+		"name": "item",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getitem",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/getitem.php?key=123&code=456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"getitem.php"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "123"
+						},
+						{
+							"key": "code",
+							"value": "456"
+						}
+					]
+				},
+				"description": "test"
+			},
+			"response": []
+		},
+		{
+			"name": "postuser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "key",
+							"value": "noel",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "pascal",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9000/postuser.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"postuser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postitem",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "pascal",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "{\n  'Events':[\n    {'group' : '2019-2020', 'date' : '17-01-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '07-11-2019', 'description' : 'John', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '20-11-2019', 'description' : 'MEC Jan Timman', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '23-11-2019', 'description' : 'Lekstroom 2 - OZU', 'type' : 'Wedstrijd' }, \n    {'group' : '2019-2020', 'date' : '02-12-2019', 'description' : 'Ger', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '12-12-2019', 'description' : 'John', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '25-01-2020', 'description' : 'Wijk aan zee', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '04-11-2019', 'description' : 'Ger', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '14-12-2019', 'description' : 'OZU-Almere 4', 'type' : 'Wedstrijd' },\n    {'group' : '2019-2020', 'date' : '20-12-2019', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '25-12-2019', 'description' : '2512 toernooi', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '21-02-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '23-01-2020', 'description' : 'John', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '07-03-2020', 'description' : 'OZU-ASV 6', 'type' : 'Wedstrijd' },\n    {'group' : '2019-2020', 'date' : '02-03-2020', 'description' : 'Ger', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '28-03-2020', 'description' : 'Magnus 2 - OZU', 'type' : 'Wedstrijd' },\n    {'group' : '2019-2020', 'date' : '16-04-2020', 'description' : 'John', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '15-11-2019', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '24-01-2020', 'description' : 'Wijk aan zee', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '01-02-2020', 'description' : 'En Passant 3 - OZU', 'type' : 'Wedstrijd' },\n    {'group' : '2019-2020', 'date' : '03-02-2020', 'description' : 'Ger', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '20-02-2020', 'description' : 'John', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '20-03-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '06-04-2020', 'description' : 'Ger', 'type' : 'Training' },\n    {'group' : '2019-2020', 'date' : '17-04-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '18-04-2020', 'description' : 'OZU-Wageningen 4', 'type' : 'Wedstrijd' },\n    {'group' : '2019-2020', 'date' : '15-05-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '05-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '06-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '07-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },\n    {'group' : '2019-2020', 'date' : '19-06-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' }\n  ]  \n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9000/postitem.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"postitem.php"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

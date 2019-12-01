@@ -37,7 +37,7 @@ else
 }
 
 $users = new Users();
-if(!$users->getUser($name))
+if(!$users->getName($name))
 {
   $user = new User($name);
   $users->add($user);
