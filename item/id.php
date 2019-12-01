@@ -7,11 +7,11 @@ date_default_timezone_set('Europe/Amsterdam');
 class Id {
     
     public $id,
-           $name;
+           $key;
    
-    function __construct($name){        
+    function __construct($key){        
         $this->id = 1;
-        $this->name = $name;
+        $this->key = $key;
     }
 }
 
@@ -19,7 +19,7 @@ class Ids {
 
   public 
       $list = [],
-      $filename = "json/id.json";
+      $filename = JSON_DIR."/id.json";
   
   function __construct(){
       if(file_exists($this->filename)){
@@ -45,12 +45,13 @@ class Ids {
 
   public function add($item){
       $this->list[] = $item;
+      $this->save();
   }  
 
-  public function getId($name){
+  public function getId($key){
     foreach($this->list as $item)
     {
-      if($item->name == $name){
+      if($item->key == $key){
         return $item;
         }
     }
@@ -61,8 +62,8 @@ class Ids {
       return $this->list;
   }
 
-  public function next($name){
-      $item = $this->getId($name);
+  public function next($key){
+      $item = $this->getId($key);
       $item->id ++;
       $this->save();
       return $item->id; 

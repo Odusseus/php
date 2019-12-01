@@ -8,12 +8,11 @@ header('Access-Control-Allow-Origin: *');
 
 $checkip = new CheckIp();
 
-
-$key = "";
-$name = "";
+$checkKey = "";
+$userKey = "";
 
 if(isset($_POST[KEY])){
-  $key = $_POST[KEY];
+  $checkKey = $_POST[KEY];
 }
 else
 {
@@ -21,14 +20,14 @@ else
   return;
 }
 
-if($key != ADMINKEY){
+if($checkKey != CHECKKEY){
   $checkip->addBadIp();
   echo "Bacon!";
   return;
 }
 
 if(isset($_POST[NAME])){
-  $name = $_POST[NAME];
+  $userKey = $_POST[NAME];
 }
 else
 {
@@ -37,11 +36,10 @@ else
 }
 
 $users = new Users();
-if(!$users->getName($name))
+if(!$users->getKey($userKey))
 {
-  $user = new User($name);
+  $user = new User($userKey);
   $users->add($user);
-  $users->save();
 }
 return;
 ?>

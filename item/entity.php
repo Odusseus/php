@@ -8,11 +8,11 @@ date_default_timezone_set('Europe/Amsterdam');
 class Entity {
     
     public $id,
-           $name,
+           $key,
            $timestamp;
    
-    function __construct($name){
-        $this->name = $name;
+    function __construct($key){
+        $this->key = $key;
         $this->timestamp = date("d-m-Y H:i:s");
     }
 }
@@ -54,7 +54,6 @@ class Entities {
         if(!$ids->getId($this->entity)){
             $idItem = new Id($this->entity);
             $ids->add($idItem);
-            $ids->save();
             $id = $idItem->id;
         }
         else {
@@ -62,12 +61,13 @@ class Entities {
         }
         $item->id = $id;
         $this->list[] = $item;
+        $this->save();
     }  
   
-    public function getName($name){
+    public function getKey($key){
       foreach($this->list as $item)
       {
-        if($item->name == $name){
+        if($item->key == $key){
           return $item;
           }
       }

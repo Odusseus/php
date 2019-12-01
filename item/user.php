@@ -6,8 +6,8 @@ require_once("entity.php");
 
 class User extends Entity {
 
-    function __construct($name) {
-        parent::__construct($name);
+    function __construct($key) {
+        parent::__construct($key);
     }
 }
 

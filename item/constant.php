@@ -1,12 +1,12 @@
 <?php
-    define("ADMINKEY", "noel");
-    define("CODE", "code");
-    define("KEY", "key");
-    define("NAME", "name");
-    define("USER", "user");
-    define("ITEM", "item");
+    define("CHECKKEY", "noel");
     define("ID", "id");
     define("IP", "ip");
-    define("VALUE", "value");
+    define("ITEM", "item");
     define("JSON_DIR", "json");
+    define("KEY", "key");
+    define("NAME", "name");
+    define("TOKEN", "token");
+    define("USER", "user");
+    define("VALUE", "value");
 ?>

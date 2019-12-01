@@ -9,17 +9,15 @@ header('Access-Control-Allow-Origin: *');
 
 $checkip = new CheckIp();
 
-$name = "";
-$key = "";
-$code = "";
 
+$userKey = "";
 if(isset($_POST[NAME]))
 {
-  $name = $_POST[NAME];
+  $userKey = $_POST[NAME];
   $users = new Users();
-  if(!$users->getName($name))
+  if(!$users->getKey($userKey))
   {
-    exit("Bad name ".$name);
+    exit("Bad name ".$userKey);
   }
 }
 else
@@ -27,6 +25,7 @@ else
   exit("NAME is missing");
 }
 
+$value = "";
 if(isset($_POST[VALUE]))
 {
   $value = $_POST[VALUE];
@@ -36,18 +35,19 @@ else
   exit("VALUE is missing");
 }
 
-if(!isset($_POST[KEY]) and !isset($_POST[CODE]))
+if(!isset($_POST[KEY]) and !isset($_POST[TOKEN]))
 {
   $items = new Items();
-  $item = new Item(null, null, $name);
+  $item = new Item(null, null, $userKey);
   $items->add($item);
-  $items->save();
   $item->saveValue($value);
-  echo "{$item->key}:{$item->code}";
-
+  // echo $item->getJsonGetRespons();
+  echo $item->getJsonPostRespons();
+  
 }
 else
 {
+  $key = "";
   if(isset($_POST[KEY])){
     $key = $_POST[KEY];
   }
@@ -56,15 +56,13 @@ else
     exit("KEY is missing");
   }
   
-  if(isset($_POSt[CODE])){
-    $code = $_POST[CODE];
+  $token = "";
+  if(isset($_POSt[TOKEN])){
+    $token = $_POST[TOKEN];
   }
   else
   {
-    exit("POST is missing");
+    exit("TOKEN is missing");
   }
 }
-
-
-
 ?>

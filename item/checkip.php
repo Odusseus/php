@@ -11,16 +11,15 @@ class CheckIp {
   function __construct(){
     $this->badIp = new Ips();
     $this->ipItem = new Ip();
-    if($this->badIp->getName($this->ipItem->name)){
-      exit("Bad ip ".$this->ipItem->name);
+    if($this->badIp->getKey($this->ipItem->key)){
+      exit("Bad ip ".$this->ipItem->key);
     }
     $this->isGood = true;
   }
 
   public function addBadIp(){
     $this->badIp->add($this->ipItem);
-    $this->badIp->save();
-    exit("Added bad ip ".$this->ipItem->name);
+    exit("Added bad ip ".$this->ipItem->key);
   }
 }
 
