@@ -15,6 +15,10 @@ class Entity {
         $this->key = $key;
         $this->timestamp = date("d-m-Y H:i:s");
     }
+
+    public function set($data) {
+        foreach ($data AS $key => $value) $this->{$key} = $value;
+    }
 }
 
 class Entities {
@@ -30,6 +34,19 @@ class Entities {
         if(file_exists($this->filename)){
             $str = file_get_contents($this->filename);
             $this->list = json_decode($str);
+            $list = [];
+            foreach($this->list AS $element => $data)
+            {
+                if($entity == "item"){
+                    $class = new $entity($data->key, $data->token, $data->userId);
+                }
+                else {
+                    $class = new $entity($data->key);
+                }
+                $class->set($data);
+                array_push($list, $class);
+            }
+            $this->list = $list;
         }
     }
     

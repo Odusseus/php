@@ -15,7 +15,8 @@ if(isset($_POST[NAME]))
 {
   $userKey = $_POST[NAME];
   $users = new Users();
-  if(!$users->getKey($userKey))
+  $user = $users->getKey($userKey);
+  if(!$user)
   {
     exit("Bad name ".$userKey);
   }
@@ -37,13 +38,14 @@ else
 
 if(!isset($_POST[KEY]) and !isset($_POST[TOKEN]))
 {
+  $users = new Users();
+  $user = $users->getKey($userKey);        
+
   $items = new Items();
-  $item = new Item(null, null, $userKey);
+  $item = new Item(null, null, $user->id);
   $items->add($item);
   $item->saveValue($value);
-  // echo $item->getJsonGetRespons();
-  echo $item->getJsonPostRespons();
-  
+  exit($item->getJsonPostRespons());
 }
 else
 {
@@ -57,12 +59,24 @@ else
   }
   
   $token = "";
-  if(isset($_POSt[TOKEN])){
+  if(isset($_POST[TOKEN])){
     $token = $_POST[TOKEN];
   }
   else
   {
     exit("TOKEN is missing");
   }
+
+  $items = new Items();
+  $item = $items->getItem($key, $token, $user->id);
+  if(!$item){
+    exit("No data found.");
+  }
+
+  $item->token = GUID();
+  $item->saveValue($value);
+  $items->save();
+  exit($item->getJsonGetRespons());
+
 }
 ?>

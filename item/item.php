@@ -8,7 +8,7 @@ class Item extends Entity{
     public $token,
            $userId;
    
-    function __construct($key, $token, $userKey){
+    function __construct($key, $token, $userId){
         if(!isset($key))
         {
             $key = GUID(); 
@@ -20,10 +20,10 @@ class Item extends Entity{
             $token = GUID(); 
         }
         $this->token = $token;
-        $users = new Users();
-        $user = $users->getKey($userKey);
-        
-        $this->userId = $user->id;
+        // $users = new Users();
+        // $user = $users->getKey($userKey);        
+        // $this->userId = $user->id;
+        $this->userId = $userId;
     }
 
     function saveValue($value)
@@ -50,8 +50,6 @@ class Item extends Entity{
 
     function getJsonGetRespons()
     {
-        // TODO update and save
-        //$this->token = GUID();
         $itemGetRespons = new ItemGetRespons($this);
         return json_encode($itemGetRespons);
     }
@@ -87,14 +85,17 @@ class Items extends Entities {
         parent::__construct(ITEM);
     }
 
-  public function getItem($key, $token){
+  public function getItem($key, $token, $id){
     foreach($this->list as $item)
     {
-      if($item->key == $key and $item->token == $token){
-        return $item;
+      if($item->key == $key 
+         and $item->token == $token
+         and $item->userId == $id)
+        {
+            return $item;
         }
     }
-    return "No items";
+    return null;
   }
 }
 
