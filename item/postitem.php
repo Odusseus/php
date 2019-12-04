@@ -11,19 +11,19 @@ $checkip = new CheckIp();
 
 
 $userKey = "";
-if(isset($_POST[NAME]))
+if(isset($_POST[USER]))
 {
-  $userKey = $_POST[NAME];
+  $userKey = $_POST[USER];
   $users = new Users();
   $user = $users->getKey($userKey);
   if(!$user)
   {
-    exit("Bad name ".$userKey);
+    exit("Bad user ".$userKey);
   }
 }
 else
 {
-  exit("NAME is missing");
+  exit("USER is missing");
 }
 
 $value = "";
@@ -40,6 +40,10 @@ if(!isset($_POST[KEY]) and !isset($_POST[TOKEN]))
 {
   $users = new Users();
   $user = $users->getKey($userKey);        
+  if(!$user){
+    http_response_code(404);
+    exit("No user found.");
+  }
 
   $items = new Items();
   $item = new Item(null, null, $user->id);
@@ -70,13 +74,13 @@ else
   $items = new Items();
   $item = $items->getItem($key, $token, $user->id);
   if(!$item){
-    exit("No data found.");
+    http_response_code(404);
+    exit("No item found.");
   }
 
   $item->token = GUID();
   $item->saveValue($value);
   $items->save();
   exit($item->getJsonGetRespons());
-
 }
 ?>

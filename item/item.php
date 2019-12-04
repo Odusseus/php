@@ -37,7 +37,15 @@ class Item extends Entity{
     function getValue()
     {
         $filename = "value/{$this->key}.txt";
-        $file = fopen($filename, "rb") or die("Unable to open file!");
+        if (file_exists($filename))
+        {
+            $file = fopen($filename, "rb");
+        }
+        else
+        {
+            http_response_code(404);
+            die("Unable to open file!");
+        }
         $value = fread($file, filesize($filename));
         return $value;
     } 

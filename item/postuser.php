@@ -9,30 +9,27 @@ header('Access-Control-Allow-Origin: *');
 $checkip = new CheckIp();
 
 $checkKey = "";
-$userKey = "";
 
 if(!empty($_POST[KEY])){
   $checkKey = $_POST[KEY];
 }
 else
 {
-  echo "KEY is missing";
-  return;
+  exit("KEY is missing.");
 }
 
 if($checkKey != CHECKKEY){
   $checkip->addBadIp();
-  echo "Bacon!";
-  return;
+  exit("Bad is key.");
 }
 
-if(isset($_POST[NAME])){
-  $userKey = $_POST[NAME];
+$userKey = "";
+if(isset($_POST[USER])){
+  $userKey = $_POST[USER];
 }
 else
 {
-  echo "NAME is missing";
-  return;
+  exit("USER is missing.");
 }
 
 $users = new Users();
