@@ -84,6 +84,6 @@ else
   $item->token = GUID();
   $item->saveValue($value);
   $items->save();
-  exit($item->getJsonGetRespons());
+  exit($item->getJsonPostRespons());
 }
 ?>
