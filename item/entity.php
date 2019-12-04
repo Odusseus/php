@@ -66,7 +66,7 @@ class Entities {
     }
   
     public function add($item){
-        $ids = new Ids();
+        $ids = Ids::new();
         
         if(!$ids->getId($this->entity)){
             $idItem = new Id($this->entity);

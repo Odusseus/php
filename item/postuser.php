@@ -32,7 +32,7 @@ else
   exit("USER is missing.");
 }
 
-$users = new Users();
+$users = Users::new();
 if(!$users->getKey($userKey))
 {
   $user = new User($userKey);

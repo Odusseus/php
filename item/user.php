@@ -13,7 +13,18 @@ class User extends Entity {
 
 class Users extends Entities {
 
-    function __construct() {
+    private static $instance = null;
+
+    private function __construct() {
         parent::__construct(USER);
+    }
+
+    public static function new()
+    {
+        if (self::$instance == null)
+        {
+            self::$instance = new Users();
+        } 
+        return self::$instance;
     }
 }

@@ -16,18 +16,31 @@ class Id {
 }
 
 class Ids {
+  private static $instance = null;
 
   public 
       $list = [],
       $filename = JSON_DIR."/id.json";
   
-  function __construct(){
-      if(file_exists($this->filename)){
-          $str = file_get_contents($this->filename);
-          $this->list = json_decode($str);
-      }
+  private function __construct()
+  {
+    if(file_exists($this->filename))
+    {
+      $str = file_get_contents($this->filename);
+      $this->list = json_decode($str);
+    }
   }
   
+  public static function new()
+  {
+    if (self::$instance == null)
+    {
+      self::$instance = new Ids();
+    }
+ 
+    return self::$instance;
+  }
+
   public function getJson(){
       return json_encode($this->list);
   }

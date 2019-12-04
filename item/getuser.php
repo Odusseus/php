@@ -9,7 +9,7 @@
 
   if(isset($_GET[USER])){
     $user = $_GET[USER];
-    $users = new Users();
+    $users = Users::new();
     $id = $users->getKey($user);
     if($id)
     {

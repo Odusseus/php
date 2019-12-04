@@ -28,7 +28,7 @@
     die();
   }
 
-  $users = new Users();
+  $users = Users::new();
   $user = $users->getKey($user);
   
   $item = new Item($key, $token, $user->id);

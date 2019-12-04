@@ -37,7 +37,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/getitem.php?key=4B357803-FE20-46D7-8E19-AE01BEE068E8&token=25EF9713-ADF4-48BB-9224-0C17F7AA8097&user=pascal",
+					"raw": "http://localhost:9000/getitem.php?key=DFA6B670-68C9-4741-878F-E2D9B582F38B&token=08487F4E-8936-4FFF-BD56-AEA0F6DA6D3C&user=xxx",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -49,15 +49,15 @@
 					"query": [
 						{
 							"key": "key",
-							"value": "4B357803-FE20-46D7-8E19-AE01BEE068E8"
+							"value": "DFA6B670-68C9-4741-878F-E2D9B582F38B"
 						},
 						{
 							"key": "token",
-							"value": "25EF9713-ADF4-48BB-9224-0C17F7AA8097"
+							"value": "08487F4E-8936-4FFF-BD56-AEA0F6DA6D3C"
 						},
 						{
 							"key": "user",
-							"value": "pascal"
+							"value": "xxx"
 						}
 					]
 				},
@@ -123,7 +123,7 @@
 					"urlencoded": [
 						{
 							"key": "user",
-							"value": "pascal",
+							"value": "xxx",
 							"type": "text"
 						},
 						{

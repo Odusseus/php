@@ -20,9 +20,6 @@ class Item extends Entity{
             $token = GUID(); 
         }
         $this->token = $token;
-        // $users = new Users();
-        // $user = $users->getKey($userKey);        
-        // $this->userId = $user->id;
         $this->userId = $userId;
     }
 
@@ -63,8 +60,8 @@ class Item extends Entity{
     }
 }
 
-class ItemPostRespons {
-    
+class ItemPostRespons
+{
     public $key,
            $token;
 
@@ -74,8 +71,8 @@ class ItemPostRespons {
     }
 }
 
-class ItemGetRespons {
-    
+class ItemGetRespons
+{
     public $key,
            $token,
            $value;
@@ -87,10 +84,22 @@ class ItemGetRespons {
     }
 }
 
-class Items extends Entities {
+class Items extends Entities
+{
+    private static $instance = null;
 
-    function __construct() {
+    private function __construct() {
         parent::__construct(ITEM);
+    }
+
+    public static function new()
+    {
+        if (self::$instance == null)
+        {
+            self::$instance = new Items();
+        }
+ 
+        return self::$instance;
     }
 
   public function getItem($key, $token, $id){

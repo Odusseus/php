@@ -14,7 +14,7 @@ $userKey = "";
 if(isset($_POST[USER]))
 {
   $userKey = $_POST[USER];
-  $users = new Users();
+  $users = Users::new();
   $user = $users->getKey($userKey);
   if(!$user)
   {
@@ -41,14 +41,14 @@ if((!isset($_POST[KEY])
    and (!isset($_POST[TOKEN])
          or empty($_POST[TOKEN])))
 {
-  $users = new Users();
+  $users = Users::new();
   $user = $users->getKey($userKey);        
   if(!$user){
     http_response_code(404);
     exit("No user found.");
   }
 
-  $items = new Items();
+  $items = Items::new();
   $item = new Item(null, null, $user->id);
   $items->add($item);
   $item->saveValue($value);
@@ -74,7 +74,7 @@ else
     exit("TOKEN is missing");
   }
 
-  $items = new Items();
+  $items = Items::new();
   $item = $items->getItem($key, $token, $user->id);
   if(!$item){
     http_response_code(404);

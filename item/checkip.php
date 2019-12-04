@@ -1,6 +1,6 @@
 <?php
 
-require_once("ips.php");
+require_once("ip.php");
 
 class CheckIp {
 
@@ -9,7 +9,7 @@ class CheckIp {
          $badIp;
    
   function __construct(){
-    $this->badIp = new Ips();
+    $this->badIp = Ips::new();
     $this->ipItem = new Ip();
     if($this->badIp->getKey($this->ipItem->key)){
       exit("Bad ip ".$this->ipItem->key);
