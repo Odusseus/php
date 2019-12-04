@@ -1,32 +1,29 @@
 {
 	"info": {
 		"_postman_id": "ed61faef-be5e-4ad7-aee6-f49bf68bb77b",
-		"name": "item",
+		"name": "item-local",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "getuser-odusseus",
+			"name": "getuser",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://www.odusseus.org/php/item/getuser.php?user=x",
+					"raw": "http://localhost:9000/getuser.php?user=pascal",
 					"protocol": "http",
 					"host": [
-						"www",
-						"odusseus",
-						"org"
+						"localhost"
 					],
+					"port": "9000",
 					"path": [
-						"php",
-						"item",
 						"getuser.php"
 					],
 					"query": [
 						{
 							"key": "user",
-							"value": "x"
+							"value": "pascal"
 						}
 					]
 				},
@@ -40,7 +37,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/getitem.php?key=B8F85E60-8021-4335-9390-37969DF7AE13&token=6A4B03F5-0845-4510-AACD-4BB3B08DC7EF",
+					"raw": "http://localhost:9000/getitem.php?key=4B357803-FE20-46D7-8E19-AE01BEE068E8&token=25EF9713-ADF4-48BB-9224-0C17F7AA8097&user=pascal",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -52,11 +49,15 @@
 					"query": [
 						{
 							"key": "key",
-							"value": "B8F85E60-8021-4335-9390-37969DF7AE13"
+							"value": "4B357803-FE20-46D7-8E19-AE01BEE068E8"
 						},
 						{
 							"key": "token",
-							"value": "6A4B03F5-0845-4510-AACD-4BB3B08DC7EF"
+							"value": "25EF9713-ADF4-48BB-9224-0C17F7AA8097"
+						},
+						{
+							"key": "user",
+							"value": "pascal"
 						}
 					]
 				},
@@ -81,11 +82,11 @@
 					"urlencoded": [
 						{
 							"key": "key",
-							"value": "",
+							"value": "x",
 							"type": "text"
 						},
 						{
-							"key": "name",
+							"key": "user",
 							"value": "pascal",
 							"type": "text"
 						}
@@ -121,7 +122,7 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "name",
+							"key": "user",
 							"value": "pascal",
 							"type": "text"
 						},
@@ -132,12 +133,12 @@
 						},
 						{
 							"key": "key",
-							"value": "D7B5F68C-C3CA-4BDE-8D24-198D8C950D23",
+							"value": "",
 							"type": "text"
 						},
 						{
 							"key": "token",
-							"value": "578AC736-2BA0-4585-AFFA-0B1DCB8F4960",
+							"value": "",
 							"type": "text"
 						}
 					]
@@ -150,50 +151,6 @@
 					],
 					"port": "9000",
 					"path": [
-						"postitem.php"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "postitem-odusseus",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "name",
-							"value": "pascal",
-							"type": "text"
-						},
-						{
-							"key": "value",
-							"value": "{  'Events':[    {'group' : '2019-2021', 'date' : '17-01-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '07-11-2019', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2021', 'date' : '20-11-2019', 'description' : 'MEC Jan Timman', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '23-11-2019', 'description' : 'Lekstroom 2 - OZU', 'type' : 'Wedstrijd' },     {'group' : '2019-2020', 'date' : '02-12-2019', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '12-12-2019', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '25-01-2020', 'description' : 'Wijk aan zee', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '04-11-2019', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '14-12-2019', 'description' : 'OZU-Almere 4', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '20-12-2019', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '25-12-2019', 'description' : '2512 toernooi', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '21-02-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '23-01-2020', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '07-03-2020', 'description' : 'OZU-ASV 6', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '02-03-2020', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '28-03-2020', 'description' : 'Magnus 2 - OZU', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '16-04-2020', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '15-11-2019', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '24-01-2020', 'description' : 'Wijk aan zee', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '01-02-2020', 'description' : 'En Passant 3 - OZU', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '03-02-2020', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '20-02-2020', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '20-03-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '06-04-2020', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '17-04-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '18-04-2020', 'description' : 'OZU-Wageningen 4', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '15-05-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '05-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '06-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '07-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '19-06-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' }  ]  }",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://www.odusseus.org/php/item/postitem.php",
-					"protocol": "http",
-					"host": [
-						"www",
-						"odusseus",
-						"org"
-					],
-					"path": [
-						"php",
-						"item",
 						"postitem.php"
 					]
 				}

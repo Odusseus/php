@@ -36,7 +36,10 @@ else
   exit("VALUE is missing");
 }
 
-if(!isset($_POST[KEY]) and !isset($_POST[TOKEN]))
+if((!isset($_POST[KEY])
+     or empty($_POST[KEY]))
+   and (!isset($_POST[TOKEN])
+         or empty($_POST[TOKEN])))
 {
   $users = new Users();
   $user = $users->getKey($userKey);        
@@ -54,7 +57,7 @@ if(!isset($_POST[KEY]) and !isset($_POST[TOKEN]))
 else
 {
   $key = "";
-  if(isset($_POST[KEY])){
+  if(isset($_POST[KEY]) and !empty($_POST[KEY])){
     $key = $_POST[KEY];
   }
   else
@@ -63,7 +66,7 @@ else
   }
   
   $token = "";
-  if(isset($_POST[TOKEN])){
+  if(isset($_POST[TOKEN]) and !empty($_POST[TOKEN])){
     $token = $_POST[TOKEN];
   }
   else
