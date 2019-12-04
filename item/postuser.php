@@ -11,7 +11,7 @@ $checkip = new CheckIp();
 $checkKey = "";
 $userKey = "";
 
-if(isset($_POST[KEY])){
+if(!empty($_POST[KEY])){
   $checkKey = $_POST[KEY];
 }
 else
