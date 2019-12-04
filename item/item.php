@@ -106,7 +106,7 @@ class Items extends Entities
     foreach($this->list as $item)
     {
       if($item->key == $key 
-         and $item->token == $token
+         and (DEBUG or $item->token == $token)
          and $item->userId == $id)
         {
             return $item;
