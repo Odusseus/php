@@ -28,7 +28,7 @@ class Entities {
         $filename = "",
         $entity = "";
     
-    function __construct($entity){
+    public function __construct($entity){
         $this->entity = $entity; 
         $this->filename = JSON_DIR."/{$entity}.json";
         if(file_exists($this->filename)){

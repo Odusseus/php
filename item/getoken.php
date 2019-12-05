@@ -18,19 +18,29 @@
       die("KEY empty.");
     }
   }
+  else
+  {
+    http_response_code(404);
+    die("No KEY found.");
+  }
   
-  $token = "";
-  if(isset($_GET[TOKEN])){
-    $token = $_GET[TOKEN];
-    if (empty($token))
+  $user = "";
+  if(isset($_GET[USER])){
+    $user = $_GET[USER];
+    if (empty($user))
     {
       http_response_code(404);
-      die("TOKEN empty.");
+      die("USER empty.");
     }
+  }
+  else
+  {
+    http_response_code(404);
+    die("No USER found.");
   }
   
   $items = Items::new();
-  $item = $items->getItem($key, $token);
+  $item = $items->getKey($key);
   if($item == NULL)
   {
     http_response_code(404);
@@ -38,7 +48,7 @@
   }
   else
   {
-    $itemGetRespons = $item->getJsonGetRespons();
-    exit ($itemGetRespons);
+    $tokenGetRespons = $item->GetTokenGetRespons();
+    exit ($tokenGetRespons);
   }
 ?>

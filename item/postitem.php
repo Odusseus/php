@@ -9,21 +9,9 @@ header('Access-Control-Allow-Origin: *');
 
 $checkip = new CheckIp();
 
-
-$userKey = "";
-if(isset($_POST[USER]))
+if(isset($_POST[ISALIVE]) and filter_var($_POST[ISALIVE], FILTER_VALIDATE_BOOLEAN))
 {
-  $userKey = $_POST[USER];
-  $users = Users::new();
-  $user = $users->getKey($userKey);
-  if(!$user)
-  {
-    exit("Bad user ".$userKey);
-  }
-}
-else
-{
-  exit("USER is missing");
+    exit(TRUE);
 }
 
 $value = "";
@@ -33,6 +21,7 @@ if(isset($_POST[VALUE]))
 }
 else
 {
+  http_response_code(404);
   exit("VALUE is missing");
 }
 
@@ -41,11 +30,22 @@ if((!isset($_POST[KEY])
    and (!isset($_POST[TOKEN])
          or empty($_POST[TOKEN])))
 {
-  $users = Users::new();
-  $user = $users->getKey($userKey);        
-  if(!$user){
+  $userKey = "";
+  if(isset($_POST[USER]))
+  {
+    $userKey = $_POST[USER];
+    $users = Users::new();
+    $user = $users->getKey($userKey);
+    if(!$user)
+    {
+      http_response_code(404);
+      exit("USER [".$userKey."] not found.");
+    }
+  }
+  else
+  {
     http_response_code(404);
-    exit("No user found.");
+    exit("USER is missing.");
   }
 
   $items = Items::new();
@@ -62,6 +62,7 @@ else
   }
   else
   {
+    http_response_code(404);
     exit("KEY is missing");
   }
   
@@ -71,19 +72,20 @@ else
   }
   else
   {
+    http_response_code(404);
     exit("TOKEN is missing");
   }
 
   $items = Items::new();
-  $item = $items->getItem($key, $token, $user->id);
+  $item = $items->getItem($key, $token);
   if(!$item){
     http_response_code(404);
     exit("No item found.");
   }
 
   $item->token = GUID();
-  $item->saveValue($value);
   $items->save();
+  $item->saveValue($value);
   exit($item->getJsonPostRespons());
 }
 ?>

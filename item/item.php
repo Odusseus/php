@@ -58,6 +58,12 @@ class Item extends Entity{
         $itemGetRespons = new ItemGetRespons($this);
         return json_encode($itemGetRespons);
     }
+
+    function getTokenGetRespons()
+    {
+        $tokenGetRespons = new TokenGetRespons($this);
+        return json_encode($tokenGetRespons);
+    }    
 }
 
 class ItemPostRespons
@@ -65,7 +71,7 @@ class ItemPostRespons
     public $key,
            $token;
 
-    function __construct($item){
+    public function __construct($item){
         $this->key = $item->key;
         $this->token = $item->token;
     }
@@ -77,10 +83,19 @@ class ItemGetRespons
            $token,
            $value;
 
-    function __construct($item){
+    public function __construct($item){
         $this->key = $item->key;
         $this->token = $item->token;
         $this->value = $item->getValue();
+    }
+}
+
+class TokenGetRespons
+{
+    public $token;
+
+    public function __construct($item){
+        $this->token = $item->token;
     }
 }
 
@@ -88,7 +103,7 @@ class Items extends Entities
 {
     private static $instance = null;
 
-    private function __construct() {
+    public function __construct() {
         parent::__construct(ITEM);
     }
 
@@ -102,14 +117,19 @@ class Items extends Entities
         return self::$instance;
     }
 
-  public function getItem($key, $token, $id){
+  public function getItem($key, $token, $id = NULL){
     foreach($this->list as $item)
     {
       if($item->key == $key 
-         and (DEBUG or $item->token == $token)
-         and $item->userId == $id)
+         and (filter_var(DEBUG, FILTER_VALIDATE_BOOLEAN) or $item->token == $token)
+         and ($id == NULL or $item->userId == $id))
         {
             return $item;
+        }
+        if($item->token != $token)
+        {
+            http_response_code(498);
+            die();
         }
     }
     return null;
