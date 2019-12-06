@@ -11,7 +11,7 @@ $checkip = new CheckIp();
 
 if(isset($_POST[ISALIVE]) and filter_var($_POST[ISALIVE], FILTER_VALIDATE_BOOLEAN))
 {
-    exit(TRUE);
+    exit(TRUETEXT);
 }
 
 $value = "";

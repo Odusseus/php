@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/getuser.php?user=pascal",
+					"raw": "http://localhost:9000/getuser.php?user=pascal&isalive=true",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -24,6 +24,36 @@
 						{
 							"key": "user",
 							"value": "pascal"
+						},
+						{
+							"key": "isalive",
+							"value": "true"
+						}
+					]
+				},
+				"description": "test"
+			},
+			"response": []
+		},
+		{
+			"name": "getuser isalive",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/getuser.php?isalive=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"getuser.php"
+					],
+					"query": [
+						{
+							"key": "isalive",
+							"value": "true"
 						}
 					]
 				},
@@ -66,6 +96,66 @@
 			"response": []
 		},
 		{
+			"name": "getoken",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/getoken.php?key=D51981B6-32B0-4678-95DC-AB1D922C52DC&user=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"getoken.php"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "D51981B6-32B0-4678-95DC-AB1D922C52DC"
+						},
+						{
+							"key": "user",
+							"value": ""
+						}
+					]
+				},
+				"description": "test"
+			},
+			"response": []
+		},
+		{
+			"name": "getiem Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/getitem.php?key=34030B3E-195D-42AA-A827-6C770F42BD06&token=3C5832D-7BCB-46DC-B8CA-169D51BA0D28",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"getitem.php"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "34030B3E-195D-42AA-A827-6C770F42BD06"
+						},
+						{
+							"key": "token",
+							"value": "3C5832D-7BCB-46DC-B8CA-169D51BA0D28"
+						}
+					]
+				},
+				"description": "test"
+			},
+			"response": []
+		},
+		{
 			"name": "postuser-local",
 			"request": {
 				"method": "POST",
@@ -82,12 +172,12 @@
 					"urlencoded": [
 						{
 							"key": "key",
-							"value": "x",
+							"value": "noel",
 							"type": "text"
 						},
 						{
 							"key": "user",
-							"value": "pascal",
+							"value": "xxx",
 							"type": "text"
 						}
 					]
@@ -107,7 +197,48 @@
 			"response": []
 		},
 		{
-			"name": "postitem-local with key and token",
+			"name": "postitem value + user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "value",
+							"value": "x",
+							"type": "text"
+						},
+						{
+							"key": "user",
+							"value": "pascal",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9000/postitem.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"postitem.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postitem-local with key and token Copy",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -133,12 +264,12 @@
 						},
 						{
 							"key": "key",
-							"value": "",
+							"value": "DFA6B670-68C9-4741-878F-E2D9B582F38B",
 							"type": "text"
 						},
 						{
 							"key": "token",
-							"value": "",
+							"value": "x",
 							"type": "text"
 						}
 					]

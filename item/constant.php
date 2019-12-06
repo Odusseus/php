@@ -8,7 +8,7 @@
     define("JSON_DIR", "json");
     define("KEY", "key");
     define("TOKEN", "token");
-    define("TRUE", "true");
+    define("TRUETEXT", "true");
     define("USER", "user");
     define("VALUE", "value");
 ?>

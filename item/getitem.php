@@ -6,7 +6,7 @@
 
   if(isset($_GET[ISALIVE]) and filter_var($_GET[ISALIVE], FILTER_VALIDATE_BOOLEAN))
   {
-      exit(TRUE);
+      exit(TRUETEXT);
   }
 
   $key = "";
