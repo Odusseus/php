@@ -126,11 +126,6 @@ class Items extends Entities
         {
             return $item;
         }
-        if($item->token != $token)
-        {
-            http_response_code(498);
-            die();
-        }
     }
     return null;
   }
