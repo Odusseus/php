@@ -20,7 +20,7 @@ class Ids {
 
   public 
       $list = [],
-      $filename = JSON_DIR."/id.json";
+      $filename = DATA_DIR."/".JSON_DIR."/id.json";
   
   private function __construct()
   {

@@ -47,6 +47,10 @@ if(!$users->getKey($userKey))
 {
   $user = new User($userKey);
   $users->add($user);
+  exit("USER is added.");
 }
-return;
+else
+{
+  exit("Nothing to do, {$userKey} was already added.");
+}
 ?>

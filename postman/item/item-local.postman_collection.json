@@ -101,7 +101,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/getoken.php?key=D51981B6-32B0-4678-95DC-AB1D922C52DC&user=",
+					"raw": "http://localhost:9000/getoken.php?key=4265AC3D-DD4B-427C-8BFD-6D7E7BB92C09&user=",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -113,7 +113,7 @@
 					"query": [
 						{
 							"key": "key",
-							"value": "D51981B6-32B0-4678-95DC-AB1D922C52DC"
+							"value": "4265AC3D-DD4B-427C-8BFD-6D7E7BB92C09"
 						},
 						{
 							"key": "user",

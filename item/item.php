@@ -25,7 +25,7 @@ class Item extends Entity{
 
     function saveValue($value)
     {
-        $filename = "value/{$this->key}.txt";
+        $filename = DATA_DIR."/".VALUE_DIR."/{$this->key}.txt";
         $file = fopen($filename, "wb") or die("Unable to open file!");
         fwrite($file, $value);
         fclose($file);
@@ -33,7 +33,7 @@ class Item extends Entity{
 
     function getValue()
     {
-        $filename = "value/{$this->key}.txt";
+        $filename = DATA_DIR."/".VALUE_DIR."/{$this->key}.txt";
         if (file_exists($filename))
         {
             $file = fopen($filename, "rb");

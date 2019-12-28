@@ -1,0 +1,212 @@
+[
+  {
+    "group": "2019-2020",
+    "date": "2020-01-24T00:00:00.000Z",
+    "description": "Tata Steel",
+    "type": "Event"
+  },
+    {
+    "group": "2019-2020",
+    "date": "2020-01-25T00:00:00.000Z",
+    "description": "Tata Steel",
+    "type": "Event"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-01-29T00:00:00.000Z",
+    "description": "MEC GM Yasser Seirawan",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-01-09T00:00:00.000Z",
+    "description": "PK Openingsstudie – David van Kerkhof",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-11-04T00:00:00.000Z",
+    "description": "Ger",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-11-07T00:00:00.000Z",
+    "description": "John",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-11-15T00:00:00.000Z",
+    "description": "Hot-Spirit",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-11-20T00:00:00.000Z",
+    "description": "MEC Jan Timman",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-11-23T00:00:00.000Z",
+    "description": "Lekstroom 2 - OZU",
+    "type": "Wedstrijd"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-12-02T00:00:00.000Z",
+    "description": "Ger",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-12-12T00:00:00.000Z",
+    "description": "John",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-12-14T00:00:00.000Z",
+    "description": "OZU-Almere 4",
+    "type": "Wedstrijd"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-12-20T00:00:00.000Z",
+    "description": "Hot-Spirit",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2019-12-25T00:00:00.000Z",
+    "description": "2512 toernooi",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-01-17T00:00:00.000Z",
+    "description": "Hot-Spirit",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-01-23T00:00:00.000Z",
+    "description": "John",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-01-24T00:00:00.000Z",
+    "description": "Wijk aan zee",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-01-25T00:00:00.000Z",
+    "description": "Wijk aan zee",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-02-01T00:00:00.000Z",
+    "description": "En Passant 3 - OZU",
+    "type": "Wedstrijd"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-02-03T00:00:00.000Z",
+    "description": "Ger",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-02-20T00:00:00.000Z",
+    "description": "John",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-02-21T00:00:00.000Z",
+    "description": "Hot-Spirit",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-03-02T00:00:00.000Z",
+    "description": "Ger",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-03-07T00:00:00.000Z",
+    "description": "OZU-ASV 6",
+    "type": "Wedstrijd"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-03-20T00:00:00.000Z",
+    "description": "Hot-Spirit",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-03-28T00:00:00.000Z",
+    "description": "Magnus 2 - OZU",
+    "type": "Wedstrijd"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-04-06T00:00:00.000Z",
+    "description": "Ger",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-04-16T00:00:00.000Z",
+    "description": "John",
+    "type": "Training"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-04-17T00:00:00.000Z",
+    "description": "Hot-Spirit",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-04-18T00:00:00.000Z",
+    "description": "OZU-Wageningen 4",
+    "type": "Wedstrijd"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-05-15T00:00:00.000Z",
+    "description": "Hot-Spirit",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-06-05T00:00:00.000Z",
+    "description": "OKU",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-06-06T00:00:00.000Z",
+    "description": "OKU",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-06-07T00:00:00.000Z",
+    "description": "OKU",
+    "type": "Toernooi"
+  },
+  {
+    "group": "2019-2020",
+    "date": "2020-06-19T00:00:00.000Z",
+    "description": "Hot-Spirit",
+    "type": "Toernooi"
+  }
+]

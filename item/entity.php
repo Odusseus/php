@@ -30,7 +30,7 @@ class Entities {
     
     public function __construct($entity){
         $this->entity = $entity; 
-        $this->filename = JSON_DIR."/{$entity}.json";
+        $this->filename = DATA_DIR."/".JSON_DIR."/{$entity}.json";
         if(file_exists($this->filename)){
             $str = file_get_contents($this->filename);
             $this->list = json_decode($str);
