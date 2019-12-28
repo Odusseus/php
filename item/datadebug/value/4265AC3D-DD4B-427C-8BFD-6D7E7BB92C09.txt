@@ -1,18 +1,6 @@
 [
   {
     "group": "2019-2020",
-    "date": "2020-01-24T00:00:00.000Z",
-    "description": "Tata Steel",
-    "type": "Event"
-  },
-    {
-    "group": "2019-2020",
-    "date": "2020-01-25T00:00:00.000Z",
-    "description": "Tata Steel",
-    "type": "Event"
-  },
-  {
-    "group": "2019-2020",
     "date": "2020-01-29T00:00:00.000Z",
     "description": "MEC GM Yasser Seirawan",
     "type": "Training"
