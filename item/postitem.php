@@ -9,15 +9,26 @@ header('Access-Control-Allow-Origin: *');
 
 $checkip = new CheckIp();
 
+// $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+// if(strcasecmp($contentType, 'application/json') != 0){
+//     throw new Exception('Content type must be: application/json');
+// }
+ 
+//Receive the RAW post data.
+$content = trim(file_get_contents("php://input"));
+ 
+//Attempt to decode the incoming RAW post data from JSON.
+$decoded = json_decode($content, true);
+
 if(isset($_POST[ISALIVE]) and filter_var($_POST[ISALIVE], FILTER_VALIDATE_BOOLEAN))
 {
     exit(TRUETEXT);
 }
 
 $value = "";
-if(isset($_POST[VALUE]))
+if(isset($decoded[VALUE]))
 {
-  $value = $_POST[VALUE];
+  $value = $decoded[VALUE];
 }
 else
 {
@@ -25,15 +36,15 @@ else
   exit("VALUE is missing");
 }
 
-if((!isset($_POST[KEY])
-     or empty($_POST[KEY]))
-   and (!isset($_POST[TOKEN])
-         or empty($_POST[TOKEN])))
+if((!isset($decoded[KEY])
+     or empty($decoded[KEY]))
+   and (!isset($decoded[TOKEN])
+         or empty($decoded[TOKEN])))
 {
   $userKey = "";
-  if(isset($_POST[USER]))
+  if(isset($decoded[USER]))
   {
-    $userKey = $_POST[USER];
+    $userKey = $decoded[USER];
     $users = Users::new();
     $user = $users->getKey($userKey);
     if(!$user)
@@ -57,8 +68,8 @@ if((!isset($_POST[KEY])
 else
 {
   $key = "";
-  if(isset($_POST[KEY]) and !empty($_POST[KEY])){
-    $key = $_POST[KEY];
+  if(isset($decoded[KEY]) and !empty($decoded[KEY])){
+    $key = $decoded[KEY];
   }
   else
   {
@@ -67,8 +78,8 @@ else
   }
   
   $token = "";
-  if(isset($_POST[TOKEN]) and !empty($_POST[TOKEN])){
-    $token = $_POST[TOKEN];
+  if(isset($decoded[TOKEN]) and !empty($decoded[TOKEN])){
+    $token = $decoded[TOKEN];
   }
   else
   {

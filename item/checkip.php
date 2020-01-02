@@ -2,6 +2,8 @@
 
 require_once("ip.php");
 
+header('Access-Control-Allow-Origin: *');
+
 class CheckIp {
 
   public $isGood,
