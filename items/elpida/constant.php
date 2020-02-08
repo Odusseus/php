@@ -9,4 +9,5 @@
     define("NICKNAME", "nickname");
     define("EMAIL", "email");
     define("PASSWORD", "password");
+    define("USER_DIR", "user");
 ?>
