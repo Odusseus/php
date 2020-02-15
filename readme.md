@@ -15,6 +15,8 @@
 αγάπη       Agapi         Love
 µεράκι      Meraki        Passion / 
                           put “a part of your soul” into what you’re doing
+παρακονάω   Parakonaō     frotter contre, aiguiser
+                          compare
 
 https://medium.com/@jaythedeveloper/ultimate-guide-debug-php-iis-in-visual-studio-code-using-xdebug-14fced013f22
 

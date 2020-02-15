@@ -4,15 +4,24 @@
   require_once("login.php");
   require_once("user.php");
   require_once("abstract/state.php");
+  require_once("maxId.php");
   
   header('Access-Control-Allow-Origin: *');
 
   $checkip = new CheckIp();
 
   if(isset($_GET[ISALIVE]))
-  {
+  {    
     exit(STATE_TRUE);
   }
+
+  $maxId = new MaxId(MAX_CREATEUSER); 
+  if($maxId->get() > 100){
+    http_response_code(423);
+    $value = NICKNAME;
+    $message = "Maximum user reached.";
+    exit($message);
+  };
 
   //Receive the RAW post data.
   $content = trim(file_get_contents("php://input"));
@@ -55,14 +64,11 @@
     $user = new User($nickname, $password, $email);
     $json = json_encode($user);
     $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
-    $userFile = fopen($userFilename, "w") or die("Unable to open file!");
-    fwrite($userFile, $json);
-    fclose($userFile);
-
+    file_put_contents($userFilename, $json, LOCK_EX);
+    
     $login = new Login("{$nickname}.json");
     $json = json_encode($login);
-    $loginFile = fopen($loginFilename, "w") or die("Unable to open file!");
-    fwrite($loginFile, $json);
-    fclose($loginFile);
+    file_put_contents($loginFilename, $json, LOCK_EX);
+    $maxId->next();
   }
 ?>
