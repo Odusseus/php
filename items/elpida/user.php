@@ -1,14 +1,16 @@
 <?php
 
+require_once("abstract/state.php");
+
 class User {
   public $nickname,
          $password,
          $email,
          $activationCode,
          $state,
-         $createdTimestamp;
+         $createdTimestamp;  
   
-  function __construct($nickname, $password, $email){
+  function set($nickname, $password, $email){
     $this->nickname = $nickname;
     $this->password = $password;
     $this->email = $email;
@@ -17,7 +19,13 @@ class User {
     $this->activationCodeExpired = date("d-m-Y H:i:s", strtotime("+1 week"));
     $this->createdTimestamp = date("d-m-Y H:i:s");
   }
+
+  function activate($activationCode){
+    if($this->activationCode == $activationCode){
+      $this->state = State::Active;
+      return true;
+    }
+    return false;
+  }
 }
-
-
 ?>

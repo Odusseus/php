@@ -61,13 +61,14 @@
   }
   else
   {
-    $user = new User($nickname, $password, $email);
-    $json = json_encode($user);
+    $user = new User();
+    $user->set($nickname, $password, $email);
+    $json = serialize($user);
     $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
     file_put_contents($userFilename, $json, LOCK_EX);
     
     $login = new Login("{$nickname}.json");
-    $json = json_encode($login);
+    $json = serialize($login);
     file_put_contents($loginFilename, $json, LOCK_EX);
     $maxId->next();
   }

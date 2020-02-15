@@ -13,5 +13,4 @@
     define("USER_DIR", "user");
     define("MAX_CREATEUSER", "createuser");
     define("ACTIVATION_CODE", "activationcode");
-    activationCode
 ?>

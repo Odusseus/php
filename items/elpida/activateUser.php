@@ -2,6 +2,7 @@
 
   require_once("constant.php");
   require_once("checkip.php");
+  require_once("user.php");
 
   header('Access-Control-Allow-Origin: *');
 
@@ -26,7 +27,7 @@
   }
 
   $activationCode = "";
-  if(isset($_GET[NICKNAME])){
+  if(isset($_GET[ACTIVATION_CODE])){
     $activationCode = $_GET[ACTIVATION_CODE];
     if (empty($activationCode))
     {
@@ -38,6 +39,12 @@
     }
   }
 
-  
-
+  $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
+  $json = file_get_contents($userFilename);
+  $user = unserialize($json);
+  if($user->activate($activationCode)){
+    $json = serialize($user);
+    $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
+    file_put_contents($userFilename, $json, LOCK_EX);
+  }
 ?>
