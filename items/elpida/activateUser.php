@@ -18,7 +18,6 @@
     $nickname = $_GET[NICKNAME];
     if (empty($nickname))
     {
-      http_response_code(404);
       http_response_code(422);
       $value = NICKNAME;
       $message = "$value is missing.";
@@ -31,7 +30,6 @@
     $activationCode = $_GET[ACTIVATION_CODE];
     if (empty($activationCode))
     {
-      http_response_code(404);
       http_response_code(422);
       $value = ACTIVATION_CODE;
       $message = "$value is missing.";
@@ -46,5 +44,8 @@
     $json = serialize($user);
     $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
     file_put_contents($userFilename, $json, LOCK_EX);
+    http_response_code(200);
+      $message = "account is activated.";
+      exit($message);
   }
 ?>

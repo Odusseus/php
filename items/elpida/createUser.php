@@ -71,5 +71,16 @@
     $json = serialize($login);
     file_put_contents($loginFilename, $json, LOCK_EX);
     $maxId->next();
+
+    $link = "https://www.odusseus.org/php/elpida/activateUser.php?nickname={$user->nickname}&activationcode={$user->activationCode}";
+
+    $to      = "{$email}";
+    $subject = 'activate your account';
+    $message = "svp click on the link to active your account." . "\r\n" . "{$link}";
+    $headers = 'From: noreply@odusseus.org' . "\r\n" .
+       'Reply-To: noreply@odusseus.org' . "\r\n" .
+       'X-Mailer: PHP/' . phpversion();
+   
+   mail($to, $subject, $message, $headers);
   }
 ?>
