@@ -1,11 +1,10 @@
 <?php
   require_once("constant.php");
   require_once("checkip.php");
-  require_once("login.php");
-  require_once("user.php");
-  require_once("abstract/state.php");
-  require_once("maxId.php");
-  require_once("PasswordStorage.php");
+  //require_once("login.php");
+  //require_once("user.php");
+  //require_once("abstract/state.php");
+  //require_once("maxId.php");
   
   header('Access-Control-Allow-Origin: *');
 
@@ -15,14 +14,6 @@
   {    
     exit(STATE_TRUE);
   }
-
-  $maxId = new MaxId(MAX_CREATEUSER); 
-  if($maxId->get() > 100){
-    http_response_code(423);
-    $value = NICKNAME;
-    $message = "Maximum users is reached.";
-    exit($message);
-  };
 
   //Receive the RAW post data.
   $content = trim(file_get_contents("php://input"));
@@ -45,23 +36,8 @@
     $message = "$value is missing.";
     exit($message);
   }
-  $passwordStorage = new PasswordStorage();
-  $hashPassword = $passwordStorage->create_hash($password);
-  if(!$passwordStorage->verify_password($password, $hashPassword)){
-    http_response_code(422);
-    $message = "Password encryption error. Sorry, try again or take contact with the administrator";
-    exit($message);
-  }
 
-
-  $email = getJsonValue($decoded, EMAIL);
-  if($email == null){
-    http_response_code(422);
-    $value = EMAIL;
-    $message = "$value is missing.";
-    exit($message);
-  }
-
+  // TODO
   $loginFilename = DATA_DIR."/".JSON_DIR."/{$nickname}Login.json";
   if(file_exists($loginFilename)){
     http_response_code(403);
@@ -71,7 +47,7 @@
   else
   {
     $user = new User();
-    $user->set($nickname, $hashPassword, $email);
+    $user->set($nickname, $password, $email);
     $json = serialize($user);
     $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
     file_put_contents($userFilename, $json, LOCK_EX);

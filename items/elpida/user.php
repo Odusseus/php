@@ -4,15 +4,15 @@ require_once("abstract/state.php");
 
 class User {
   public $nickname,
-         $password,
+         $hashPassword,
          $email,
          $activationCode,
          $state,
          $createdTimestamp;  
   
-  function set($nickname, $password, $email){
+  function set($nickname, $hashPassword, $email){
     $this->nickname = $nickname;
-    $this->password = $password;
+    $this->hashPassword = $hashPassword;
     $this->email = $email;
     $this->state = State::Newcomer;
     $this->activationCode = rand(1000, 9999);
