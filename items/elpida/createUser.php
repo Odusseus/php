@@ -1,7 +1,6 @@
 <?php
   require_once("constant.php");
   require_once("checkip.php");
-  require_once("login.php");
   require_once("user.php");
   require_once("abstract/state.php");
   require_once("maxId.php");
@@ -72,16 +71,9 @@
   {
     $user = new User();
     $user->set($nickname, $hashPassword, $email);
-    $json = serialize($user);
-    $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
-    file_put_contents($userFilename, $json, LOCK_EX);
-    
-    $login = new Login("{$nickname}.json");
-    $json = serialize($login);
-    file_put_contents($loginFilename, $json, LOCK_EX);
     $maxId->next();
 
-    $link = "https://www.odusseus.org/php/elpida/activateUser.php?nickname={$user->nickname}&activationcode={$user->activationCode}";
+    $link = "https://www.odusseus.org/php/elpida/activateUser.php?nickname={$user->entity->nickname}&activationcode={$user->entity->activationCode}";
 
     $to      = "{$email}";
     $subject = 'activate your account';
@@ -90,6 +82,19 @@
        'Reply-To: noreply@odusseus.org' . "\r\n" .
        'X-Mailer: PHP/' . phpversion();
    
-   mail($to, $subject, $message, $headers);
+    if (DEBUG) {
+      $dateTime = date("Y-m-d-His", time());
+      $mailFilename = DATA_DIR."/".MAIL_DIR."/{$dateTime}.txt";
+      $mailFile = fopen($mailFilename, "w") or die("Unable to open {$mailFile} file!");
+      fwrite($mailFile, $headers);
+      fwrite($mailFile, $to);
+      fwrite($mailFile, $subject);
+      fwrite($mailFile, $message);
+      fclose($mailFile);
+    }
+    else
+    {
+      mail($to, $subject, $message, $headers);
+    }
   }
 ?>

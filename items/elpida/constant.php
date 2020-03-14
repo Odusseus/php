@@ -3,6 +3,7 @@
     
     define("IP", "ip");
     define("JSON_DIR", "json");
+    define("MAIL_DIR", "mail");
     define("TXT_DIR", "txt");
     define("STATE_TRUE", "true");
     define("STATE_FALSE", "false");

@@ -1,31 +1,52 @@
 <?php
 
-require_once("abstract/state.php");
+ require_once("login.php");
+ require_once("abstract/state.php");
+ require_once("userEntity.php");
 
-class User {
-  public $nickname,
-         $hashPassword,
-         $email,
-         $activationCode,
-         $state,
-         $createdTimestamp;  
+ class User {
+   public $entity;  
   
-  function set($nickname, $hashPassword, $email){
-    $this->nickname = $nickname;
-    $this->hashPassword = $hashPassword;
-    $this->email = $email;
-    $this->state = State::Newcomer;
-    $this->activationCode = rand(1000, 9999);
-    $this->activationCodeExpired = date("d-m-Y H:i:s", strtotime("+1 week"));
-    $this->createdTimestamp = date("d-m-Y H:i:s");
-  }
+   function set($nickname, $hashPassword, $email){
+     $this->entity = new UserEntity();
+     $this->entity->nickname = $nickname;
+     $this->entity->hashPassword = $hashPassword;
+     $this->entity->email = $email;
+     $this->entity->state = State::Newcomer;
+     $this->entity->activationCode = rand(1000, 9999);
+     $this->entity->activationCodeExpired = date("d-m-Y H:i:s", strtotime("+1 week"));
+     $this->entity->createdTimestamp = date("d-m-Y H:i:s");
 
-  function activate($activationCode){
-    if($this->activationCode == $activationCode){
-      $this->state = State::Active;
-      return true;
-    }
-    return false;
-  }
-}
+     $json = json_encode($this->entity);
+     $userFilename = DATA_DIR."/".JSON_DIR."/{$this->entity->nickname}.json";
+     file_put_contents($userFilename, $json, LOCK_EX);
+    
+     $login = new Login("{$this->entity->nickname}.json");
+     $json = json_encode($login);
+     $loginFilename = DATA_DIR."/".JSON_DIR."/{$this->entity->nickname}Login.json";
+     file_put_contents($loginFilename, $json, LOCK_EX);
+   }
+
+   function get($nickname){
+    $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
+    $json = file_get_contents($userFilename);
+    $userEntity = json_decode($json);
+    $this->entity = $userEntity;
+   }
+
+   function checkHashPassword($hashPassword){
+      if($this->entity->hashPassword == $hashPassword){
+        return true;
+      }
+      return false;
+   }
+
+   function activate($activationCode){
+     if($this->activationCode == $activationCode){
+       $this->state = State::Active;
+       return true;
+     }
+     return false;
+   }
+ }
 ?>

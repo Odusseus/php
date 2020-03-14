@@ -1,10 +1,8 @@
 <?php
   require_once("constant.php");
-  require_once("checkip.php");
-  //require_once("login.php");
-  //require_once("user.php");
-  //require_once("abstract/state.php");
-  //require_once("maxId.php");
+  require_once("checkip.php");  
+  require_once("PasswordStorage.php");
+  require_once("user.php");
   
   header('Access-Control-Allow-Origin: *');
 
@@ -36,36 +34,30 @@
     $message = "$value is missing.";
     exit($message);
   }
-
-  // TODO
+  $passwordStorage = new PasswordStorage();
+  $hashPassword = $passwordStorage->create_hash($password);
+  
   $loginFilename = DATA_DIR."/".JSON_DIR."/{$nickname}Login.json";
-  if(file_exists($loginFilename)){
-    http_response_code(403);
-    $message = "Create user {$nickname} is forbidden.";
+  if(!file_exists($loginFilename)){
+    http_response_code(404);
+    $message = "User {$nickname} is not found.";
     exit($message);
   }
   else
   {
     $user = new User();
-    $user->set($nickname, $password, $email);
-    $json = serialize($user);
-    $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
-    file_put_contents($userFilename, $json, LOCK_EX);
+    $user->get($nickname);
     
-    $login = new Login("{$nickname}.json");
-    $json = serialize($login);
-    file_put_contents($loginFilename, $json, LOCK_EX);
-    $maxId->next();
-
-    $link = "https://www.odusseus.org/php/elpida/activateUser.php?nickname={$user->nickname}&activationcode={$user->activationCode}";
-
-    $to      = "{$email}";
-    $subject = 'activate your account';
-    $message = "svp click on the link to active your account." . "\r\n" . "{$link}";
-    $headers = 'From: noreply@odusseus.org' . "\r\n" .
-       'Reply-To: noreply@odusseus.org' . "\r\n" .
-       'X-Mailer: PHP/' . phpversion();
-   
-   mail($to, $subject, $message, $headers);
+    if($user->checkHashPassword($hashPassword)){
+      http_response_code(401);
+      $message = "User {$nickname} is not authorized.";
+      exit($message);
+    }
+    else
+    {
+      http_response_code(200);
+      $message = "User {$nickname} is loged in.";
+      exit($message);
+    }
   }
 ?>
