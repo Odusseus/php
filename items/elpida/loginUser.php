@@ -56,6 +56,8 @@
     else
     {
       http_response_code(200);
+      $value="myCookie";
+      setcookie(COOKIE, $value, time()+3600);
       $message = "User {$nickname} is loged in.";
       exit($message);
     }

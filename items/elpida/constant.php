@@ -1,6 +1,7 @@
 <?php
     require_once("environment.php");
     
+    define("COOKIE", "elpida");
     define("IP", "ip");
     define("JSON_DIR", "json");
     define("MAIL_DIR", "mail");
