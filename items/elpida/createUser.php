@@ -79,7 +79,7 @@ $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
     $to      = "{$email}";
     $subject = 'activate your account';
-    $message = "svp click on the link to active your account." . "\r\n" . "{$link}";
+    $message = "svp click on the link to actived your account." . "\r\n" . "{$link}";
     $headers = 'From: noreply@odusseus.org' . "\r\n" .
        'Reply-To: noreply@odusseus.org' . "\r\n" .
        'X-Mailer: PHP/' . phpversion();
@@ -89,8 +89,11 @@ $hashPassword = password_hash($password, PASSWORD_DEFAULT);
       $mailFilename = DATA_DIR."/".MAIL_DIR."/{$dateTime}.txt";
       $mailFile = fopen($mailFilename, "w") or die("Unable to open {$mailFile} file!");
       fwrite($mailFile, $headers);
+      fwrite($mailFile, "\n");
       fwrite($mailFile, $to);
+      fwrite($mailFile, "\n");
       fwrite($mailFile, $subject);
+      fwrite($mailFile, "\n");
       fwrite($mailFile, $message);
       fclose($mailFile);
     }
