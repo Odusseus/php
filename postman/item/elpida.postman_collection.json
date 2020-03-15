@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "d5cea2c4-eed3-4ac0-a5d1-1c64f9f3c8c4",
+		"name": "elpida",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createUser isalive",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/createUser.php?isalive",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"createUser.php"
+					],
+					"query": [
+						{
+							"key": "isalive",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activate isalive",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/activateUser.php?isalive",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"activateUser.php"
+					],
+					"query": [
+						{
+							"key": "isalive",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activate User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/activateUser.php?nickname=pascal&activationcode=1537",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"activateUser.php"
+					],
+					"query": [
+						{
+							"key": "nickname",
+							"value": "pascal"
+						},
+						{
+							"key": "activationcode",
+							"value": "1537"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activate User Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.odusseus.org/php/elpida/activateUser.php?nickname=pascal&activationcode=6451",
+					"protocol": "https",
+					"host": [
+						"www",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"php",
+						"elpida",
+						"activateUser.php"
+					],
+					"query": [
+						{
+							"key": "nickname",
+							"value": "pascal"
+						},
+						{
+							"key": "activationcode",
+							"value": "6451"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser new",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nickname\": \"pascal1\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/createUser.php",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"createUser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nickname\": \"pascal1\",\n  \"password\": \"Sensas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/loginUser.php",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"loginUser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser new Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.odusseus.org/php/elpida/createUser.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"php",
+						"elpida",
+						"createUser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/activateUser.php?nickname=pascal&activationCode=1234",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"activateUser.php"
+					],
+					"query": [
+						{
+							"key": "nickname",
+							"value": "pascal"
+						},
+						{
+							"key": "activationCode",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

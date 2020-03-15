@@ -20,25 +20,30 @@
      $json = json_encode($this->entity);
      $userFilename = DATA_DIR."/".JSON_DIR."/{$this->entity->nickname}.json";
      file_put_contents($userFilename, $json, LOCK_EX);
-    
-     $login = new Login("{$this->entity->nickname}.json");
-     $json = json_encode($login);
-     $loginFilename = DATA_DIR."/".JSON_DIR."/{$this->entity->nickname}Login.json";
-     file_put_contents($loginFilename, $json, LOCK_EX);
    }
 
    function get($nickname){
     $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
-    $json = file_get_contents($userFilename);
-    $userEntity = json_decode($json);
-    $this->entity = $userEntity;
+    if(file_exists($userFilename)){
+      $json = file_get_contents($userFilename);
+      $userEntity = json_decode($json);
+      $this->entity = $userEntity;
+    }
    }
 
-   function checkHashPassword($hashPassword){
-      if($this->entity->hashPassword == $hashPassword){
-        return true;
-      }
-      return false;
+   function checkHashPassword($password){
+     return password_verify ( $password , $this->entity->hashPassword );
+      // if(isset($this->entity->hashPassword) and $this->entity->hashPassword == $hashPassword){
+      //   return true;
+      // }
+      // return false;
+   }
+
+   function login(){
+
+    $login = new Login($nickname);
+
+    
    }
 
    function activate($activationCode){

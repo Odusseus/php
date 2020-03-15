@@ -44,13 +44,15 @@
     $message = "$value is missing.";
     exit($message);
   }
-  $passwordStorage = new PasswordStorage();
-  $hashPassword = $passwordStorage->create_hash($password);
-  if(!$passwordStorage->verify_password($password, $hashPassword)){
-    http_response_code(422);
-    $message = "Password encryption error. Sorry, try again or take contact with the administrator";
-    exit($message);
-  }
+
+  //$passwordStorage = new PasswordStorage();
+  //$hashPassword = $passwordStorage->create_hash($password);
+  //if(!$passwordStorage->verify_password($password, $hashPassword)){
+  //  http_response_code(422);
+  //  $message = "Password encryption error. Sorry, try again or take contact with the administrator";
+  //  exit($message);
+  //}
+$hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
   $email = getJsonValue($decoded, EMAIL);
@@ -61,8 +63,8 @@
     exit($message);
   }
 
-  $loginFilename = DATA_DIR."/".JSON_DIR."/{$nickname}Login.json";
-  if(file_exists($loginFilename)){
+  $filename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
+  if(file_exists($filename)){
     http_response_code(403);
     $message = "Create user {$nickname} is forbidden.";
     exit($message);

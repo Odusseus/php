@@ -34,32 +34,27 @@
     $message = "$value is missing.";
     exit($message);
   }
-  $passwordStorage = new PasswordStorage();
-  $hashPassword = $passwordStorage->create_hash($password);
+//$hashPassword = password_hash($password, PASSWORD_DEFAULT);
+  //$passwordStorage = new PasswordStorage();
+  //$hashPassword = $passwordStorage->create_hash($password);
+  //$hashPassword2 = $passwordStorage->create_hash($password);
+  //$hashPassword3 = $passwordStorage->create_hash($password);
   
-  $loginFilename = DATA_DIR."/".JSON_DIR."/{$nickname}Login.json";
-  if(!file_exists($loginFilename)){
-    http_response_code(404);
-    $message = "User {$nickname} is not found.";
-    exit($message);
-  }
-  else
-  {
     $user = new User();
     $user->get($nickname);
-    
-    if($user->checkHashPassword($hashPassword)){
+    if($user->checkHashPassword($password) == false){
       http_response_code(401);
       $message = "User {$nickname} is not authorized.";
       exit($message);
     }
     else
     {
+      $login = new Login($nickname);
+      $login->new();
       http_response_code(200);
-      $value="myCookie";
+      $value = $login->entity->cookie;
       setcookie(COOKIE, $value, time()+3600);
       $message = "User {$nickname} is loged in.";
       exit($message);
     }
-  }
 ?>
