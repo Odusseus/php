@@ -1,11 +1,12 @@
 <?php
 
 require_once("cookieEntity.php");
+date_default_timezone_set('Europe/Amsterdam');
 
 class Cookie {
   public $entity;
 
-  function __construct($nickname, $cookie){
+  function __construct($appname, $nickname, $cookie){
     $filename = DATA_DIR."/".JSON_DIR."/{$cookie}cookie.json";
     if(file_exists($filename)){
       $json = file_get_contents($filename);
@@ -15,8 +16,10 @@ class Cookie {
     else
     {
       $this->entity = new CookieEntity();
+      $this->entity->appname = $appname;
       $this->entity->nickname = $nickname; 
       $this->entity->cookie = $cookie; 
+      $this->entity->timestamp = date("d-m-Y H:i:s");
     }
   }
 
@@ -33,7 +36,4 @@ class Cookie {
     }
    }
 }
-
-
-
 ?>

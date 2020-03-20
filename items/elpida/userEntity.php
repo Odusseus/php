@@ -1,13 +1,15 @@
 <?php
  class UserEntity {
-   public $nickname,
+   public $appname,
+          $nickname,
           $hashPassword,
           $email,
           $activationCode,
           $state,
           $createdTimestamp;  
   
-   function set($nickname, $hashPassword, $email){
+   function set($appname, $nickname, $hashPassword, $email){
+     $this->appname = $appname;
      $this->nickname = $nickname;
      $this->hashPassword = $hashPassword;
      $this->email = $email;
@@ -17,15 +19,16 @@
      $this->createdTimestamp = date("d-m-Y H:i:s");
 
      $json = serialize($user);
-     $userFilename = DATA_DIR."/".JSON_DIR."/{$this->$nickname}.json";
+     $userFilename = DATA_DIR."/".JSON_DIR."/{$appname}-{$nickname}.json";
      file_put_contents($userFilename, $json, LOCK_EX);
     
-     $login = new Login("{$this->$nickname}.json");
+     $login = new Login("{$appname}-{$nickname}.json");
      $json = serialize($login);
      file_put_contents($loginFilename, $json, LOCK_EX);
    }
 
-   function get($nickname){
+   function get($appname, $nickname){
+     $this->appname = $appname;
      $this->nickname = $nickname;
      $this->hashPassword = $hashPassword;
      $this->email = $email;

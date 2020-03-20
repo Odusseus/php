@@ -65,7 +65,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://local.elpida.odusseus.org/activateUser.php?nickname=pascal&activationcode=1537",
+					"raw": "http://local.elpida.odusseus.org/activateUser.php?nickname=pascal&activationcode=3601&appname=test",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -83,7 +83,11 @@
 						},
 						{
 							"key": "activationcode",
-							"value": "1537"
+							"value": "3601"
+						},
+						{
+							"key": "appname",
+							"value": "test"
 						}
 					]
 				}
@@ -136,7 +140,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"nickname\": \"pascal1\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"raw": "{\n  \"nickname\": \"pascal2\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -173,7 +177,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"nickname\": \"pascal1\",\n  \"password\": \"Sensas\"\n}",
+					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -210,7 +214,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"raw": "{\n  \"app\": \"test\",\n  \"nickname\": \"pascal2\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -228,6 +232,43 @@
 					"path": [
 						"php",
 						"elpida",
+						"createUser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser new Copy - local",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/createUser.php",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
 						"createUser.php"
 					]
 				}

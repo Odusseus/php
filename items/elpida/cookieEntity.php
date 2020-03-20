@@ -1,7 +1,9 @@
 <?php
 
   class CookieEntity {
-    public $nickname,
-           $cookie;
+    public $appname,
+           $nickname,
+           $cookie,
+           $timestamp;
     }
 ?>

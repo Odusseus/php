@@ -1,7 +1,8 @@
 <?php
 
   class LoginEntity {
-    public $nickname,
+    public $appname,
+           $nickname,
            $cookie;
     }
 ?>

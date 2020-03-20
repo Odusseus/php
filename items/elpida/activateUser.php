@@ -1,7 +1,8 @@
 <?php
 
-  require_once("constant.php");
+  require_once("app.php");
   require_once("checkip.php");
+  require_once("constant.php");
   require_once("user.php");
 
   header('Access-Control-Allow-Origin: *');
@@ -11,6 +12,23 @@
   if(isset($_GET[ISALIVE]))
   {    
     exit(STATE_TRUE);
+  }
+
+  $appname = "";
+  if(isset($_GET[APPNAME])){
+    $appname = $_GET[APPNAME];
+    if($appname == null){
+    http_response_code(422);
+    $value = APPNAME;
+    $message = "$value is missing.";
+    exit($message);
+    } else {
+      if(!App::check($appname)){
+        http_response_code(404);
+        $message = "$appname not found.";
+        exit($message);
+      }
+    }
   }
 
   $nickname = "";
@@ -37,13 +55,10 @@
     }
   }
 
-  $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
-  $json = file_get_contents($userFilename);
-  $user = unserialize($json);
+  $user = new User();
+  $user->get($appname, $nickname);
   if($user->activate($activationCode)){
-    $json = serialize($user);
-    $userFilename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
-    file_put_contents($userFilename, $json, LOCK_EX);
+    
     http_response_code(200);
       $message = "account is activated.";
       exit($message);

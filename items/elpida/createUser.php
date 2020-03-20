@@ -1,10 +1,11 @@
 <?php
-  require_once("constant.php");
-  require_once("checkip.php");
-  require_once("user.php");
   require_once("abstract/state.php");
+  require_once("app.php");
+  require_once("checkip.php");
+  require_once("constant.php");
   require_once("maxId.php");
   require_once("PasswordStorage.php");
+  require_once("user.php");
   
   header('Access-Control-Allow-Origin: *');
 
@@ -29,6 +30,20 @@
   //Attempt to decode the incoming RAW post data from JSON.
   $decoded = json_decode($content, true);
 
+  $appname = getJsonValue($decoded, APPNAME);
+  if($appname == null){
+    http_response_code(422);
+    $value = APPNAME;
+    $message = "$value is missing.";
+    exit($message);
+  } else {
+    if(!App::check($appname)){
+      http_response_code(404);
+      $message = "$appname not found.";
+      exit($message);
+    }
+  }
+
   $nickname = getJsonValue($decoded, NICKNAME);
   if($nickname == null){
     http_response_code(422);
@@ -45,15 +60,7 @@
     exit($message);
   }
 
-  //$passwordStorage = new PasswordStorage();
-  //$hashPassword = $passwordStorage->create_hash($password);
-  //if(!$passwordStorage->verify_password($password, $hashPassword)){
-  //  http_response_code(422);
-  //  $message = "Password encryption error. Sorry, try again or take contact with the administrator";
-  //  exit($message);
-  //}
-$hashPassword = password_hash($password, PASSWORD_DEFAULT);
-
+  $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
   $email = getJsonValue($decoded, EMAIL);
   if($email == null){
@@ -63,7 +70,7 @@ $hashPassword = password_hash($password, PASSWORD_DEFAULT);
     exit($message);
   }
 
-  $filename = DATA_DIR."/".JSON_DIR."/{$nickname}.json";
+  $filename = DATA_DIR."/".JSON_DIR."/{$appname}-{$nickname}.json";
   if(file_exists($filename)){
     http_response_code(403);
     $message = "Create user {$nickname} is forbidden.";
@@ -72,10 +79,10 @@ $hashPassword = password_hash($password, PASSWORD_DEFAULT);
   else
   {
     $user = new User();
-    $user->set($nickname, $hashPassword, $email);
+    $user->set($appname, $nickname, $hashPassword, $email);
     $maxId->next();
 
-    $link = "https://www.odusseus.org/php/elpida/activateUser.php?nickname={$user->entity->nickname}&activationcode={$user->entity->activationCode}";
+    $link = "https://www.odusseus.org/php/elpida/activateUser.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
 
     $to      = "{$email}";
     $subject = 'activate your account';
@@ -85,7 +92,7 @@ $hashPassword = password_hash($password, PASSWORD_DEFAULT);
        'X-Mailer: PHP/' . phpversion();
    
     if (DEBUG) {
-      $dateTime = date("Y-m-d-His", time());
+      $dateTime = date("Y-m-dTHis", time());
       $mailFilename = DATA_DIR."/".MAIL_DIR."/{$dateTime}.txt";
       $mailFile = fopen($mailFilename, "w") or die("Unable to open {$mailFile} file!");
       fwrite($mailFile, $headers);
