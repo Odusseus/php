@@ -8,7 +8,7 @@ class Login {
   public $entity;
 
   function __construct($appname, $nickname){
-    $filename = DATA_DIR."/".JSON_DIR."/{$appname}-{$nickname}login.json";
+    $filename = $this->getFilename($appname, $nickname);
     if(file_exists($filename)){
       $json = file_get_contents($filename);
       $entity = json_decode($json);
@@ -23,18 +23,21 @@ class Login {
     }
   }
 
+  function getFilename($appname, $nickname){
+    return $filename = DATA_DIR."/".JSON_DIR."/{$appname}-{$nickname}-login.json";
+  }
+
   function new(){
+    $cookie = new Cookie();
     if(isset($this->entity->cookie)){
-      $cookie = new Cookie($this->entity->appname, $this->entity->nickname, $this->entity->cookie);
-      $cookie->delete();
+      $cookie->delete($this->entity->cookie);
     }
-    $this->entity->cookie = GUID();
-    $filename = DATA_DIR."/".JSON_DIR."/{$this->entity->appname}-{$this->entity->nickname}login.json";
+    $cookie->set($this->entity->appname, $this->entity->nickname);
+    $this->entity->cookie = $cookie->entity->cookie;
+    
+    $filename = $this->getFilename($this->entity->appname, $this->entity->nickname);
     $json = json_encode($this->entity);
     file_put_contents($filename, $json, LOCK_EX);
-
-    $cookie = new Cookie($this->entity->appname, $this->entity->nickname, $this->entity->cookie);
-    $cookie->new();
    }
 }
 

@@ -4,7 +4,7 @@ require_once("ip.php");
 
 header('Access-Control-Allow-Origin: *');
 
-class CheckIp {
+class IpCheck {
 
   public $isGood,
          $ipItem,

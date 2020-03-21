@@ -1,15 +1,14 @@
 <?php
   require_once("abstract/state.php");
   require_once("app.php");
-  require_once("checkip.php");
+  require_once("ipCheck.php");
   require_once("constant.php");
   require_once("maxId.php");
-  require_once("PasswordStorage.php");
   require_once("user.php");
   
   header('Access-Control-Allow-Origin: *');
 
-  $checkip = new CheckIp();
+  $ipCheck = new IpCheck();
 
   if(isset($_GET[ISALIVE]))
   {    
@@ -34,12 +33,12 @@
   if($appname == null){
     http_response_code(422);
     $value = APPNAME;
-    $message = "$value is missing.";
+    $message = "{$value} is missing.";
     exit($message);
   } else {
     if(!App::check($appname)){
       http_response_code(404);
-      $message = "$appname not found.";
+      $message = "{$appname} not found.";
       exit($message);
     }
   }
@@ -48,7 +47,7 @@
   if($nickname == null){
     http_response_code(422);
     $value = NICKNAME;
-    $message = "$value is missing.";
+    $message = "{$value} is missing.";
     exit($message);
   }
 
@@ -56,7 +55,7 @@
   if($password == null){
     http_response_code(422);
     $value = PASSWORD;
-    $message = "$value is missing.";
+    $message = "{$value} is missing.";
     exit($message);
   }
 
@@ -66,7 +65,7 @@
   if($email == null){
     http_response_code(422);
     $value = EMAIL;
-    $message = "$value is missing.";
+    $message = "{$value} is missing.";
     exit($message);
   }
 
@@ -82,7 +81,7 @@
     $user->set($appname, $nickname, $hashPassword, $email);
     $maxId->next();
 
-    $link = "https://www.odusseus.org/php/elpida/activateUser.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
+    $link = "https://www.odusseus.org/php/elpida/userActivateApi.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
 
     $to      = "{$email}";
     $subject = 'activate your account';

@@ -19,12 +19,16 @@
      $this->entity->createdTimestamp = date("d-m-Y H:i:s");
 
      $json = json_encode($this->entity);
-     $userFilename = DATA_DIR."/".JSON_DIR."/{$appname}-{$nickname}.json";
+     $userFilename = $this->getFilename($appname, $nickname);
      file_put_contents($userFilename, $json, LOCK_EX);
    }
 
+   function getFilename($appname, $nickname){
+    return $filename = DATA_DIR."/".JSON_DIR."/{$appname}-{$nickname}.json";
+  }
+
    function get($appname, $nickname){
-    $userFilename = DATA_DIR."/".JSON_DIR."/{$appname}-{$nickname}.json";
+    $userFilename = $this->getFilename($appname, $nickname);
     if(file_exists($userFilename)){
       $json = file_get_contents($userFilename);
       $userEntity = json_decode($json);
@@ -51,7 +55,7 @@
      if($this->entity->activationCode == $activationCode){
        $this->entity->state = State::Active;
        $json = json_encode($this->entity);
-       $userFilename = DATA_DIR."/".JSON_DIR."/{$this->entity->appname}-{$this->entity->nickname}.json";
+       $userFilename = $this->getFilename($this->entity->appname, $this->entity->nickname);
        file_put_contents($userFilename, $json, LOCK_EX);
        return true;
      }

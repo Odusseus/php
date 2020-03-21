@@ -1,13 +1,13 @@
 <?php
 
   require_once("app.php");
-  require_once("checkip.php");
+  require_once("ipCheck.php");
   require_once("constant.php");
   require_once("user.php");
 
   header('Access-Control-Allow-Origin: *');
 
-  $checkip = new CheckIp();
+  $ipCheck = new IpCheck();
 
   if(isset($_GET[ISALIVE]))
   {    
@@ -25,7 +25,7 @@
     } else {
       if(!App::check($appname)){
         http_response_code(404);
-        $message = "$appname not found.";
+        $message = "{$appname} not found.";
         exit($message);
       }
     }
@@ -38,7 +38,7 @@
     {
       http_response_code(422);
       $value = NICKNAME;
-      $message = "$value is missing.";
+      $message = "{$value} is missing.";
       exit($message);
     }
   }
@@ -50,17 +50,27 @@
     {
       http_response_code(422);
       $value = ACTIVATION_CODE;
-      $message = "$value is missing.";
+      $message = "{$value} is missing.";
       exit($message);
     }
   }
 
   $user = new User();
   $user->get($appname, $nickname);
-  if($user->activate($activationCode)){
-    
+  if(!$user->isSet()){
+    http_response_code(404);
+    $message = "{$appname} and {$nickname} are not found.";
+    exit($message);
+  }
+
+  if($user->activate($activationCode)){    
     http_response_code(200);
       $message = "account is activated.";
+      exit($message);
+  } else {
+    http_response_code(404);
+      $value = ACTIVATION_CODE;
+      $message = "{$value} not found.";
       exit($message);
   }
 ?>

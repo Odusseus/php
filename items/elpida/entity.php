@@ -37,14 +37,9 @@ class Entities {
             $list = [];
             foreach($this->list AS $element => $data)
             {
-                if($entity == "item"){
-                    $class = new $entity($data->key, $data->token, $data->userId);
-                }
-                else {
-                    $class = new $entity($data->key);
-                }
-                $class->set($data);
-                array_push($list, $class);
+              $class = new $entity($data->key);
+              $class->set($data);
+              array_push($list, $class);
             }
             $this->list = $list;
         }

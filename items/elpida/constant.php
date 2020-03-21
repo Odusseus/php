@@ -15,5 +15,6 @@
     define("STATE_TRUE", "true");
     define("STATE_FALSE", "false");
     define("USER_DIR", "user");
+    define("VALUE_DIR", "value");
     define("TXT_DIR", "txt");
 ?>
