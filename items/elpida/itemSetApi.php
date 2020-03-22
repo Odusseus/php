@@ -31,7 +31,24 @@
     
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
 
-  $item = Item::get($user->entity->id);
+//Receive the RAW post data.
+$content = trim(file_get_contents("php://input"));
+ 
+//Attempt to decode the incoming RAW post data from JSON.
+$decoded = json_decode($content, true);
+
+$value = "";
+if(isset($decoded[VALUE]))
+{
+  $value = $decoded[VALUE];
+}
+else
+{
+  http_response_code(404);
+  exit("VALUE is missing");
+}
+
+  $item = Item::set($user->entity->id, $value);
   if(!$item->isSet())
   {
     http_response_code(500);
@@ -41,7 +58,5 @@
   else
   {
     http_response_code(200);
-    $itemGetRespons = $item->getJsonGetRespons();
-    exit ($itemGetRespons);
   }
 ?>

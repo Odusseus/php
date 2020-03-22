@@ -49,26 +49,24 @@
     exit($message);
   }
 
-  $user = new User();
-    $user->get($appname, $nickname);
-    if(!$user->isSet()){
-      http_response_code(404);
-      $message = "User {$nickname} is not found.";
-      exit($message);
-    } 
-    else if($user->checkHashPassword($password) == false){
-      http_response_code(401);
-      $message = "User {$nickname} is not authorized.";
-      exit($message);
-    }
-    else
-    {
-      $login = new Login($appname, $nickname);
-      $login->new();
-      http_response_code(200);
-      $value = $login->entity->cookie;
-      setcookie(COOKIE, $value, time()+3600);
-      $message = "User {$nickname} is loged in.";
-      exit($message);
-    }
+  $user = User::get($appname, $nickname);
+  if(!$user->isSet()){
+    http_response_code(404);
+    $message = "User {$nickname} is not found.";
+    exit($message);
+  } 
+  
+  if($user->checkHashPassword($password) == false){
+    http_response_code(401);
+    $message = "User {$nickname} is not authorized.";
+    exit($message);
+  }
+  
+  $login = Login::set($appname, $nickname);
+  $cookie = $login->entity->cookie;
+  setcookie(COOKIE, $cookie, time()+3600);
+  $message = "User is loged in.";
+  http_response_code(200);
+  exit($message);
+
 ?>

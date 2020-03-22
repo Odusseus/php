@@ -6,12 +6,12 @@
 	},
 	"item": [
 		{
-			"name": "createUser isalive",
+			"name": "userCcreateApi isalive local",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://local.elpida.odusseus.org/createUser.php?isalive",
+					"raw": "http://local.elpida.odusseus.org/userCreateApi.php?isalive",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -20,7 +20,7 @@
 						"org"
 					],
 					"path": [
-						"createUser.php"
+						"userCreateApi.php"
 					],
 					"query": [
 						{
@@ -33,12 +33,12 @@
 			"response": []
 		},
 		{
-			"name": "activate isalive",
+			"name": "userActivateApi isalive local",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://local.elpida.odusseus.org/activateUser.php?isalive",
+					"raw": "http://local.elpida.odusseus.org/userActivateApi.php?isalive",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -47,7 +47,7 @@
 						"org"
 					],
 					"path": [
-						"activateUser.php"
+						"userActivateApi.php"
 					],
 					"query": [
 						{
@@ -60,12 +60,12 @@
 			"response": []
 		},
 		{
-			"name": "activate User",
+			"name": "userActivateApi local",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://local.elpida.odusseus.org/activateUser.php?nickname=pascal&activationcode=3601&appname=test",
+					"raw": "http://local.elpida.odusseus.org/userActivateApi.php?nickname=pascal&activationcode=9912&appname=test",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -74,7 +74,7 @@
 						"org"
 					],
 					"path": [
-						"activateUser.php"
+						"userActivateApi.php"
 					],
 					"query": [
 						{
@@ -83,7 +83,7 @@
 						},
 						{
 							"key": "activationcode",
-							"value": "3601"
+							"value": "9912"
 						},
 						{
 							"key": "appname",
@@ -95,7 +95,7 @@
 			"response": []
 		},
 		{
-			"name": "activate User Copy",
+			"name": "userActivateApi www",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -127,119 +127,7 @@
 			"response": []
 		},
 		{
-			"name": "CreateUser new",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"nickname\": \"pascal2\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://local.elpida.odusseus.org/createUser.php",
-					"protocol": "http",
-					"host": [
-						"local",
-						"elpida",
-						"odusseus",
-						"org"
-					],
-					"path": [
-						"createUser.php"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "loginUser",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://local.elpida.odusseus.org/loginUser.php",
-					"protocol": "http",
-					"host": [
-						"local",
-						"elpida",
-						"odusseus",
-						"org"
-					],
-					"path": [
-						"loginUser.php"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "CreateUser new Copy",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"app\": \"test\",\n  \"nickname\": \"pascal2\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://www.odusseus.org/php/elpida/createUser.php",
-					"protocol": "https",
-					"host": [
-						"www",
-						"odusseus",
-						"org"
-					],
-					"path": [
-						"php",
-						"elpida",
-						"createUser.php"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "CreateUser new Copy - local",
+			"name": "userCreateApi new local",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -260,7 +148,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://local.elpida.odusseus.org/createUser.php",
+					"raw": "http://local.elpida.odusseus.org/userCreateApi.php",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -269,19 +157,35 @@
 						"org"
 					],
 					"path": [
-						"createUser.php"
+						"userCreateApi.php"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Activate User",
+			"name": "loginApi local",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://local.elpida.odusseus.org/activateUser.php?nickname=pascal&activationCode=1234",
+					"raw": "http://local.elpida.odusseus.org/loginApi.php",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -290,17 +194,133 @@
 						"org"
 					],
 					"path": [
-						"activateUser.php"
-					],
-					"query": [
-						{
-							"key": "nickname",
-							"value": "pascal"
-						},
-						{
-							"key": "activationCode",
-							"value": "1234"
+						"loginApi.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userCreateApi new www",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"app\": \"test\",\n  \"nickname\": \"pascal2\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
+					}
+				},
+				"url": {
+					"raw": "https://www.odusseus.org/php/elpida/userCreateApi.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"php",
+						"elpida",
+						"userCreateApi.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userCreateApi new local",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/userCreateApi.php",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"userCreateApi.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "itemGetApi local",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/itemGetApi.php",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"itemGetApi.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "itemSetApi local",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"value\":\"toto tata\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/itemSetApi.php",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"itemSetApi.php"
 					]
 				}
 			},

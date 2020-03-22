@@ -2,3 +2,5 @@ sb/
 item/environment.php
 items/elpida/datadebug/mail/
 items/elpida/datadebug/json/
+items/elpida/datadebug/txt/
+items/elpida/datadebug/value/

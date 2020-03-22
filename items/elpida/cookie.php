@@ -1,12 +1,36 @@
 <?php
 
+require_once("common.php");
 require_once("cookieEntity.php");
 date_default_timezone_set('Europe/Amsterdam');
 
 class Cookie {
   public $entity;
 
-  function get($cookie){
+  public function __construct() {
+    // allocate your stuff
+  }
+
+  public static function get($cookie) {
+    $instance = new self();
+    $instance->load($cookie);
+    return $instance;
+  }
+  
+  public static function delete() {
+    $filename = $this->getFilename($cookie);
+    if(file_exists($filename)){
+      unlink($filename);
+    }
+  }
+
+  public static function set($appname, $nickname) {
+    $instance = new self();
+    $instance->save($appname, $nickname);
+    return $instance;
+  }
+
+  function load($cookie){
     $filename = $this->getFilename($cookie);
     if(file_exists($filename)){
       $json = file_get_contents($filename);
@@ -19,7 +43,7 @@ class Cookie {
     return $filename = DATA_DIR."/".JSON_DIR."/{$cookie}-cookie.json";
   }
 
-  function set($appname, $nickname){
+  function save($appname, $nickname){
     $this->entity = new CookieEntity();
     $this->entity->appname = $appname;
     $this->entity->nickname = $nickname; 
@@ -30,13 +54,6 @@ class Cookie {
     $json = json_encode($this->entity);
     file_put_contents($filename, $json, LOCK_EX);
   }
-
-   function delete($cookie){
-    $filename = $this->getFilename($cookie);
-    if(file_exists($filename)){
-      unlink($filename);
-    }
-   }
 
    function isSet(){
     if(isset($this->entity)){

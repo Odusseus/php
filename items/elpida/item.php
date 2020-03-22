@@ -4,56 +4,83 @@ require_once("common.php");
 require_once("entity.php");
 
 class Item{
-    
-    public $key,
-           $value;
-   
-    function __construct($appname, $nickname){
-      $key = "{$appname}-{$nickname}-item";     
-      $this->appname = $appname;
-      $this->nickname = $nickname;
-      $this->getValue(); // TODO
-    }
+  public $key,
+         $value;
 
-    function saveValue($value)
-    {
-        $filename = DATA_DIR."/".VALUE_DIR."/{$this->key}.txt";
-        $file = fopen($filename, "wb") or die("Unable to open file!");
-        fwrite($file, $value);
-        fclose($file);
-    } 
+  public function __construct() {
+    // allocate your stuff
+  }
 
-    function getValue()
+  public static function set($key, $value) {
+    $instance = new self();
+    $instance->key = $key;
+    $instance->value = $value;
+    $instance->save();
+    return $instance;
+  }
+  
+  public static function get($key) {
+    $instance = new self();
+    $instance->key = $key;
+    $instance->load();
+    return $instance;
+  }
+
+  function getFilename(){
+    return $filename = DATA_DIR."/".VALUE_DIR."/{$this->key}.txt";
+  }
+
+  function save()
+  {
+    $filename = $this->getFilename();
+    $file = fopen($filename, "wb") or die("Unable to open file!");
+    fwrite($file, $this->value);
+    fclose($file);
+  } 
+
+  function load()
+  {
+    $filename = $this->getFilename();
+    if (file_exists($filename))
     {
-        $filename = DATA_DIR."/".VALUE_DIR."/{$this->key}.txt";
-        if (file_exists($filename))
-        {
-            $file = fopen($filename, "rb");
-        }
-        else
-        {
-            http_response_code(500);
-            die("Unable to open file!");
-        }
+      if(filesize($filename) > 0)
+      {
+        $file = fopen($filename, "rb");
         $this->value = fread($file, filesize($filename));
-    } 
-    
-    function getJsonGetRespons()
-    {
-        $itemGetRespons = new ItemGetRespons($this);
-        return json_encode($itemGetRespons);
+        fclose($file);
+      }
+      else
+      {
+        $this->value = "";
+      }
     }
+    else
+    {
+      $this->value = "";
+      $this->save();
+    } 
+  }
 
+  function getJsonGetRespons()
+  {
+    $itemEntity = new ItemEntity($this->value);
+    return json_encode($itemEntity);
+  }
+
+  function isSet(){
+    if(isset($this->value)){
+      return true;
+    }
+    return false;
+  }
 }
 
-class ItemGetRespons
+class ItemEntity
 {
     public $value;
 
-    public function __construct($item){
+    public function __construct($value){
         $this->value = $value;
     }
 }
-
-
 ?>

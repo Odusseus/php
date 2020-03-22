@@ -55,17 +55,16 @@
     }
   }
 
-  $user = new User();
-  $user->get($appname, $nickname);
+  $user = User::get($appname, $nickname);
   if(!$user->isSet()){
     http_response_code(404);
-    $message = "{$appname} and {$nickname} are not found.";
+    $message = "User is not found.";
     exit($message);
   }
 
   if($user->activate($activationCode)){    
     http_response_code(200);
-      $message = "account is activated.";
+      $message = "Account is activated.";
       exit($message);
   } else {
     http_response_code(404);
