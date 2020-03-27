@@ -1,6 +1,6 @@
 sb/
-item/environment.php
-items/elpida/datadebug/mail/
-items/elpida/datadebug/json/
-items/elpida/datadebug/txt/
-items/elpida/datadebug/value/
+items/item/environment.php
+items/elpida/source/datadebug/mail/
+items/elpida/source/datadebug/json/
+items/elpida/source/datadebug/txt/
+items/elpida/source/datadebug/value/
