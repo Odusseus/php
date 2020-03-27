@@ -1,5 +1,5 @@
 <?php namespace Elpida;
-    require_once("environment.php");
+    require_once("Environment.php");
     
     define("ACTIVATION_CODE", "activationcode");
     define("APPNAME", "appname");

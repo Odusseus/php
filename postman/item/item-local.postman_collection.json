@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/getuser.php?user=pascal&isalive=true",
+					"raw": "http://localhost:9000/getuser.php?user=pascal",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -24,10 +24,6 @@
 						{
 							"key": "user",
 							"value": "pascal"
-						},
-						{
-							"key": "isalive",
-							"value": "true"
 						}
 					]
 				},
@@ -67,7 +63,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/getitem.php?key=DFA6B670-68C9-4741-878F-E2D9B582F38B&token=08487F4E-8936-4FFF-BD56-AEA0F6DA6D3C&user=xxx",
+					"raw": "http://localhost:9000/getitem.php?key=D51981B6-32B0-4678-95DC-AB1D922C52DC&token=B038D9EB-3ABB-4E9D-B19C-FB973451C7D0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -79,15 +75,11 @@
 					"query": [
 						{
 							"key": "key",
-							"value": "DFA6B670-68C9-4741-878F-E2D9B582F38B"
+							"value": "D51981B6-32B0-4678-95DC-AB1D922C52DC"
 						},
 						{
 							"key": "token",
-							"value": "08487F4E-8936-4FFF-BD56-AEA0F6DA6D3C"
-						},
-						{
-							"key": "user",
-							"value": "xxx"
+							"value": "B038D9EB-3ABB-4E9D-B19C-FB973451C7D0"
 						}
 					]
 				},
@@ -101,7 +93,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9000/getoken.php?key=4265AC3D-DD4B-427C-8BFD-6D7E7BB92C09&user=",
+					"raw": "http://localhost:9000/getoken.php?key=D51981B6-32B0-4678-95DC-AB1D922C52DC&user=pascal",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -113,11 +105,11 @@
 					"query": [
 						{
 							"key": "key",
-							"value": "4265AC3D-DD4B-427C-8BFD-6D7E7BB92C09"
+							"value": "D51981B6-32B0-4678-95DC-AB1D922C52DC"
 						},
 						{
 							"key": "user",
-							"value": ""
+							"value": "pascal"
 						}
 					]
 				},
@@ -204,24 +196,34 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "value",
-							"value": "x",
+							"key": "key",
+							"value": "4265AC3D-DD4B-427C-8BFD-6D7E7BB92C09",
 							"type": "text"
 						},
 						{
-							"key": "user",
-							"value": "pascal",
+							"key": "token",
+							"value": "1AA27FFB-1939-4E07-BABC-136A23C42631",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "[\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-01-29T00:00:00.000Z\",\n    \"description\": \"MEC GM Yasser Seirawan\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-01-09T00:00:00.000Z\",\n    \"description\": \"PK Openingsstudie – David van Kerkhof\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-11-04T00:00:00.000Z\",\n    \"description\": \"Ger\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-11-07T00:00:00.000Z\",\n    \"description\": \"John\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-11-15T00:00:00.000Z\",\n    \"description\": \"Hot-Spirit\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-11-20T00:00:00.000Z\",\n    \"description\": \"MEC Jan Timman\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-11-23T00:00:00.000Z\",\n    \"description\": \"Lekstroom 2 - OZU\",\n    \"type\": \"Wedstrijd\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-12-02T00:00:00.000Z\",\n    \"description\": \"Ger\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-12-12T00:00:00.000Z\",\n    \"description\": \"John\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-12-14T00:00:00.000Z\",\n    \"description\": \"OZU-Almere 4\",\n    \"type\": \"Wedstrijd\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-12-20T00:00:00.000Z\",\n    \"description\": \"Hot-Spirit\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2019-12-25T00:00:00.000Z\",\n    \"description\": \"2512 toernooi\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-01-17T00:00:00.000Z\",\n    \"description\": \"Hot-Spirit\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-01-23T00:00:00.000Z\",\n    \"description\": \"John\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-01-24T00:00:00.000Z\",\n    \"description\": \"Wijk aan zee\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-01-25T00:00:00.000Z\",\n    \"description\": \"Wijk aan zee\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-02-01T00:00:00.000Z\",\n    \"description\": \"En Passant 3 - OZU\",\n    \"type\": \"Wedstrijd\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-02-03T00:00:00.000Z\",\n    \"description\": \"Ger\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-02-20T00:00:00.000Z\",\n    \"description\": \"John\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-02-21T00:00:00.000Z\",\n    \"description\": \"Hot-Spirit\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-03-02T00:00:00.000Z\",\n    \"description\": \"Ger\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-03-07T00:00:00.000Z\",\n    \"description\": \"OZU-ASV 6\",\n    \"type\": \"Wedstrijd\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-03-20T00:00:00.000Z\",\n    \"description\": \"Hot-Spirit\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-03-28T00:00:00.000Z\",\n    \"description\": \"Magnus 2 - OZU\",\n    \"type\": \"Wedstrijd\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-04-06T00:00:00.000Z\",\n    \"description\": \"Ger\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-04-16T00:00:00.000Z\",\n    \"description\": \"John\",\n    \"type\": \"Training\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-04-17T00:00:00.000Z\",\n    \"description\": \"Hot-Spirit\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-04-18T00:00:00.000Z\",\n    \"description\": \"OZU-Wageningen 4\",\n    \"type\": \"Wedstrijd\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-05-15T00:00:00.000Z\",\n    \"description\": \"Hot-Spirit\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-06-05T00:00:00.000Z\",\n    \"description\": \"OKU\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-06-06T00:00:00.000Z\",\n    \"description\": \"OKU\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-06-07T00:00:00.000Z\",\n    \"description\": \"OKU\",\n    \"type\": \"Toernooi\"\n  },\n  {\n    \"group\": \"2019-2020\",\n    \"date\": \"2020-06-19T00:00:00.000Z\",\n    \"description\": \"Hot-Spirit\",\n    \"type\": \"Toernooi\"\n  }\n]",
 							"type": "text"
 						}
-					]
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:9000/postitem.php",
@@ -253,23 +255,18 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "user",
-							"value": "xxx",
-							"type": "text"
-						},
-						{
 							"key": "value",
-							"value": "{  'Events':[    {'group' : '2019-2021', 'date' : '17-01-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '07-11-2019', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2021', 'date' : '20-11-2019', 'description' : 'MEC Jan Timman', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '23-11-2019', 'description' : 'Lekstroom 2 - OZU', 'type' : 'Wedstrijd' },     {'group' : '2019-2020', 'date' : '02-12-2019', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '12-12-2019', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '25-01-2020', 'description' : 'Wijk aan zee', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '04-11-2019', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '14-12-2019', 'description' : 'OZU-Almere 4', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '20-12-2019', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '25-12-2019', 'description' : '2512 toernooi', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '21-02-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '23-01-2020', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '07-03-2020', 'description' : 'OZU-ASV 6', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '02-03-2020', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '28-03-2020', 'description' : 'Magnus 2 - OZU', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '16-04-2020', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '15-11-2019', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '24-01-2020', 'description' : 'Wijk aan zee', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '01-02-2020', 'description' : 'En Passant 3 - OZU', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '03-02-2020', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '20-02-2020', 'description' : 'John', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '20-03-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '06-04-2020', 'description' : 'Ger', 'type' : 'Training' },    {'group' : '2019-2020', 'date' : '17-04-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '18-04-2020', 'description' : 'OZU-Wageningen 4', 'type' : 'Wedstrijd' },    {'group' : '2019-2020', 'date' : '15-05-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '05-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '06-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '07-06-2020', 'description' : 'OKU', 'type' : 'Toernooi' },    {'group' : '2019-2020', 'date' : '19-06-2020', 'description' : 'Hot-Spirit', 'type' : 'Toernooi' }  ]  }",
+							"value": "[{\"group\":\"2019-2020\",\"date\":\"2019-11-04T00:00:00.000Z\",\"description\":\"Ger\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2019-11-07T00:00:00.000Z\",\"description\":\"John\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2019-11-15T00:00:00.000Z\",\"description\":\"Hot-Spirit\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2019-11-20T00:00:00.000Z\",\"description\":\"MEC Jan Timman\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2019-11-23T00:00:00.000Z\",\"description\":\"Lekstroom 2 - OZU\",\"type\":\"Wedstrijd\"},{\"group\":\"2019-2020\",\"date\":\"2019-12-02T00:00:00.000Z\",\"description\":\"Ger\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2019-12-12T00:00:00.000Z\",\"description\":\"John\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2019-12-14T00:00:00.000Z\",\"description\":\"OZU-Almere 4\",\"type\":\"Wedstrijd\"},{\"group\":\"2019-2020\",\"date\":\"2019-12-20T00:00:00.000Z\",\"description\":\"Hot-Spirit\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2019-12-25T00:00:00.000Z\",\"description\":\"2512 toernooi\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-01-17T00:00:00.000Z\",\"description\":\"Hot-Spirit\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-01-23T00:00:00.000Z\",\"description\":\"John\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2020-01-24T00:00:00.000Z\",\"description\":\"Wijk aan zee\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2020-01-25T00:00:00.000Z\",\"description\":\"Wijk aan zee\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2020-02-01T00:00:00.000Z\",\"description\":\"En Passant 3 - OZU\",\"type\":\"Wedstrijd\"},{\"group\":\"2019-2020\",\"date\":\"2020-02-03T00:00:00.000Z\",\"description\":\"Ger\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2020-02-20T00:00:00.000Z\",\"description\":\"John\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2020-02-21T00:00:00.000Z\",\"description\":\"Hot-Spirit\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-03-02T00:00:00.000Z\",\"description\":\"Ger\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2020-03-07T00:00:00.000Z\",\"description\":\"OZU-ASV 6\",\"type\":\"Wedstrijd\"},{\"group\":\"2019-2020\",\"date\":\"2020-03-20T00:00:00.000Z\",\"description\":\"Hot-Spirit\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-03-28T00:00:00.000Z\",\"description\":\"Magnus 2 - OZU\",\"type\":\"Wedstrijd\"},{\"group\":\"2019-2020\",\"date\":\"2020-04-06T00:00:00.000Z\",\"description\":\"Ger\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2020-04-16T00:00:00.000Z\",\"description\":\"John\",\"type\":\"Training\"},{\"group\":\"2019-2020\",\"date\":\"2020-04-17T00:00:00.000Z\",\"description\":\"Hot-Spirit\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-04-18T00:00:00.000Z\",\"description\":\"OZU-Wageningen 4\",\"type\":\"Wedstrijd\"},{\"group\":\"2019-2020\",\"date\":\"2020-05-15T00:00:00.000Z\",\"description\":\"Hot-Spirit\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-06-05T00:00:00.000Z\",\"description\":\"OKU\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-06-06T00:00:00.000Z\",\"description\":\"OKU\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-06-07T00:00:00.000Z\",\"description\":\"OKU\",\"type\":\"Toernooi\"},{\"group\":\"2019-2020\",\"date\":\"2020-06-19T00:00:00.000Z\",\"description\":\"Hot-Spirit\",\"type\":\"Toernooi\"}]",
 							"type": "text"
 						},
 						{
 							"key": "key",
-							"value": "DFA6B670-68C9-4741-878F-E2D9B582F38B",
+							"value": "D51981B6-32B0-4678-95DC-AB1D922C52DC",
 							"type": "text"
 						},
 						{
 							"key": "token",
-							"value": "x",
+							"value": "B038D9EB-3ABB-4E9D-B19C-FB973451C7D0",
 							"type": "text"
 						}
 					]

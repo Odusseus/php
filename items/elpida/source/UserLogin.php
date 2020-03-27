@@ -1,6 +1,6 @@
 <?php namespace Elpida;
 
-require_once("LoginEntity.php");
+require_once("UserLoginEntity.php");
 require_once("Cookie.php");
 require_once("Common.php");
 
@@ -39,7 +39,8 @@ class Login {
 
   function save($appname, $nickname){
     if(isset($this->entity) and isset($this->entity->cookie)){
-      $cookie->Cookie::delete($this->entity->cookie);
+      $cookie = Cookie::get($this->entity->cookie);
+      $cookie->delete();
     }
 
     $this->entity = new LoginEntity();

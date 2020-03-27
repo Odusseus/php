@@ -1,7 +1,7 @@
 <?php namespace Elpida;
 
-require_once("common.php");
-require_once("cookieEntity.php");
+require_once("Common.php");
+require_once("CookieEntity.php");
 date_default_timezone_set('Europe/Amsterdam');
 
 class Cookie {
@@ -17,17 +17,17 @@ class Cookie {
     return $instance;
   }
   
-  public static function delete() {
-    $filename = $this->getFilename($cookie);
-    if(file_exists($filename)){
-      unlink($filename);
-    }
-  }
-
   public static function set($appname, $nickname) {
     $instance = new self();
     $instance->save($appname, $nickname);
     return $instance;
+  }
+  
+  public function delete() {
+    $filename = $this->getFilename($this->entity->cookie);
+    if(file_exists($filename)){
+      unlink($filename);
+    }
   }
 
   function load($cookie){
