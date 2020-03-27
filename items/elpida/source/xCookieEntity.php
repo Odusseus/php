@@ -1,4 +1,4 @@
-<?php
+<?php namespace Elpida;
 
   class CookieEntity {
     public $appname,

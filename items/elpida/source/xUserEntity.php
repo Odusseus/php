@@ -1,4 +1,5 @@
-<?php
+<?php namespace Elpida;
+
  class UserEntity {
    public $appname,
           $nickname,
@@ -9,4 +10,5 @@
           $createdTimestamp,
           $id;
  }
+ 
 ?>

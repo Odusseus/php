@@ -1,8 +1,8 @@
-<?php
+<?php namespace Elpida;
 
-require_once("loginEntity.php");
-require_once("cookie.php");
-require_once("common.php");
+require_once("LoginEntity.php");
+require_once("Cookie.php");
+require_once("Common.php");
 
 class Login {
   public $entity;

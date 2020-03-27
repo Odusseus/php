@@ -1,4 +1,4 @@
-<?php
+<?php namespace Elpida;
  phpinfo();
  $to      = 'pascalboittin@live.nl';
  $subject = 'the subject';

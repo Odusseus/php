@@ -1,4 +1,4 @@
-<?php
+<?php namespace Elpida;
 
 require_once("common.php");
 require_once("cookieEntity.php");

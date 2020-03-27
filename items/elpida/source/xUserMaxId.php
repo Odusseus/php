@@ -1,8 +1,8 @@
-<?php
+<?php namespace Elpida;
 
-require_once("constant.php");
+require_once("Constant.php");
 
-class MaxId {
+class UserMaxId {
 
   private  $filename;
 

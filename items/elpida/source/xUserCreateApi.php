@@ -1,10 +1,10 @@
-<?php
-  require_once("abstract/state.php");
-  require_once("app.php");
-  require_once("ipCheck.php");
-  require_once("constant.php");
-  require_once("maxId.php");
-  require_once("user.php");
+<?php namespace Elpida;
+  require_once("Abstract/state.php");
+  require_once("App.php");
+  require_once("IpCheck.php");
+  require_once("Constant.php");
+  require_once("UserMaxId.php");
+  require_once("User.php");
   
   header('Access-Control-Allow-Origin: *');
 

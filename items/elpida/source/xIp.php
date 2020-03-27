@@ -1,8 +1,8 @@
-<?php
+<?php namespace Elpida;
 
-require_once("constant.php");
-require_once("common.php");
-require_once("entity.php");
+require_once("Constant.php");
+require_once("Common.php");
+require_once("Entity.php");
 
 class Ip extends Entity {
 

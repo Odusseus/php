@@ -1,4 +1,4 @@
-<?php
+<?php namespace Elpida;
 
 function getJsonValue($decoded, $valueName){
   if(isset($decoded[$valueName]))

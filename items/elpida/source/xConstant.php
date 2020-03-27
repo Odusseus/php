@@ -1,4 +1,4 @@
-<?php
+<?php namespace Elpida;
     require_once("environment.php");
     
     define("ACTIVATION_CODE", "activationcode");

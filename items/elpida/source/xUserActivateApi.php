@@ -1,9 +1,9 @@
-<?php
+<?php namespace Elpida;
 
-  require_once("app.php");
-  require_once("ipCheck.php");
-  require_once("constant.php");
-  require_once("user.php");
+  require_once("App.php");
+  require_once("IpCheck.php");
+  require_once("Constant.php");
+  require_once("User.php");
 
   header('Access-Control-Allow-Origin: *');
 

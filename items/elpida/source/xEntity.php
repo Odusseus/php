@@ -1,7 +1,7 @@
-<?php
+<?php namespace Elpida;
 
-require_once("constant.php");
-require_once("id.php");
+require_once("Constant.php");
+require_once("Id.php");
 
 date_default_timezone_set('Europe/Amsterdam');
 

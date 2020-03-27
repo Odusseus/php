@@ -1,8 +1,8 @@
-<?php
-  require_once("constant.php");
-  require_once("cookie.php");
-  require_once("item.php");
-  require_once("user.php");
+<?php namespace Elpida;
+  require_once("Constant.php");
+  require_once("Cookie.php");
+  require_once("Item.php");
+  require_once("User.php");
 
   header('Access-Control-Allow-Origin: *');
 

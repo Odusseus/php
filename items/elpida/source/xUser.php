@@ -1,9 +1,9 @@
-<?php
+<?php namespace Elpida;
 
-  require_once("abstract/state.php");
-  require_once("common.php");
-  require_once("login.php");
-  require_once("userEntity.php");
+  require_once("Abstract/state.php");
+  require_once("Common.php");
+  require_once("Login.php");
+  require_once("UserEntity.php");
 
   class User {
     public $entity;  
