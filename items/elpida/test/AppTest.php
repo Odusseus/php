@@ -1,4 +1,5 @@
 <?php
+use Elpida\App;
 
 include('/Githup/Odusseus/php/items/elpida/source/App.php'); // must include if tests are for non OOP code
 
@@ -12,7 +13,7 @@ class AppTest extends PHPUnit\Framework\TestCase
     $name = "test";
 
     // act
-    $result = Elpida\App::check($name);
+    $result = App::check($name);
 
     // assert
     $this->assertTrue($result);
@@ -25,7 +26,7 @@ class AppTest extends PHPUnit\Framework\TestCase
     $name = "toto";
 
     // act
-    $result = Elpida\App::check($name);
+    $result = App::check($name);
 
     // assert
     $this->assertFalse($result);

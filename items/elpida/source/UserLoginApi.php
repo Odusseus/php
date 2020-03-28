@@ -19,7 +19,7 @@
   //Attempt to decode the incoming RAW post data from JSON.
   $decoded = json_decode($content, true);
 
-  $appname = getJsonValue($decoded, APPNAME);
+  $appname = Common::getJsonValue($decoded, APPNAME);
   if($appname == null){
     http_response_code(422);
     $value = APPNAME;
@@ -33,7 +33,7 @@
     }
   }
 
-  $nickname = getJsonValue($decoded, NICKNAME);
+  $nickname = Common::getJsonValue($decoded, NICKNAME);
   if($nickname == null){
     http_response_code(422);
     $value = NICKNAME;
@@ -41,7 +41,7 @@
     exit($message);
   }
 
-  $password = getJsonValue($decoded, PASSWORD);
+  $password = Common::getJsonValue($decoded, PASSWORD);
   if($password == null){
     http_response_code(422);
     $value = PASSWORD;

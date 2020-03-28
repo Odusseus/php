@@ -7,7 +7,7 @@ require_once("Entity.php");
 class Ip extends Entity {
 
     function __construct(){
-        parent::__construct(get_client_ip());
+        parent::__construct(Common::get_client_ip());
     }
 }
 
