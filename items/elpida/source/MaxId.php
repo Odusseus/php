@@ -2,7 +2,7 @@
 
 require_once("Constant.php");
 
-class UserMaxId {
+class MaxId {
 
   private  $filename;
 

@@ -3,7 +3,7 @@
   require_once("App.php");
   require_once("IpCheck.php");
   require_once("Constant.php");
-  require_once("UserMaxId.php");
+  require_once("MaxId.php");
   require_once("User.php");
   
   header('Access-Control-Allow-Origin: *');
@@ -15,8 +15,8 @@
     exit(STATE_TRUE);
   }
 
-  $maxId = new UserMaxId(MAX_CREATEUSER); 
-  if($maxId->get() > 100){
+  $userMaxId = new MaxId(MAX_CREATEUSER); 
+  if($userMaxId->get() > 100){
     http_response_code(423);
     $value = NICKNAME;
     $message = "Maximum users is reached.";
