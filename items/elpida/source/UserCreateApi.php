@@ -15,7 +15,7 @@
     exit(STATE_TRUE);
   }
 
-  $maxId = new MaxId(MAX_CREATEUSER); 
+  $maxId = new UserMaxId(MAX_CREATEUSER); 
   if($maxId->get() > 100){
     http_response_code(423);
     $value = NICKNAME;
