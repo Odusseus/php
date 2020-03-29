@@ -6,8 +6,6 @@ include '/Githup/Odusseus/php/items/elpida/source/Common.php'; // must include i
 
 class CommonTest extends TestCase
 {
-
-   
   /** @test */
   public function getJsonValue_Shoul_Return_The_Value_Associated_To_Valuename_When_Found()
   {
@@ -73,7 +71,14 @@ class CommonTest extends TestCase
   public function get_client_ip_return_UNKNOWN_When_Environment_Variable_Is_Not_found()
   {
     // arrange
-    putenv("DummyParameter");
+    putenv('HTTP_CLIENT_IP');
+    putenv('HTTP_X_FORWARDED_FOR');
+    putenv('HTTP_X_FORWARDED');
+    putenv('HTTP_FORWARDED_FOR');
+    putenv('HTTP_FORWARDED');
+    putenv('REMOTE_ADDR');
+
+    putenv("DummyParameter=123");
     $assert = 'UNKNOWN';
 
     // act
@@ -83,31 +88,53 @@ class CommonTest extends TestCase
     $this->assertEquals($result, $assert);
   }
 
-  // /** 
-  //  * @dataProvider additionProviderX 
-  //  */
-  // public function get_client_ip_return_the_assert_When_Environment_The_Variable_Is_Found($env, $assert)
-  // {
-  //   // arrange
-  //   putenv("{$env}={$assert}");
+  /**
+   * @test
+   * @dataProvider environmentVariables
+   * 
+   */
+  public function get_client_ip_return_the_assert_When_Environment_The_Variable_Is_Found($env, $assert)
+  {
+    // arrange
+    putenv('DummyParameter');
+    putenv('HTTP_CLIENT_IP');
+    putenv('HTTP_X_FORWARDED_FOR');
+    putenv('HTTP_X_FORWARDED');
+    putenv('HTTP_FORWARDED_FOR');
+    putenv('HTTP_FORWARDED');
+    putenv('REMOTE_ADDR');
 
-  //   // act
-  //   $result = Common::get_client_ip();
+    putenv("{$env}={$assert}");
 
-  //   //assert
-  //   $this->assertEquals($result, $assert);
-  // }
+    // act
+    $result = Common::get_client_ip();
 
-  // public function additionProviderX()
-  // {
-  //   return [
-  //     ['HTTP_CLIENT_IP', 1],
-  //     ['HTTP_X_FORWARDED_FOR', 2],
-  //     ['HTTP_X_FORWARDED', 3],
-  //     ['HTTP_FORWARDED_FOR', 4],
-  //     ['HTTP_FORWARDED', 5],
-  //     ['REMOTE_ADDR', 6]
-  //   ];
-  // }
+    //assert
+    $this->assertEquals($result, $assert);
+  }
+
+  public function environmentVariables()
+  {
+    return [
+      ['HTTP_CLIENT_IP', 1],
+      ['HTTP_X_FORWARDED_FOR', 2],
+      ['HTTP_X_FORWARDED', 3],
+      ['HTTP_FORWARDED_FOR', 4],
+      ['HTTP_FORWARDED', 5],
+      ['REMOTE_ADDR', 6]
+    ];
+  }
+
+   /** @test */
+   public function GUID_Should_Return_A_GUID()
+   {
+     // arrange
+ 
+     // act
+     $result = Common::GUID();
+ 
+     //assert
+     $this->assertNotNull($result);
+     $this->assertEquals(36, strlen($result));
+   }
 }
-?>
