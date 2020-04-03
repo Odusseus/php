@@ -9,6 +9,8 @@
     define("ISALIVE", "isalive");
     define("JSON_DIR", "json");
     define("MAIL_DIR", "mail");
+    define("MAX_BYTE", 1000);
+    define("MAX_LENGTH", "maxlength");
     define("MAX_CREATEUSER", "createuser");
     define("NICKNAME", "nickname");
     define("PASSWORD", "password");

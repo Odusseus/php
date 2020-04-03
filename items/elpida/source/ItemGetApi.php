@@ -8,8 +8,14 @@
 
   if(isset($_GET[ISALIVE]) and filter_var($_GET[ISALIVE], FILTER_VALIDATE_BOOLEAN))
   {
-      exit(TRUETEXT);
+      exit(STATE_TRUE);
   }
+  
+  if(isset($_GET[MAX_LENGTH]))
+  {
+    $value = MAX_BYTE;
+      exit("{$value} bytes");
+  }  
   
   $cookieValue = "";
   if(!isset($_COOKIE[COOKIE])) {

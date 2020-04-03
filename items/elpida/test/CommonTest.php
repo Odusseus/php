@@ -55,20 +55,20 @@ class CommonTest extends TestCase
   }
 
   /** @test */
-  public function get_client_ip_return_UNKNOWN_When_No_environment_Is_Set()
+  public function getClientIp_return_UNKNOWN_When_No_environment_Is_Set()
   {
     // arrange
     $assert = 'UNKNOWN';
 
     // act
-    $result = Common::get_client_ip();
+    $result = Common::getClientIp();
 
     //assert
     $this->assertEquals($result, $assert);
   }
 
   /** @test */
-  public function get_client_ip_return_UNKNOWN_When_Environment_Variable_Is_Not_found()
+  public function getClientIp_return_UNKNOWN_When_Environment_Variable_Is_Not_found()
   {
     // arrange
     putenv('HTTP_CLIENT_IP');
@@ -82,7 +82,7 @@ class CommonTest extends TestCase
     $assert = 'UNKNOWN';
 
     // act
-    $result = Common::get_client_ip();
+    $result = Common::getClientIp();
 
     //assert
     $this->assertEquals($result, $assert);
@@ -93,7 +93,7 @@ class CommonTest extends TestCase
    * @dataProvider environmentVariables
    * 
    */
-  public function get_client_ip_return_the_assert_When_Environment_The_Variable_Is_Found($env, $assert)
+  public function getClientIp_return_the_assert_When_Environment_The_Variable_Is_Found($env, $assert)
   {
     // arrange
     putenv('DummyParameter');
@@ -107,7 +107,7 @@ class CommonTest extends TestCase
     putenv("{$env}={$assert}");
 
     // act
-    $result = Common::get_client_ip();
+    $result = Common::getClientIp();
 
     //assert
     $this->assertEquals($result, $assert);
@@ -137,4 +137,31 @@ class CommonTest extends TestCase
      $this->assertNotNull($result);
      $this->assertEquals(36, strlen($result));
    }
+   
+   /**
+   * @test
+   * @dataProvider stringVariables
+   * 
+   */
+  public function checkMaxLength($string, $assert)
+  {
+    // arrange
+
+    // act
+    $result = Common::checkMaxLength($string);
+
+    //assert
+    $this->assertEquals($result, $assert);
+  }
+
+  public function stringVariables()
+  {
+    $maxString = str_repeat("X", 100001);
+
+    return [
+      ['', True],
+      ['0123456789', True],
+      [$maxString, False]
+    ];
+  }
 }

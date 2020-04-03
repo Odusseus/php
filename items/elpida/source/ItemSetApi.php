@@ -8,7 +8,7 @@
 
   if(isset($_GET[ISALIVE]) and filter_var($_GET[ISALIVE], FILTER_VALIDATE_BOOLEAN))
   {
-      exit(TRUETEXT);
+      exit(STATE_TRUE);
   }
   
   $cookieValue = "";
@@ -41,6 +41,16 @@ $value = "";
 if(isset($decoded[VALUE]))
 {
   $value = $decoded[VALUE];
+
+  if(!Common::checkMaxLength($value))
+  {
+    $maxByte = MAX_BYTE;
+    $valueLentgh = strlen($value);
+
+    http_response_code(406);
+    $message = "VALUE to long. Value({$valueLentgh}) > max value({$maxByte})";
+    exit($message);
+  }
 }
 else
 {

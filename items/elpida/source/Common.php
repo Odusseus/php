@@ -1,5 +1,7 @@
 <?php namespace Elpida;
 
+require_once("Constant.php");
+
 class Common
 {
 
@@ -12,7 +14,7 @@ class Common
  }
 
  // https://stackoverflow.com/questions/15699101/get-the-client-ip-address-using-php
- public static function get_client_ip()
+ public static function getClientIp()
  {
   $ipaddress = '';
   if (getenv('HTTP_CLIENT_IP')) {
@@ -38,5 +40,17 @@ class Common
  public static function GUID()
  {
   return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+ }
+
+ public static function checkMaxLength($string)
+ {
+   if( strlen($string) <= MAX_BYTE)
+   {
+      return True;
+   }
+   else 
+   {
+     return False;
+   }
  }
 }
