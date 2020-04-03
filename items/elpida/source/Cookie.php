@@ -47,7 +47,7 @@ class Cookie {
     $this->entity = new CookieEntity();
     $this->entity->appname = $appname;
     $this->entity->nickname = $nickname; 
-    $this->entity->cookie = GUID(); 
+    $this->entity->cookie = Common::GUID(); 
     $this->entity->timestamp = date("d-m-Y H:i:s");
 
     $filename = $this->getFilename($this->entity->cookie);

@@ -28,7 +28,7 @@
      $this->entity->activationCode = rand(1000, 9999);
      $this->entity->activationCodeExpired = date("d-m-Y H:i:s", strtotime("+1 week"));
      $this->entity->createdTimestamp = date("d-m-Y H:i:s");
-     $this->entity->id = GUID();
+     $this->entity->id = Common::GUID();
 
      $json = json_encode($this->entity);
      $userFilename = $this->getFilename($appname, $nickname);

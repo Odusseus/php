@@ -3,6 +3,7 @@
 require_once("Constant.php");
 require_once("Common.php");
 require_once("Entity.php");
+require_once("Entities.php");
 
 class Ip extends Entity {
 

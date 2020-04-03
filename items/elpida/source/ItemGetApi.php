@@ -8,14 +8,15 @@
 
   if(isset($_GET[ISALIVE]) and filter_var($_GET[ISALIVE], FILTER_VALIDATE_BOOLEAN))
   {
-      exit(STATE_TRUE);
+    http_response_code(200);      
+    exit(STATE_TRUE);
   }
-  
+
   if(isset($_GET[MAX_LENGTH]))
   {
     $value = MAX_BYTE;
       exit("{$value} bytes");
-  }  
+  } 
   
   $cookieValue = "";
   if(!isset($_COOKIE[COOKIE])) {
@@ -46,8 +47,26 @@
   }
   else
   {
-    http_response_code(200);
     $itemGetRespons = $item->getJsonGetRespons();
-    exit ($itemGetRespons);
+
+    if(isset($_GET[ITEMLENGTH]))
+    {
+      http_response_code(200);      
+      $length = strlen($itemGetRespons);
+      $percent = 0;
+      if($length > 0 && MAX_BYTE > 0)
+      {
+        $percent = ($length / MAX_BYTE) * 100;
+      }
+
+      $message = "{$length} bytes, {$percent}%.";
+
+        exit($message);
+    }
+    else
+    {
+      http_response_code(200);      
+      exit ($itemGetRespons);
+    }
   }
 ?>

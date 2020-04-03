@@ -78,6 +78,7 @@
   else
   {
     $user = User::set($appname, $nickname, $hashPassword, $email);
+    $maxId = new MaxId(MAX_CREATEUSER);
     $maxId->next();
 
     $link = "https://www.odusseus.org/php/elpida/userActivateApi.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
