@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php
 use Elpida\Constant;
 use PHPUnit\Framework\TestCase;
 

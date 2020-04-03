@@ -143,7 +143,7 @@ class CommonTest extends TestCase
    * @dataProvider stringVariables
    * 
    */
-  public function checkMaxLength($string, $assert)
+  public function checkMaxLength_Should_Return_If_The_String_Length_Ecceeds_The_Max_Length($string, $assert)
   {
     // arrange
 
