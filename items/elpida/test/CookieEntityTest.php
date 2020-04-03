@@ -9,7 +9,7 @@ class CookieEntityTest extends PHPUnit\Framework\TestCase
 {
 
   /** @test */
-  public function CookieEntity_Shoul()
+  public function CookieEntity_Shoul_Be_Created_And_Set_With_Data()
   {
     // arrange  
     $appname = "appnametest";
