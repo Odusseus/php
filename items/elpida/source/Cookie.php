@@ -23,15 +23,18 @@ class Cookie {
     return $instance;
   }
   
-  public function delete() {
-    $filename = $this->getFilename($this->entity->cookie);
-    if(file_exists($filename)){
-      unlink($filename);
+   public function delete() {
+    if(isset($this->entity->cookie))
+    {
+      $filename = Cookie::getFilename($this->entity->cookie);
+      if(file_exists($filename)){
+        unlink($filename);
+      }
     }
   }
 
   function load($cookie){
-    $filename = $this->getFilename($cookie);
+    $filename = Cookie::getFilename($cookie);
     if(file_exists($filename)){
       $json = file_get_contents($filename);
       $entity = json_decode($json);
@@ -39,7 +42,7 @@ class Cookie {
     }
   }
   
-  function getFilename($cookie){
+  static function getFilename($cookie){
     return $filename = DATA_DIR."/".JSON_DIR."/{$cookie}-cookie.json";
   }
 
@@ -50,7 +53,7 @@ class Cookie {
     $this->entity->cookie = Common::GUID(); 
     $this->entity->timestamp = date("d-m-Y H:i:s");
 
-    $filename = $this->getFilename($this->entity->cookie);
+    $filename = Cookie::getFilename($this->entity->cookie);
     $json = json_encode($this->entity);
     file_put_contents($filename, $json, LOCK_EX);
   }
