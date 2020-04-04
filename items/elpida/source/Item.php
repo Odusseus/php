@@ -1,7 +1,6 @@
 <?php namespace Elpida;
 require_once("Constant.php");
 require_once("Common.php");
-// is dit nodig ? require_once("Entity.php");
 
 class Item{
   public $key,
