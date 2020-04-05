@@ -1,5 +1,6 @@
 <?php namespace Elpida;
 
+require_once("code/error.php");
 require_once("Common.php");
 require_once("CookieEntity.php");
 date_default_timezone_set('Europe/Amsterdam');
@@ -39,6 +40,10 @@ class Cookie {
       $json = file_get_contents($filename);
       $entity = json_decode($json);
       $this->entity = $entity;
+    }
+    else
+    {
+      error_log("Error {Error::FileNotFound} : {$filename} not found.", 0);
     }
   }
   

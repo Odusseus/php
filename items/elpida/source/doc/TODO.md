@@ -8,4 +8,5 @@
 * update item :done
 * refactoring dubble code
 * Unittest
+* Loging 
 * Deploy
