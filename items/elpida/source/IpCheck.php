@@ -21,7 +21,8 @@ class IpCheck {
 
   public function addBadIp(){
     $this->badIp->add($this->ipItem);
-    exit("Added bad ip ".$this->ipItem->key);
+    http_response_code(401);
+    exit("Bad ip ".$this->ipItem->key." is added to the blacklist.");
   }
 }
 

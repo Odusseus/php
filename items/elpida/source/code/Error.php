@@ -2,7 +2,7 @@
 
   abstract class Error
   {
-    const FileNotFound = 1;
+    const FileNotFound = "Error 1 : File not found.";
   }
 
 ?>

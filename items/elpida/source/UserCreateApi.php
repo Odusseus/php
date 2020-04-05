@@ -1,5 +1,6 @@
 <?php namespace Elpida;
-  require_once("code/state.php");
+  require_once("code/State.php");
+  require_once("code/Error.php");
   require_once("App.php");
   require_once("IpCheck.php");
   require_once("Constant.php");
@@ -7,13 +8,12 @@
   require_once("User.php");
   
   header('Access-Control-Allow-Origin: *');
-  
-  //error_log("Error {Error::FileNotFound} :  not found.", 0);
 
   $ipCheck = new IpCheck();
 
   if(isset($_GET[ISALIVE]))
   {    
+    $ipCheck->addBadIp();
     http_response_code(200);
     exit(STATE_TRUE);
   }

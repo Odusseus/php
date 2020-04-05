@@ -17,7 +17,7 @@ class Ips extends Entities
     private static $instance = null;
 
     public function __construct() {
-        parent::__construct(IP);
+        parent::__construct(BADIP);
     } 
     
     public static function new()

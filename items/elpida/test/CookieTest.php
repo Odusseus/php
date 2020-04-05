@@ -61,6 +61,7 @@ class CookieTest extends PHPUnit\Framework\TestCase
   public function get_Should_Return_Cookie_Data()
   {
     // arrange  
+    $timestamp = date("d-m-Y H:i:s");
     $appname = "appname ";
     $nickname = "nickname";
     $cookie = Cookie::set($appname, $nickname);
@@ -72,7 +73,7 @@ class CookieTest extends PHPUnit\Framework\TestCase
     $this->assertEquals($assert->entity->appname, $appname);
     $this->assertEquals($assert->entity->nickname, $nickname); 
     $this->assertEquals($assert->entity->cookie, $cookie->entity->cookie); 
-    $this->assertNotEmpty($assert->entity->timestamp);
+    $this->assertEqualsWithDelta($assert->timestamp, $timestamp, 1);
   }
 
   /** @test */
@@ -203,6 +204,7 @@ public function save_Should_A_Cookie()
   $cookie = new Cookie();
   
   // act
+  $timestamp = date("d-m-Y H:i:s");
   $cookie->save($appname, $nickname);
   $cookieValue = $cookie->entity->cookie;
   $cookie->entity = null;
@@ -212,7 +214,7 @@ public function save_Should_A_Cookie()
   $this->assertEquals($cookie->entity->appname, $appname);
   $this->assertEquals($cookie->entity->nickname, $nickname);
   $this->assertEquals($cookie->entity->cookie, $cookieValue);
-  $this->assertNotEmpty($cookie->entity->timestamp);
+  $this->assertEqualsWithDelta($assert->timestamp, $timestamp, 1);
 
 }
 

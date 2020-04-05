@@ -43,7 +43,7 @@ class Cookie {
     }
     else
     {
-      error_log("Error {Error::FileNotFound} : {$filename} not found.", 0);
+      error_log(Error::FileNotFound." {$filename}", 0);
     }
   }
   

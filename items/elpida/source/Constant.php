@@ -5,7 +5,7 @@
     define("APPNAME", "appname");
     define("COOKIE", "elpida");
     define("EMAIL", "email");
-    define("IP", "ip");
+    define("BADIP", "badip");
     define("ITEMLENGTH", "itemlength");
     define("ISALIVE", "isalive");
     define("JSON_DIR", "json");

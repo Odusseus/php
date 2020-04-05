@@ -13,10 +13,9 @@ class Entity {
         $this->timestamp = date("d-m-Y H:i:s");
     }
 
-    // TODO is that correct?
-    //public function set($data) {
-    //    foreach ($data AS $key => $value) $this->{$key} = $value;
-    //}
+    public function set($data) {
+        foreach ($data AS $key => $value) $this->{$key} = $value;
+    }
 }
 
 ?>

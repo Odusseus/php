@@ -20,7 +20,7 @@ class Entities {
             $list = [];
             foreach($this->list AS $element => $data)
             {
-              $class = new $entity($data->key);
+              $class = new Entity($data->key);
               $class->set($data);
               array_push($list, $class);
             }
