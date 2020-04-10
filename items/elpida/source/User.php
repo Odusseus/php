@@ -30,7 +30,7 @@
      $this->entity->createdTimestamp = date("d-m-Y H:i:s");
      $this->entity->id = Common::GUID();
 
-     $json = json_encode($this->entity);
+     $json = json_encode($this->entity, JSON_FORCE_OBJECT);
      $userFilename = $this->getFilename($appname, $nickname);
      file_put_contents($userFilename, $json, LOCK_EX);
    }
@@ -72,7 +72,7 @@
    function activate($activationCode){
      if($this->entity->activationCode == $activationCode){
        $this->entity->state = State::Active;
-       $json = json_encode($this->entity);
+       $json = json_encode($this->entity, JSON_FORCE_OBJECT);
        $userFilename = $this->getFilename($this->entity->appname, $this->entity->nickname);
        file_put_contents($userFilename, $json, LOCK_EX);
        return true;

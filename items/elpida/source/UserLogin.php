@@ -50,7 +50,7 @@ class Login {
     $this->entity->cookie = $cookie->entity->cookie;
     
     $filename = $this->getFilename($this->entity->appname, $this->entity->nickname);
-    $json = json_encode($this->entity);
+    $json = json_encode($this->entity, JSON_FORCE_OBJECT);
     file_put_contents($filename, $json, LOCK_EX);
    }
 }

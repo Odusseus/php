@@ -9,11 +9,11 @@ class Entities {
     public 
         $list = [],
         $filename = "",
-        $entity = "";
+        $entityname = "";
     
-    public function __construct($entity){
-        $this->entity = $entity; 
-        $this->filename = DATA_DIR."/".JSON_DIR."/{$entity}.json";
+    public function __construct($entityname){
+        $this->entityname = $entityname; 
+        $this->filename = DATA_DIR."/".JSON_DIR."/{$entityname}.json";
         if(file_exists($this->filename)){
             $str = file_get_contents($this->filename);
             $this->list = json_decode($str);
@@ -27,32 +27,33 @@ class Entities {
             $this->list = $list;
         }
     }
-    
-    public function getJson(){
-        return json_encode($this->list);
-    }
-  
+
     public function save() {
-        $str = json_encode($this->list);
-        $myfile = fopen($this->filename, "w") or die("Unable to open file!");
-        fwrite($myfile, $str);
-        fclose($myfile);
+        $json = json_encode($this->list, JSON_FORCE_OBJECT);
+        file_put_contents($this->filename, $json, LOCK_EX);
     }
   
     public function delete(){
-        unlink($this->filename);
+        if(file_exists($this->filename))
+        {
+            unlink($this->filename);
+        }
+        $this->list = [];
+        $this->filename = "";
+        $this->entityname = "";
     }
   
     public function add($item){
         $ids = Ids::new();
         
-        if(!$ids->getId($this->entity)){
-            $idItem = new Id($this->entity);
+        if(!$ids->getId($this->entityname))
+        {
+            $idItem = new Id($this->entityname);
             $ids->add($idItem);
             $id = $idItem->id;
         }
         else {
-            $id = $ids->next($this->entity);
+            $id = $ids->next($this->entityname);
         }
         $item->id = $id;
         $this->list[] = $item;

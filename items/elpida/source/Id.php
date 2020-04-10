@@ -46,10 +46,8 @@ class Ids {
   }
 
   public function save() {
-      $str = json_encode($this->list);
-      $myfile = fopen($this->filename, "w") or die("Unable to open file!");
-      fwrite($myfile, $str);
-      fclose($myfile);
+      $json = json_encode($this->list, JSON_FORCE_OBJECT);
+      file_put_contents($this->filename, $json, LOCK_EX);      
   }
 
   public function delete(){

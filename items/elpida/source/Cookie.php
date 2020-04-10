@@ -59,7 +59,7 @@ class Cookie {
     $this->entity->timestamp = date("d-m-Y H:i:s");
 
     $filename = Cookie::getFilename($this->entity->cookie);
-    $json = json_encode($this->entity);
+    $json = json_encode($this->entity, JSON_FORCE_OBJECT);
     file_put_contents($filename, $json, LOCK_EX);
   }
 
