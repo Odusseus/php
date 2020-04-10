@@ -73,7 +73,7 @@ class CookieTest extends PHPUnit\Framework\TestCase
     $this->assertEquals($assert->entity->appname, $appname);
     $this->assertEquals($assert->entity->nickname, $nickname); 
     $this->assertEquals($assert->entity->cookie, $cookie->entity->cookie); 
-    $this->assertEqualsWithDelta($assert->timestamp, $timestamp, 1);
+    $this->assertEqualsWithDelta($assert->entity->timestamp, $timestamp, 1);
   }
 
   /** @test */
@@ -214,7 +214,7 @@ public function save_Should_A_Cookie()
   $this->assertEquals($cookie->entity->appname, $appname);
   $this->assertEquals($cookie->entity->nickname, $nickname);
   $this->assertEquals($cookie->entity->cookie, $cookieValue);
-  $this->assertEqualsWithDelta($assert->timestamp, $timestamp, 1);
+  $this->assertEqualsWithDelta($cookie->entity->timestamp, $timestamp, 1);
 
 }
 

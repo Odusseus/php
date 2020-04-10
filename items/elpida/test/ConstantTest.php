@@ -29,7 +29,7 @@ class ConstantTest extends TestCase
       [APPNAME, "appname"],
       [COOKIE, "elpida"],
       [EMAIL, "email"],
-      [IP, "ip"],      
+      [BADIP, "badip"],      
       [ISALIVE, "isalive"],
       [ITEMLENGTH, "itemlength"],
       [JSON_DIR, "json"],
