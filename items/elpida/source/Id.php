@@ -1,13 +1,12 @@
 <?php namespace Elpida;
 
-class Id {
+require_once("Entity.php");
+
+class Id extends Entity {
     
-    public $id,
-           $key;
-   
-    function __construct($key){        
-        $this->id = 1;
-        $this->key = $key;
-    }
+  function __construct($key){        
+    parent::__construct($key);
+    $this->id = 1;
+  }
 }
 ?>

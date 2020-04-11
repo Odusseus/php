@@ -2,7 +2,7 @@
 require_once("Constant.php");
 require_once("Common.php");
 
-class Item{
+class Item {
   public $key,
          $value;
 

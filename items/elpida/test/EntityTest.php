@@ -9,7 +9,7 @@ class EntityTest extends PHPUnit\Framework\TestCase
 {
 
   /** @test */
-  public function new_Entity_Shoul_A_Instance_Of_Entity()
+  public function new_Entity_Should_Create_A_Instance_Of_Entity()
   {
     // arrange  
     $timestamp = date("d-m-Y H:i:s");
@@ -25,7 +25,7 @@ class EntityTest extends PHPUnit\Framework\TestCase
   }
 
   /** @test */
-  public function set_Entity_Shoul_Set_The_Instance_Variables()
+  public function set_Entity_Should_Set_The_Instance_Variables()
   {
     // arrange  
     $key = "ketsKey";
