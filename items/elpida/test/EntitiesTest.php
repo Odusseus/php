@@ -1,6 +1,7 @@
 <?php
 use Elpida\Entities;
 use Elpida\Entity;
+use Elpida\Ids;
 
 include('/Githup/Odusseus/php/items/elpida/source/Entities.php');
 
@@ -10,6 +11,7 @@ class EntitiesTest extends PHPUnit\Framework\TestCase
   protected  function setUp(): void
   {
     $dataDir =  DATA_DIR;
+    Ids::delete();
 
     foreach(glob("{$dataDir}/json/*") as $f) {
       unlink($f);

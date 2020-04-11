@@ -5,42 +5,52 @@ require_once("Id.php");
 
 class Ids {
   private static $instance = null;
+  public static $filename = DATA_DIR."/".JSON_DIR."/".ID.".json";
 
-  public 
-      $list = [],
-      $filename = DATA_DIR."/".JSON_DIR."/".ID.".json";
+  public $list = [];
   
   private function __construct()
   {
-    if(file_exists($this->filename))
+    if(file_exists(self::$filename))
     {
-      $str = file_get_contents($this->filename);
+      $str = file_get_contents(self::$filename);
       $this->list = json_decode($str);
     }
+  }
+
+  public static function isSet()
+  {
+    if (self::$instance != null)
+    {
+      return true;
+    }
+    
+    return false;
   }
   
   public static function new()
   {
-    if (self::$instance == null)
+    if (self::$instance == null || !file_exists(self::$filename))
     {
       self::$instance = new Ids();
     }
- 
+    
     return self::$instance;
   }
-
-  public function getJson(){
-      return json_encode($this->list);
+  
+  public static function delete(){
+      if(file_exists(self::$filename))
+      {
+        unlink(self::$filename);
+      }
+      self::$instance = null;
   }
 
   public function save() {
       $json = json_encode($this->list, JSON_FORCE_OBJECT);
-      file_put_contents($this->filename, $json, LOCK_EX);      
+      file_put_contents(self::$filename, $json, LOCK_EX);      
   }
 
-  public function delete(){
-      unlink($this->filename);
-  }
 
   public function add($item){
       $this->list[] = $item;

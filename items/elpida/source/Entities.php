@@ -2,7 +2,7 @@
 
 require_once("Constant.php");
 require_once("Entity.php");
-require_once("Id.php");
+require_once("Ids.php");
 
 class Entities {
 

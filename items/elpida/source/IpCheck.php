@@ -1,6 +1,6 @@
 <?php namespace Elpida;
 
-require_once("Ip.php");
+require_once("Ips.php");
 
 header('Access-Control-Allow-Origin: *');
 

@@ -9,7 +9,7 @@ class IdTest extends PHPUnit\Framework\TestCase
 {
 
   /** @test */
-  public function new_Id_Should_Create_A_Instance_Of_Entity()
+  public function new_Id_Should_Create_A_Instance_Of_Id()
   {
     // arrange  
     $timestamp = date("d-m-Y H:i:s");
