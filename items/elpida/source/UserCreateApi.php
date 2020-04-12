@@ -4,7 +4,7 @@
   require_once("App.php");
   require_once("IpCheck.php");
   require_once("Constant.php");
-  require_once("MaxId.php");
+  require_once("IdMax.php");
   require_once("User.php");
   
   header('Access-Control-Allow-Origin: *');
@@ -22,8 +22,8 @@
     exit(STATE_TRUE);
   }
 
-  $userMaxId = new MaxId(MAX_CREATEUSER); 
-  if($userMaxId->get() > 100){
+  $userIdMax = new IdMax(MAX_CREATEUSER); 
+  if($userIdMax->get() > 100){
     http_response_code(423);
     $value = NICKNAME;
     $message = "Maximum users is reached.";
@@ -85,8 +85,8 @@
   else
   {
     $user = User::set($appname, $nickname, $hashPassword, $email);
-    $maxId = new MaxId(MAX_CREATEUSER);
-    $maxId->next();
+    $idMax = new IdMax(MAX_CREATEUSER);
+    $idMax->next();
 
     $link = "https://www.odusseus.org/php/elpida/userActivateApi.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
 

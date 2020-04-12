@@ -2,13 +2,20 @@
 
 require_once("Constant.php");
 
-class MaxId {
+class IdMax {
 
-  private  $filename;
+  public $filename;
 
   function __construct($name){  
-    $this->filename = DATA_DIR."/".TXT_DIR."/{$name}.txt";      
+    $this->filename = DATA_DIR."/".TXT_DIR."/{$name}-id.txt";      
   }
+
+  public function delete(){
+    if(file_exists($this->filename))
+    {
+        unlink($this->filename);
+    }
+}
 
   public function get(){
     if(file_exists($this->filename)){
@@ -31,7 +38,7 @@ class MaxId {
     {
       $id = 1;
     }
-    file_put_contents($this->filename, $id, LOCK_EX);
+    $this->set($id);
   }
 
   public function set($id){    
