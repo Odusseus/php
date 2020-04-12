@@ -39,8 +39,8 @@ class Entities {
             unlink($this->filename);
         }
         $this->list = [];
-        $this->filename = "";
-        $this->entityname = "";
+        #$this->filename = "";
+        #$this->entityname = "";
     }
   
     public function add($item){

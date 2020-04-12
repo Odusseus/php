@@ -1,5 +1,6 @@
 <?php namespace Elpida;
 
+require_once("Ip.php");
 require_once("Ips.php");
 
 header('Access-Control-Allow-Origin: *');
@@ -14,7 +15,7 @@ class IpCheck {
     $this->badIp = Ips::new();
     $this->ipItem = new Ip();
     if($this->badIp->getKey($this->ipItem->key)){
-      exit("Bad ip ".$this->ipItem->key);
+      $this->isGood = false;
     }
     $this->isGood = true;
   }

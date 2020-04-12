@@ -10,6 +10,11 @@
   header('Access-Control-Allow-Origin: *');
 
   $ipCheck = new IpCheck();
+  if(!$ipCheck->isGood){
+    http_response_code(403);
+    $message = "Forbidden, Ip is blacklisted.";
+    exit($message);
+  }
 
   if(isset($_GET[ISALIVE]))
   {    

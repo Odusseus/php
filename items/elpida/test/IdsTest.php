@@ -15,7 +15,7 @@ class IdsTest extends PHPUnit\Framework\TestCase
   }
 
   /** @test */
-  public function new_Ids_Should_Create_A_Instance_Of_Ids()
+  public function new_Ids_Should_Create_A_Singleton_Instance_Of_Ids()
   {
     // arrange  
 
@@ -24,6 +24,8 @@ class IdsTest extends PHPUnit\Framework\TestCase
     $assert2 = Ids::new();
 
     // assert
+    $this->assertNotNull($assert1);
+    $this->assertNotNull($assert2);
     $this->assertEquals($assert1, $assert2);
   }
   
