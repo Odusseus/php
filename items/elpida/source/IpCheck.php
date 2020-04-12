@@ -2,8 +2,7 @@
 
 require_once("Ip.php");
 require_once("Ips.php");
-
-header('Access-Control-Allow-Origin: *');
+require_once("code/Error.php");
 
 class IpCheck {
 
@@ -16,14 +15,14 @@ class IpCheck {
     $this->ipItem = new Ip();
     if($this->badIp->getKey($this->ipItem->key)){
       $this->isGood = false;
+      error_log(Error::BadIP." {$this->ipItem->key}", 0);
     }
     $this->isGood = true;
   }
 
   public function addBadIp(){
-    $this->badIp->add($this->ipItem);
-    http_response_code(401);
-    exit("Bad ip ".$this->ipItem->key." is added to the blacklist.");
+    $this->isGood = false;
+    $this->badIp->add($this->ipItem);    
   }
 }
 

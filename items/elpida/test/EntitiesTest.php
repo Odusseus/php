@@ -10,8 +10,9 @@ class EntitiesTest extends PHPUnit\Framework\TestCase
 
   protected  function setUp(): void
   {
-    $dataDir =  DATA_DIR;
     Ids::delete();
+    
+    $dataDir =  DATA_DIR;
 
     foreach(glob("{$dataDir}/json/*") as $f) {
       unlink($f);

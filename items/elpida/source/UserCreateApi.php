@@ -17,8 +17,7 @@
   }
 
   if(isset($_GET[ISALIVE]))
-  {    
-    $ipCheck->addBadIp();
+  { 
     http_response_code(200);
     exit(STATE_TRUE);
   }
