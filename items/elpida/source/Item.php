@@ -1,85 +1,96 @@
 <?php namespace Elpida;
-require_once("Constant.php");
-require_once("Common.php");
 
-class Item {
-  public $key,
-         $value;
+require_once "Constant.php";
+require_once "Common.php";
 
-  public function __construct() {
-    // allocate your stuff
-  }
+class Item
+{
+ public $key,
+  $value;
 
-  public static function set($key, $value) {
-    $instance = new self();
-    $instance->key = $key;
-    $instance->value = $value;
-    $instance->save();
-    return $instance;
-  }
-  
-  public static function get($key) {
-    $instance = new self();
-    $instance->key = $key;
-    $instance->load();
-    return $instance;
-  }
+ // Multi constructor
+ // https://stackoverflow.com/questions/1699796/best-way-to-do-multiple-constructors-in-php
+ public function __construct()
+ {
+  // allocate your stuff
+ }
 
-  function getFilename(){
-    return $filename = DATA_DIR."/".VALUE_DIR."/{$this->key}.txt";
-  }
+ public static function set($key, $value)
+ {
+  $instance = new self();
+  $instance->key = $key;
+  $instance->value = $value;
+  $instance->save();
+  return $instance;
+ }
 
-  function save()
+ public static function get($key)
+ {
+  $instance = new self();
+  $instance->key = $key;
+  $instance->load();
+  return $instance;
+ }
+
+ public function delete(){
+  if(file_exists($this->getFilename()))
   {
-    $filename = $this->getFilename();
-    $file = fopen($filename, "wb") or die("Unable to open file!");
-    fwrite($file, $this->value);
+      unlink($this->getFilename());
+  }
+  $instance->key = null;
+  $instance->value = null;
+}
+
+ public function getFilename()
+ {
+  return $filename = DATA_DIR . "/" . VALUE_DIR . "/{$this->key}.txt";
+ }
+
+ public function save()
+ {
+  $filename = $this->getFilename();
+  $file = fopen($filename, "wb") or die("Unable to open file!");
+  fwrite($file, $this->value);
+  fclose($file);
+ }
+
+ public function load()
+ {
+  $filename = $this->getFilename();
+  if (file_exists($filename)) {
+   if (filesize($filename) > 0) {
+    $file = fopen($filename, "rb");
+    $this->value = fread($file, filesize($filename));
     fclose($file);
-  } 
-
-  function load()
-  {
-    $filename = $this->getFilename();
-    if (file_exists($filename))
-    {
-      if(filesize($filename) > 0)
-      {
-        $file = fopen($filename, "rb");
-        $this->value = fread($file, filesize($filename));
-        fclose($file);
-      }
-      else
-      {
-        $this->value = "";
-      }
-    }
-    else
-    {
-      $this->value = "";
-      $this->save();
-    } 
+   } else {
+    $this->value = "";
+   }
+  } else {
+   $this->value = "";
+   $this->save();
   }
+ }
 
-  function getJsonGetRespons()
-  {
-    $itemEntity = new ItemEntity($this->value);
-    return json_encode($itemEntity, JSON_FORCE_OBJECT);
-  }
+ public function getJsonGetRespons()
+ {
+  $itemEntity = new ItemEntity($this->value);
+  return json_encode($itemEntity, JSON_FORCE_OBJECT);
+ }
 
-  function isSet(){
-    if(isset($this->value)){
-      return true;
-    }
-    return false;
+ function isset() {
+  if (isset($this->value)) {
+   return true;
   }
+  return false;
+ }
 }
 
 class ItemEntity
 {
-    public $value;
+ public $value;
 
-    public function __construct($value){
-        $this->value = $value;
-    }
+ public function __construct($value)
+ {
+  $this->value = $value;
+ }
 }
-?>
