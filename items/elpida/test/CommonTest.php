@@ -164,4 +164,29 @@ class CommonTest extends TestCase
       [$maxString, False]
     ];
   }
+
+ /**
+   * @test
+   * @dataProvider isNullOrEmptyStringVariables
+   * 
+   */
+  public function isNullOrEmptyString_Should_Return_False_When_String_Is_Set($string, $assert)
+  {
+    // arrange
+
+    // act
+    $result = Common::isNullOrEmptyString($string);
+
+    //assert
+    $this->assertEquals($result, $assert);
+  }
+
+  public function isNullOrEmptyStringVariables()
+  {
+    return [
+      ['', True],
+      ['0123456789', False],
+      [NULL, True]
+    ];
+  }
 }

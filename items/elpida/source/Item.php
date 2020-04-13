@@ -1,7 +1,8 @@
 <?php namespace Elpida;
 
-require_once "Constant.php";
+require_once("code/error.php");
 require_once "Common.php";
+require_once "Constant.php";
 
 class Item
 {
@@ -32,22 +33,28 @@ class Item
   return $instance;
  }
 
- public function delete(){
-  if(file_exists($this->getFilename()))
-  {
-      unlink($this->getFilename());
+ public function delete()
+ {
+  if (file_exists($this->getFilename())) {
+   $x = $this->getFilename();
+   unlink($this->getFilename());
   }
   $this->key = null;
   $this->value = null;
-}
+ }
 
  public function getFilename()
  {
-  return $filename = DATA_DIR . "/" . VALUE_DIR . "/{$this->key}.txt";
+  return DATA_DIR . "/" . VALUE_DIR . "/{$this->key}.bin";
  }
 
  public function save()
  {
+  if (Common::isNullOrEmptyString($this->key)) {
+   error_log(Error::EmptyValue . " Item->save(), \$key", 0);
+   return;
+  }
+
   $filename = $this->getFilename();
   $file = fopen($filename, "wb") or die("Unable to open file!");
   fwrite($file, $this->value);
@@ -71,26 +78,27 @@ class Item
   }
  }
 
- public function getJsonGetRespons()
- {
-  $itemEntity = new ItemEntity($this->value);
-  return json_encode($itemEntity, JSON_FORCE_OBJECT);
- }
+// TODO clean if not used.
+ //  public function getJsonGetRespons()
+ //  {
+ //   $itemEntity = new ItemEntity($this->value);
+ //   return json_encode($itemEntity, JSON_FORCE_OBJECT);
+ //  }
 
- function isset() {
-  if (isset($this->value)) {
-   return true;
-  }
-  return false;
- }
-}
+//  function isset() {
+ //   if (isset($this->value)) {
+ //    return true;
+ //   }
+ //   return false;
+ //  }
+ // }
 
-class ItemEntity
-{
- public $value;
+// class ItemEntity
+ // {
+ //  public $value;
 
- public function __construct($value)
- {
-  $this->value = $value;
- }
+//  public function __construct($value)
+ //  {
+ //   $this->value = $value;
+ //  }
 }

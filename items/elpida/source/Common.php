@@ -53,4 +53,10 @@ class Common
      return False;
    }
  }
+
+ // https://stackoverflow.com/questions/381265/better-way-to-check-variable-for-null-or-empty-string
+ public static function isNullOrEmptyString($str){
+  return (!isset($str) || trim($str) === '');
+ }
+
 }
