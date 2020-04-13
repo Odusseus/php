@@ -30,4 +30,22 @@ class ItemTest extends PHPUnit\Framework\TestCase
   $this->assertEquals($assert->key, $key);
   $this->assertEquals($assert->value, $value);
  }
+
+ /** @test */
+ public function delete_Item_Should_The_File_ITem()
+ {
+  // arrange
+  $key = "Test";
+  $value = 42;
+  $item = Item::set($key, $value);
+
+  // act
+  $item->delete();
+  $assert = file_exists($item->getFilename());
+
+  // assert
+  $this->assertFalse($assert);
+  $this->assertNull($item->key);
+  $this->assertNull($item->value);
+ }
 }

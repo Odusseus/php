@@ -37,8 +37,8 @@ class Item
   {
       unlink($this->getFilename());
   }
-  $instance->key = null;
-  $instance->value = null;
+  $this->key = null;
+  $this->value = null;
 }
 
  public function getFilename()
