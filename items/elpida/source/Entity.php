@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
 
 date_default_timezone_set('Europe/Amsterdam');
 

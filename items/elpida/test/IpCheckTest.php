@@ -1,8 +1,8 @@
 <?php
-use Elpida\Constant;
-use Elpida\IpCheck;
-use Elpida\Ids;
-use Elpida\Ips;
+use Items\Constant;
+use Items\IpCheck;
+use Items\Ids;
+use Items\Ips;
 
 include('/Githup/Odusseus/php/items/elpida/source/IpCheck.php');
 

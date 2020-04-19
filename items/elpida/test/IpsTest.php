@@ -1,8 +1,8 @@
 <?php
-use Elpida\Ip;
-use Elpida\Ips;
-use Elpida\Id;
-use Elpida\Ids;
+use Items\Ip;
+use Items\Ips;
+use Items\Id;
+use Items\Ids;
 
 include('/Githup/Odusseus/php/items/elpida/source/Ip.php');
 include('/Githup/Odusseus/php/items/elpida/source/Ips.php');

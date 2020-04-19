@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
     // This file depends on the environment, 
     // DO NOT DEPLOY IT!
     define("DEBUG", "true");

@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
 
 require_once("Constant.php");
 require_once("Entities.php");

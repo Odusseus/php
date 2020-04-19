@@ -1,5 +1,5 @@
 <?php
-use Elpida\Constant;
+use Items\Constant;
 use PHPUnit\Framework\TestCase;
 
 include '/Githup/Odusseus/php/items/elpida/source/Constant.php';
@@ -27,7 +27,7 @@ class ConstantTest extends TestCase
     return [
       [ACTIVATION_CODE, "activationcode"],
       [APPNAME, "appname"],
-      [COOKIE, "elpida"],
+      [COOKIE, "items"],
       [EMAIL, "email"],
       [ID, "id"],
       [BADIP, "badip"],      

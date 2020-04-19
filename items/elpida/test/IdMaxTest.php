@@ -1,5 +1,5 @@
 <?php
-use Elpida\IdMax;
+use Items\IdMax;
 
 include('/Githup/Odusseus/php/items/elpida/source/IdMax.php'); // must include if tests are for non OOP code
 

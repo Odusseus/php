@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
   class App {
     static function check($name){
       $apps = array();  

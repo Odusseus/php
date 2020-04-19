@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
 
 require_once("Ip.php");
 require_once("Ips.php");

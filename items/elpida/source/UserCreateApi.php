@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
   require_once("code/State.php");
   require_once("code/Error.php");
   require_once("App.php");
@@ -88,7 +88,7 @@
     $idMax = new IdMax(MAX_CREATEUSER);
     $idMax->next();
 
-    $link = "https://www.odusseus.org/php/elpida/userActivateApi.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
+    $link = "https://www.odusseus.org/php/items/userActivateApi.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
 
     $to      = "{$email}";
     $subject = 'activate your account';

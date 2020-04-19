@@ -1,5 +1,5 @@
 <?php
-use Elpida\Entity;
+use Items\Entity;
 
 date_default_timezone_set('Europe/Amsterdam');
 

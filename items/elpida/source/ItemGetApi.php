@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
   require_once("Constant.php");
   require_once("Cookie.php");
   require_once("Item.php");
@@ -23,7 +23,7 @@
     http_response_code(400);
     $value = COOKIE;
     $message = "Cookie $value is missing.";
-    exit($message);
+    return ($message);
   } else {
     $cookieValue = $_COOKIE[COOKIE];
   }

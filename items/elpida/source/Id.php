@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
 
 require_once("Entity.php");
 

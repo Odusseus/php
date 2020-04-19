@@ -10,3 +10,4 @@
 * Unittest
 * Loging 
 * Deploy
+https://blog.cloudflare.com/using-guzzle-and-phpunit-for-rest-api-testing/

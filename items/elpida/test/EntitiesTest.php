@@ -1,7 +1,7 @@
 <?php
-use Elpida\Entities;
-use Elpida\Entity;
-use Elpida\Ids;
+use Items\Entities;
+use Items\Entity;
+use Items\Ids;
 
 include('/Githup/Odusseus/php/items/elpida/source/Entities.php');
 

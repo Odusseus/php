@@ -1,5 +1,5 @@
 <?php
-use Elpida\CookieEntity;
+use Items\CookieEntity;
 
 date_default_timezone_set('Europe/Amsterdam');
 

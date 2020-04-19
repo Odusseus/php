@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
 
   abstract class State
   {

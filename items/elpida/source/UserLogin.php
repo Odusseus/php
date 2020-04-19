@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
 
 require_once("UserLoginEntity.php");
 require_once("Cookie.php");

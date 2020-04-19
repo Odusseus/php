@@ -1,5 +1,5 @@
 <?php
-use Elpida\Item;
+use Items\Item;
 
 include '/Githup/Odusseus/php/items/elpida/source/Item.php'; // must include if tests are for non OOP code
 

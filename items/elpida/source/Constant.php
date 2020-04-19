@@ -1,9 +1,9 @@
-<?php namespace Elpida;
+<?php namespace Items;
     require_once("Environment.php");
     
     define("ACTIVATION_CODE", "activationcode");
     define("APPNAME", "appname");
-    define("COOKIE", "elpida");
+    define("COOKIE", "items");
     define("EMAIL", "email");
     define("ID", "id");
     define("BADIP", "badip");

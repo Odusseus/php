@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
 
   require_once("code/State.php");
   require_once("Common.php");

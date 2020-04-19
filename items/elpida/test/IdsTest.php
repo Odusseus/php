@@ -1,6 +1,6 @@
 <?php
-use Elpida\Ids;
-use Elpida\Id;
+use Items\Ids;
+use Items\Id;
 
 date_default_timezone_set('Europe/Amsterdam');
 

@@ -1,4 +1,4 @@
-<?php namespace Elpida;
+<?php namespace Items;
   require_once("App.php");
   require_once("IpCheck.php");  
   require_once("Constant.php");
