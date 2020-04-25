@@ -1,6 +1,6 @@
 <?php namespace Items;
-  require_once("code/State.php");
-  require_once("code/Error.php");
+  require_once("enum/State.php");
+  require_once("enum/Error.php");
   require_once("App.php");
   require_once("IpCheck.php");
   require_once("Constant.php");

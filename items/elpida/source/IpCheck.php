@@ -2,7 +2,7 @@
 
 require_once("Ip.php");
 require_once("Ips.php");
-require_once("code/Error.php");
+require_once("enum/Error.php");
 
 class IpCheck {
 

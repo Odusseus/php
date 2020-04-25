@@ -1,6 +1,6 @@
 <?php namespace Items;
 
-require_once("code/error.php");
+require_once("enum/error.php");
 require_once "Common.php";
 require_once "Constant.php";
 
@@ -79,26 +79,26 @@ class Item
  }
 
 // TODO clean if not used.
- //  public function getJsonGetRespons()
- //  {
- //   $itemEntity = new ItemEntity($this->value);
- //   return json_encode($itemEntity, JSON_FORCE_OBJECT);
- //  }
+ public function getJsonGetRespons()
+ {
+   $itemEntity = new ItemEntity($this->value);
+   return json_encode($itemEntity, JSON_FORCE_OBJECT);
+ }
 
-//  function isset() {
- //   if (isset($this->value)) {
- //    return true;
- //   }
- //   return false;
- //  }
- // }
+ function isset() {
+   if (isset($this->value)) {
+    return true;
+   }
+   return false;
+  }
+}
 
-// class ItemEntity
- // {
- //  public $value;
+ class ItemEntity
+ {
+  public $value;
 
-//  public function __construct($value)
- //  {
- //   $this->value = $value;
- //  }
+  public function __construct($value)
+  {
+   $this->value = $value;
+  }
 }

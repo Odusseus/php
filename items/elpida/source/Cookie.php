@@ -1,6 +1,6 @@
 <?php namespace Items;
 
-require_once("code/error.php");
+require_once("enum/error.php");
 require_once("Common.php");
 require_once("CookieEntity.php");
 date_default_timezone_set('Europe/Amsterdam');

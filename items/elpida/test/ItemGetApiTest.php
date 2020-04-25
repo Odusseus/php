@@ -18,11 +18,13 @@ class ItemGetApiTest extends PHPUnit\Framework\TestCase
     // curl_setopt($client,CURLOPT_RETURNTRANSFER,true);    
     
     // // act
-    // $response = curl_exec($client);
-    // $result = json_decode($response);
+    //$response = file_get_contents("http://local.elpida.odusseus.org/itemGetApi.php?isalive=true");
+    $url = 'http://local.elpida.odusseus.org/itemGetApi.php?isalive=true';
+
+    $response = get_headers($url);    
 
     // // assert
-    // $this->assertEquals($assert->id, 0);
+    $this->assertEquals($response, true);
     // $this->assertEquals($assert->key, Common::getClientIp());    
     // $this->assertEqualsWithDelta($assert->timestamp, $timestamp, 1);
   }  

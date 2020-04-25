@@ -59,4 +59,12 @@ class Common
   return (!isset($str) || trim($str) === '');
  }
 
+ public static function Exit($httpResponse)
+ {
+   if(isset($httpResponse))
+   {
+     http_response_code($httpResponse->code);      
+     exit($httpResponse->message);
+   }
+ }
 }
