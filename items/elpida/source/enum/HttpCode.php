@@ -1,5 +1,7 @@
 <?php namespace Items;
 
+use ReflectionClass;
+
 class HttpCode
 {
  const OK = 200;
@@ -40,4 +42,5 @@ class HttpCode
  const SERVICE_UNAVAILABLE = 503;
  const GATEWAY_TIMEOUT = 504;
  const HTTP_VERSION_NOT_SUPPORTED = 505;
+
 }
