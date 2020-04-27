@@ -25,10 +25,10 @@ class CookieEntityTest extends PHPUnit\Framework\TestCase
     $assert->timestamp = $timestamp;   
 
     // assert
-    $this->assertEquals($assert->appname, $appname);
-    $this->assertEquals($assert->nickname, $nickname);
-    $this->assertEquals($assert->cookie, $cookie);
-    $this->assertEquals($assert->timestamp, $timestamp);
+    $this->assertEquals($appname, $assert->appname);
+    $this->assertEquals($nickname, $assert->nickname);
+    $this->assertEquals($cookie, $assert->cookie);
+    $this->assertEquals($timestamp, $assert->timestamp);
 
   }
 }

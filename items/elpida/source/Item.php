@@ -30,6 +30,9 @@ class Item
   $instance = new self();
   $instance->key = $key;
   $instance->load();
+  // if(empty($instance->value)) {
+  //   $instance = NULL;
+  // }
   return $instance;
  }
 
@@ -39,8 +42,8 @@ class Item
    $x = $this->getFilename();
    unlink($this->getFilename());
   }
-  $this->key = null;
-  $this->value = null;
+  $this->key = NULL;
+  $this->value = NULL;
  }
 
  public function getFilename()
@@ -73,8 +76,7 @@ class Item
     $this->value = "";
    }
   } else {
-   $this->value = "";
-   $this->save();
+   $this->value = NULL;
   }
  }
 

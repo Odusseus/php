@@ -10,7 +10,7 @@ header('Access-Control-Allow-Origin: *');
 $itemGetLogic = new ItemGetLogic();
 
 if (isset($_GET[ISALIVE])) {
- $httpResponse = $itemGetLogic->isAlive();
+ $httpResponse = $itemGetLogic->getIsAlive();
  Common::exit($httpResponse);
 }
 

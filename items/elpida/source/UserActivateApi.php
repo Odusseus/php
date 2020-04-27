@@ -22,7 +22,7 @@
   $appname = "";
   if(isset($_GET[APPNAME])){
     $appname = $_GET[APPNAME];
-    if($appname == null){
+    if(empty($appname)){
     http_response_code(422);
     $value = APPNAME;
     $message = "$value is missing.";

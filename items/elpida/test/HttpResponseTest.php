@@ -16,7 +16,7 @@ class HttpResponseTest extends PHPUnit\Framework\TestCase
   $assert = new HttpResponse($code, $message);
 
   // assert
-  $this->assertEquals($assert->code, $code);
-  $this->assertEquals($assert->message, $message);
+  $this->assertEquals($code, $assert->code);
+  $this->assertEquals($message, $assert->message);
  }
 }

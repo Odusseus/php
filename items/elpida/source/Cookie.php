@@ -15,6 +15,9 @@ class Cookie {
   public static function get($cookie) {
     $instance = new self();
     $instance->load($cookie);
+    if(empty($instance->entity)) {
+      return NULL;
+    }
     return $instance;
   }
   

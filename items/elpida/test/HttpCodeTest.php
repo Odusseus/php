@@ -20,7 +20,7 @@ class HttpCodeTest extends TestCase
 
 
   //assert
-  $this->assertEquals($result, $assert);
+  $this->assertEquals($assert, $result);
  }
 
  public function httpCodeVariables()

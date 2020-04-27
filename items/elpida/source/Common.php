@@ -10,7 +10,7 @@ class Common
   if (isset($decoded[$valueName])) {
    return $decoded[$valueName];
   }
-  return null;
+  return NULL;
  }
 
  // https://stackoverflow.com/questions/15699101/get-the-client-ip-address-using-php

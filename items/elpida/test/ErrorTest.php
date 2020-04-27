@@ -20,7 +20,7 @@ class ErrorTest extends TestCase
 
 
   //assert
-  $this->assertEquals($result, $assert);
+  $this->assertEquals($assert, $result);
  }
 
  public function errorVariables()

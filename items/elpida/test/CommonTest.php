@@ -178,7 +178,7 @@ class CommonTest extends TestCase
     $result = Common::isNullOrEmptyString($string);
 
     //assert
-    $this->assertEquals($result, $assert);
+    $this->assertEquals($assert, $result);
   }
 
   public function isNullOrEmptyStringVariables()

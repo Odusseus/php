@@ -5,7 +5,7 @@ require_once("Entities.php");
 
 class Ips extends Entities 
 {
-    private static $instance = null;
+    private static $instance = NULL;
 
     public function __construct() {
         parent::__construct(BADIP);
@@ -13,7 +13,7 @@ class Ips extends Entities
     
     public static function new()
     {
-        if (self::$instance == null)
+        if (empty(self::$instance))
         {
             self::$instance = new Ips();
         }

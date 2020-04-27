@@ -42,6 +42,9 @@
   public static function get($appname, $nickname) {
     $instance = new self();
     $instance->load($appname, $nickname);
+    if(empty($instance->entity)){
+      return NULL;
+    }
     return $instance;
   }
 

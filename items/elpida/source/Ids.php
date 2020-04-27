@@ -4,7 +4,7 @@ require_once("Constant.php");
 require_once("Id.php");
 
 class Ids {
-  private static $instance = null;
+  private static $instance = NULL;
   public static $filename = DATA_DIR."/".JSON_DIR."/".ID.".json";
 
   public $list = [];
@@ -20,7 +20,7 @@ class Ids {
 
   public static function isSet()
   {
-    if (self::$instance != null)
+    if (!empty(self::$instance))
     {
       return true;
     }
@@ -30,7 +30,7 @@ class Ids {
   
   public static function new()
   {
-    if (self::$instance == null || !file_exists(self::$filename))
+    if (empty(self::$instance) || !file_exists(self::$filename))
     {
       self::$instance = new Ids();
     }
@@ -43,7 +43,7 @@ class Ids {
       {
         unlink(self::$filename);
       }
-      self::$instance = null;
+      self::$instance = NULL;
   }
 
   public function save() {
@@ -64,7 +64,7 @@ class Ids {
         return $item;
         }
     }
-    return null;
+    return NULL;
   }
   
   public function getList(){

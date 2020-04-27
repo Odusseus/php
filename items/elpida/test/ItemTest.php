@@ -123,7 +123,7 @@ class ItemTest extends PHPUnit\Framework\TestCase
   $key = "test";
   $value = 42;
   $assert = Item::set($key, $value);
-  $assert->$value = null;
+  $assert->$value = NULL;
 
   // act
   $assert->load();

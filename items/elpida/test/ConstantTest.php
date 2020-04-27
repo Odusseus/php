@@ -19,7 +19,7 @@ class ConstantTest extends TestCase
     $result = $constant;
 
     //assert
-    $this->assertEquals($result, $assert);
+    $this->assertEquals($assert, $result);
   }
 
   public function constantVariables()

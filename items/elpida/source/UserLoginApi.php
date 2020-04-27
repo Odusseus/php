@@ -25,7 +25,7 @@
   $decoded = json_decode($content, true);
 
   $appname = Common::getJsonValue($decoded, APPNAME);
-  if($appname == null){
+  if(empty($appname)){
     http_response_code(422);
     $value = APPNAME;
     $message = "{$value} is missing.";
@@ -39,7 +39,7 @@
   }
 
   $nickname = Common::getJsonValue($decoded, NICKNAME);
-  if($nickname == null){
+  if(empty($nickname)){
     http_response_code(422);
     $value = NICKNAME;
     $message = "{$value} is missing.";
@@ -47,7 +47,7 @@
   }
 
   $password = Common::getJsonValue($decoded, PASSWORD);
-  if($password == null){
+  if(empty($password)){
     http_response_code(422);
     $value = PASSWORD;
     $message = "{$value} is missing.";

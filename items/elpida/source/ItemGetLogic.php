@@ -9,16 +9,9 @@ require_once "enum/HttpCode.php";
 class ItemGetLogic
 {
 
- public function isAlive()
+ public function getIsAlive()
  {
   return new HttpResponse(HttpCode::OK, STATE_TRUE);
- }
-
- public function getMaxLength()
- {
-  $value = MAX_BYTE;
-  $message = "{$value} bytes";
-  return new HttpResponse(HttpCode::OK, $message);
  }
 
  public function getItem($cookieValue)
@@ -30,7 +23,16 @@ class ItemGetLogic
   }
 
   $cookie = Cookie::get($cookieValue);
+  if(empty($cookie)) {
+    $message = "Cookie $cookieValue is not found.";
+    return new HttpResponse(HttpCode::NOT_FOUND, $message);
+  }
+
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
+  if(empty($user)) {
+    $message = "User is missing.";
+    return new HttpResponse(HttpCode::NOT_FOUND, $message);
+  }
   $item = Item::get($user->entity->id);
   if (!$item->isSet()) {
    $message = "Item is missing.";
@@ -47,8 +49,19 @@ class ItemGetLogic
   $percent = 0;
   if ($length > 0 && MAX_BYTE > 0) {
    $percent = ($length / MAX_BYTE) * 100;
+   $message = "{$length} bytes, {$percent}%.";
   }
-  $message = "{$length} bytes, {$percent}%.";
+  else {
+    $message = "{$length} byte, {$percent}%.";
+  }
   return new HttpResponse(HttpCode::OK, $message);
  }
+
+ public function getMaxLength()
+ {
+  $value = MAX_BYTE;
+  $message = "{$value} bytes.";
+  return new HttpResponse(HttpCode::OK, $message);
+ }
+
 }

@@ -65,7 +65,7 @@ class Entities {
           return $item;
           }
       }
-      return null;
+      return NULL;
     }
   
     public function getId($id){
@@ -75,7 +75,7 @@ class Entities {
           return $item;
           }
       }
-      return null;
+      return NULL;
     }
   
     public function getList(){
