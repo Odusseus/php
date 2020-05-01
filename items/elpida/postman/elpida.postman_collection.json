@@ -65,7 +65,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://local.elpida.odusseus.org/userActivateApi.php?nickname=pascal&activationcode=9912&appname=test",
+					"raw": "http://local.elpida.odusseus.org/userActivateApi.php?nickname=pascal&activationcode=7652&appname=test",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -83,7 +83,7 @@
 						},
 						{
 							"key": "activationcode",
-							"value": "9912"
+							"value": "7652"
 						},
 						{
 							"key": "appname",
@@ -302,7 +302,34 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://local.elpida.odusseus.org/itemGetApi.php?itemlength",
+					"raw": "http://local.elpida.odusseus.org/ItemGetApi.php?itemlength",
+					"protocol": "http",
+					"host": [
+						"local",
+						"elpida",
+						"odusseus",
+						"org"
+					],
+					"path": [
+						"ItemGetApi.php"
+					],
+					"query": [
+						{
+							"key": "itemlength",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "itemGetApi local  isalive",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://local.elpida.odusseus.org/itemGetApi.php?isalive",
 					"protocol": "http",
 					"host": [
 						"local",
@@ -315,7 +342,7 @@
 					],
 					"query": [
 						{
-							"key": "itemlength",
+							"key": "isalive",
 							"value": null
 						}
 					]
@@ -344,11 +371,6 @@
 						{
 							"key": "maxlength",
 							"value": null
-						},
-						{
-							"key": "isalive",
-							"value": "true",
-							"disabled": true
 						}
 					]
 				}
@@ -362,7 +384,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"value\":\"toto tata titi\"}",
+					"raw": "{ \"value\":\"toto tata titi tutu\"}",
 					"options": {
 						"raw": {
 							"language": "json"

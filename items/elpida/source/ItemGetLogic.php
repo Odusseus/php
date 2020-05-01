@@ -1,10 +1,10 @@
 <?php namespace Items;
 
-require_once "HttpResponse.php";
+require_once "enum/HttpCode.php";
 require_once "Constant.php";
+require_once "HttpResponse.php";
 require_once "Item.php";
 require_once "User.php";
-require_once "enum/HttpCode.php";
 
 class ItemGetLogic
 {
