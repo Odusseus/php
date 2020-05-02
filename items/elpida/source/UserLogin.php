@@ -4,7 +4,7 @@ require_once("UserLoginEntity.php");
 require_once("Cookie.php");
 require_once("Common.php");
 
-class Login {
+class UserLogin {
   public $entity;
 
   public function __construct() {

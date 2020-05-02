@@ -6,15 +6,15 @@ include '/Githup/Odusseus/php/items/elpida/source/Item.php'; // must include if 
 class ItemTest extends PHPUnit\Framework\TestCase
 {
 
-  protected  function setUp(): void
-  {
-    $dataDir =  DATA_DIR;
-    $valuedir = VALUE_DIR; 
+ protected function setUp(): void
+ {
+  $dataDir = DATA_DIR;
+  $valueDir = VALUE_DIR;
 
-    foreach(glob("{$dataDir}/{$valuedir}/*") as $file) {
-      unlink($file);
-    };
-  }
+  foreach (glob("{$dataDir}/{$valueDir}/*") as $file) {
+   unlink($file);
+  };
+ }
 
  /** @test */
  public function set_Item_Should_Create_A_Instance_Of_The_Item()
@@ -27,8 +27,8 @@ class ItemTest extends PHPUnit\Framework\TestCase
   $assert = Item::set($key, $value);
 
   // assert
-  $this->assertEquals($assert->key, $key);
-  $this->assertEquals($assert->value, $value);
+  $this->assertEquals($key, $assert->key);
+  $this->assertEquals($value, $assert->value);
  }
 
  /** @test */
@@ -62,8 +62,8 @@ class ItemTest extends PHPUnit\Framework\TestCase
   $assert = Item::get($key);
 
   // assert
-  $this->assertEquals($assert->key, $key);
-  $this->assertEquals($assert->value, $value);
+  $this->assertEquals($key, $assert->key);
+  $this->assertEquals($value, $assert->value);
  }
 
  /** @test */
@@ -95,7 +95,7 @@ class ItemTest extends PHPUnit\Framework\TestCase
   $item->save();
   $assert = file_exists($item->getFilename());
   // assert
-  $this->assertTrue($assert);  
+  $this->assertTrue($assert);
  }
 
  /** @test */
@@ -111,7 +111,7 @@ class ItemTest extends PHPUnit\Framework\TestCase
   // act
   $item->save();
   $assert = file_exists($item->getFilename());
-  
+
   // assert
   $this->assertFalse($assert);
  }
@@ -123,12 +123,12 @@ class ItemTest extends PHPUnit\Framework\TestCase
   $key = "test";
   $value = 42;
   $assert = Item::set($key, $value);
-  $assert->$value = NULL;
+  $assert->$value = null;
 
   // act
   $assert->load();
 
   // assert
-  $this->assertEquals($assert->value, $value);
+  $this->assertEquals($value, $assert->value);
  }
 }

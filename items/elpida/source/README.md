@@ -1,4 +1,6 @@
-# Item database
+# Item System
+For a App can a user set and get a item.
+The item is a binary value like { "value":"toto tata titi tutu"}
 
 ## Api's
 1. Post userCreateApi

@@ -1,8 +1,9 @@
 <?php namespace Items;
 
-require_once("enum/error.php");
+require_once "enum/error.php";
 require_once "Common.php";
 require_once "Constant.php";
+require_once "ItemEntity.php";
 
 class Item
 {
@@ -42,8 +43,8 @@ class Item
    $x = $this->getFilename();
    unlink($this->getFilename());
   }
-  $this->key = NULL;
-  $this->value = NULL;
+  $this->key = null;
+  $this->value = null;
  }
 
  public function getFilename()
@@ -76,31 +77,22 @@ class Item
     $this->value = "";
    }
   } else {
-   $this->value = NULL;
+   $this->value = null;
   }
  }
 
-// TODO clean if not used.
  public function getJsonGetRespons()
  {
-   $itemEntity = new ItemEntity($this->value);
-   return json_encode($itemEntity, JSON_FORCE_OBJECT);
+  $itemEntity = new ItemEntity($this->value);
+  return json_encode($itemEntity, JSON_FORCE_OBJECT);
  }
 
- function isset() {
-   if (isset($this->value)) {
-    return true;
-   }
-   return false;
-  }
 }
 
- class ItemEntity
- {
-  public $value;
-
-  public function __construct($value)
-  {
-   $this->value = $value;
-  }
-}
+// TODO clean if no used
+//  function isSet() {
+//    if (isset($this->value)) {
+//     return true;
+//    }
+//    return false;
+//   }

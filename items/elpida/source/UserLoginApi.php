@@ -67,8 +67,8 @@
     exit($message);
   }
   
-  $login = Login::set($appname, $nickname);
-  $cookie = $login->entity->cookie;
+  $userLogin = UserLogin::set($appname, $nickname);
+  $cookie = $userLogin->entity->cookie;
   setcookie(COOKIE, $cookie, time()+3600);
   $message = "User is loged in.";
   http_response_code(200);
