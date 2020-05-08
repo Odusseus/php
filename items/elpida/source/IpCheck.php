@@ -16,7 +16,8 @@ class IpCheck {
     if($this->badIp->getKey($this->ipItem->key)){
       $this->isGood = false;
       error_log(Error::BadIP." {$this->ipItem->key}", 0);
-    }
+      return;
+    }    
     $this->isGood = true;
   }
 

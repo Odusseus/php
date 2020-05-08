@@ -196,4 +196,31 @@ class UserTest extends PHPUnit\Framework\TestCase
   $this->assertFalse($assert);
  }
 
+ /** @test */
+ public function isset_Should_Return_False_When_Entity_Is_Not_Set()
+ {
+  // arrange
+  $user = new User();
+  
+  // act
+  $result = $user->isset();
+
+  // assert
+  $this->assertFalse($result);
+ }
+
+ /** @test */
+ public function isset_Should_Return_True_When_Entity_Is_Set()
+ {
+  // arrange
+  $user = new User();
+  $user->entity = "dummyEmpty";
+  
+  // act
+  $result = $user->isset();
+
+  // assert
+  $this->assertTrue($result);
+ }
+
 }

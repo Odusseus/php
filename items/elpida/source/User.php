@@ -25,9 +25,9 @@ class User
  {
   $instance = new self();
   $instance->load($appname, $nickname);
-  if (empty($instance->entity)) {
-   return null;
-  }
+  // if (empty($instance->entity)) {
+  //  return null;
+  // }
   return $instance;
  }
 
@@ -64,13 +64,12 @@ class User
   file_put_contents($userFilename, $json, LOCK_EX);
  }
 
- // TODO clean if no used
- //  function isSet() {
- //   if (isset($this->entity)) {
- //    return true;
- //   }
- //   return false;
- //  }
+ function isset() {
+  if (isset($this->entity)) {
+   return true;
+  }
+  return false;
+ }
 
  public function checkHashPassword($password)
  {
