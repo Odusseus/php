@@ -37,6 +37,7 @@ class HttpCode
  const EXPECTATION_FAILED = 417;
  const IM_A_TEAPOT = 418;
  const UNPROCESSABLE_ENTITY = 422;
+ const LOCKED = 423;
  const INTERNAL_SERVER_ERROR = 500;
  const NOT_IMPLEMENTED = 501;
  const BAD_GATEWAY = 502;

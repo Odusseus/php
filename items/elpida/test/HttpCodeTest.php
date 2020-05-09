@@ -59,6 +59,7 @@ class HttpCodeTest extends TestCase
    ["EXPECTATION_FAILED", 417],
    ["IM_A_TEAPOT", 418],
    ["UNPROCESSABLE_ENTITY", 422],
+   ["LOCKED", 423],
    ["INTERNAL_SERVER_ERROR", 500],
    ["NOT_IMPLEMENTED", 501],
    ["BAD_GATEWAY", 502],

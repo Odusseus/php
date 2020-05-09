@@ -1,118 +1,31 @@
 <?php namespace Items;
-  require_once("enum/State.php");
-  require_once("enum/Error.php");
-  require_once("App.php");
-  require_once("IpCheck.php");
-  require_once("Constant.php");
-  require_once("IdMax.php");
-  require_once("User.php");
-  
-  header('Access-Control-Allow-Origin: *');
 
-  $ipCheck = new IpCheck();
-  if(!$ipCheck->isGood){
-    http_response_code(403);
-    $message = "Forbidden, Ip is blacklisted.";
-    exit($message);
-  }
+require_once "enum/HttpCode.php";
+require_once "Constant.php";
+require_once "UserCreateLogic.php";
 
-  if(isset($_GET[ISALIVE]))
-  { 
-    http_response_code(200);
-    exit(STATE_TRUE);
-  }
+header('Access-Control-Allow-Origin: *');
 
-  $userIdMax = new IdMax(MAX_CREATEUSER); 
-  if($userIdMax->get() > 100){
-    http_response_code(423);
-    $value = NICKNAME;
-    $message = "Maximum users is reached.";
-    exit($message);
-  };
+$userCreateLogic = new UserCreateLogic();
 
-  //Receive the RAW post data.
-  $content = trim(file_get_contents("php://input"));
+$httpResponse = $userCreateLogic->isIpCheck();
 
-  //Attempt to decode the incoming RAW post data from JSON.
-  $decoded = json_decode($content, true);
+if ($httpResponse->code != HttpCode::OK) {
+ Common::exit($httpResponse);
+}
 
-  $appname = Common::getJsonValue($decoded, APPNAME);
-  if(empty($appname)){
-    http_response_code(422);
-    $value = APPNAME;
-    $message = "{$value} is missing.";
-    exit($message);
-  } else {
-    if(!App::check($appname)){
-      http_response_code(404);
-      $message = "{$appname} not found.";
-      exit($message);
-    }
-  }
+if (isset($_GET[ISALIVE])) {
+ $httpResponse = $userCreateLogic->getIsAlive();
+ Common::exit($httpResponse);
+}
 
-  $nickname = Common::getJsonValue($decoded, NICKNAME);
-  if(empty($nickname)){
-    http_response_code(422);
-    $value = NICKNAME;
-    $message = "{$value} is missing.";
-    exit($message);
-  }
+$httpResponse = $userCreateLogic->isIdMaxCheck();
+if ($httpResponse->code != HttpCode::OK) {
+ Common::exit($httpResponse);
+}
 
-  $password = Common::getJsonValue($decoded, PASSWORD);
-  if(empty($password)){
-    http_response_code(422);
-    $value = PASSWORD;
-    $message = "{$value} is missing.";
-    exit($message);
-  }
+//Receive the RAW post data.
+$content = trim(file_get_contents("php://input"));
 
-  $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-
-  $email = Common::getJsonValue($decoded, EMAIL);
-  if(empty($email)){
-    http_response_code(422);
-    $value = EMAIL;
-    $message = "{$value} is missing.";
-    exit($message);
-  }
-
-  $filename = DATA_DIR."/".JSON_DIR."/{$appname}-{$nickname}.json";
-  if(file_exists($filename)){
-    http_response_code(403);
-    $message = "Create user {$nickname} is forbidden.";
-    exit($message);
-  }
-  else
-  {
-    $user = User::set($appname, $nickname, $hashPassword, $email);
-    $idMax = new IdMax(MAX_CREATEUSER);
-    $idMax->next();
-
-    $link = "https://www.odusseus.org/php/items/userActivateApi.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
-
-    $to      = "{$email}";
-    $subject = 'activate your account';
-    $message = "svp click on the link to actived your account." . "\r\n" . "{$link}";
-    $headers = 'From: noreply@odusseus.org' . "\r\n" .
-       'Reply-To: noreply@odusseus.org' . "\r\n" .
-       'X-Mailer: PHP/' . phpversion();
-   
-    if (DEBUG) {
-      $dateTime = date("Y-m-dTHis", time());
-      $mailFilename = DATA_DIR."/".MAIL_DIR."/{$dateTime}.txt";
-      $mailFile = fopen($mailFilename, "w") or die("Unable to open {$mailFile} file!");
-      fwrite($mailFile, $headers);
-      fwrite($mailFile, "\n");
-      fwrite($mailFile, $to);
-      fwrite($mailFile, "\n");
-      fwrite($mailFile, $subject);
-      fwrite($mailFile, "\n");
-      fwrite($mailFile, $message);
-      fclose($mailFile);
-    }
-    else
-    {
-      mail($to, $subject, $message, $headers);
-    }
-  }
-?>
+$httpResponse = $userCreateLogic->createUser($content);
+Common::exit($httpResponse);
