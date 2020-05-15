@@ -1,6 +1,6 @@
 <?php namespace Items;
  phpinfo();
- $to      = 'pascalboittin@live.nl';
+ $to      = 'testemail@test.org';
  $subject = 'the subject';
  $message = 'hello';
  $headers = 'From: noreply@odusseus.org' . "\r\n" .

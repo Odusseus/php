@@ -140,7 +140,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\",\n  \"email\": \"testemail@test.org\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -214,7 +214,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"app\": \"test\",\n  \"nickname\": \"pascal2\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"raw": "{\n  \"app\": \"test\",\n  \"nickname\": \"pascal2\",\n  \"password\": \"Sensas\",\n  \"email\": \"testemail@test.org\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -252,7 +252,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\",\n  \"email\": \"pascalboittin@live.nl\"\n}",
+					"raw": "{\n  \"appname\": \"test\",\n  \"nickname\": \"pascal\",\n  \"password\": \"Sensas\",\n  \"email\": \"testemail@test.org\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

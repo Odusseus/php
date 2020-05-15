@@ -2,6 +2,7 @@
 
 require_once "enum/State.php";
 require_once "enum/Error.php";
+require_once "enum/HttpCode.php";
 require_once "App.php";
 require_once "IpCheck.php";
 require_once "Constant.php";
@@ -64,9 +65,9 @@ class UserCreateLogic
   return new HttpResponse(HttpCode::OK, "OK");
  }
 
- public function checkPassword($nickname)
+ public function checkPassword($password)
  {
-  if (empty($nickname)) {
+  if (empty($password)) {
    $value = PASSWORD;
    $message = "$value is missing.";
    return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
@@ -74,9 +75,9 @@ class UserCreateLogic
   return new HttpResponse(HttpCode::OK, "OK");
  }
 
- public function checkEmail($nickname)
+ public function checkEmail($email)
  {
-  if (empty($nickname)) {
+  if (empty($email)) {
    $value = EMAIL;
    $message = "$value is missing.";
    return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
@@ -110,7 +111,7 @@ class UserCreateLogic
   $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
   $email = Common::getJsonValue($decoded, EMAIL);
-  $httpResponse = $this->checkEmail($password);
+  $httpResponse = $this->checkEmail($email);
   if ($httpResponse->code != HttpCode::OK) {
    return $httpResponse;
   }
