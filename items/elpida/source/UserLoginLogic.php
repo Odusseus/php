@@ -1,77 +1,102 @@
 <?php namespace Items;
-  require_once("App.php");
-  require_once("IpCheck.php");  
-  require_once("Constant.php");
-  require_once("User.php");
-  
-  header('Access-Control-Allow-Origin: *');
 
+require_once "enum/State.php";
+require_once "enum/Error.php";
+require_once "enum/HttpCode.php";
+require_once "App.php";
+require_once "IpCheck.php";
+require_once "Constant.php";
+require_once "HttpResponse.php";
+require_once "User.php";
+
+class UserLoginLogic
+{
+
+  public $test = false;
+
+ public function isIpCheck()
+ {
   $ipCheck = new IpCheck();
-  if(!$ipCheck->isGood){
-    http_response_code(403);
-    $message = "Forbidden, Ip is blacklisted.";
-    exit($message);
+  if (!$ipCheck->isGood) {
+   $message = "Forbidden, Ip is blacklisted.";
+   return new HttpResponse(HttpCode::FORBIDDEN, $message);
+  } else {
+   $message = "OK";
+   return new HttpResponse(HttpCode::OK, $message);
   }
+ }
 
-  if(isset($_GET[ISALIVE]))
-  {    
-    exit(STATE_TRUE);
+ public function getIsAlive()
+ {
+  return new HttpResponse(HttpCode::OK, STATE_TRUE);
+ }
+
+ public function checkAppname($appname)
+ {
+  if (empty($appname)) {
+   $value = APPNAME;
+   $message = "$value is missing.";
+   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+  } else {
+   if (!App::check($appname)) {
+    $message = "{$appname} not found.";
+    return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   }
   }
+  return new HttpResponse(HttpCode::OK, "OK");
+ }
 
-  //Receive the RAW post data.
-  $content = trim(file_get_contents("php://input"));
+ public function checkNickname($nickname)
+ {
+  if (empty($nickname)) {
+   $value = NICKNAME;
+   $message = "$value is missing.";
+   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+  }
+  return new HttpResponse(HttpCode::OK, "OK");
+ }
 
+ public function checkPassword($password)
+ {
+  if (empty($password)) {
+   $value = PASSWORD;
+   $message = "$value is missing.";
+   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+  }
+  return new HttpResponse(HttpCode::OK, "OK");
+ }
+
+ public function loginUser($content)
+ {
   //Attempt to decode the incoming RAW post data from JSON.
   $decoded = json_decode($content, true);
 
   $appname = Common::getJsonValue($decoded, APPNAME);
-  if(empty($appname)){
-    http_response_code(422);
-    $value = APPNAME;
-    $message = "{$value} is missing.";
-    exit($message);
-  } else {
-    if(!App::check($appname)){
-      http_response_code(404);
-      $message = "{$appname} not found.";
-      exit($message);
-    }
+  $httpResponse = $this->checkAppname($appname);
+  if ($httpResponse->code != HttpCode::OK) {
+   return $httpResponse;
   }
 
   $nickname = Common::getJsonValue($decoded, NICKNAME);
-  if(empty($nickname)){
-    http_response_code(422);
-    $value = NICKNAME;
-    $message = "{$value} is missing.";
-    exit($message);
+  $httpResponse = $this->checkNickname($nickname);
+  if ($httpResponse->code != HttpCode::OK) {
+   return $httpResponse;
   }
 
   $password = Common::getJsonValue($decoded, PASSWORD);
-  if(empty($password)){
-    http_response_code(422);
-    $value = PASSWORD;
-    $message = "{$value} is missing.";
-    exit($message);
-  }
-
-  $user = User::get($appname, $nickname);
-  if(!$user->isSet()){
-    http_response_code(404);
-    $message = "User {$nickname} is not found.";
-    exit($message);
-  } 
-  
-  if($user->checkHashPassword($password) == false){
-    http_response_code(401);
-    $message = "User {$nickname} is not authorized.";
-    exit($message);
+  $httpResponse = $this->checkPassword($password);
+  if ($httpResponse->code != HttpCode::OK) {
+   return $httpResponse;
   }
   
   $userLogin = UserLogin::set($appname, $nickname);
   $cookie = $userLogin->entity->cookie;
-  setcookie(COOKIE, $cookie, time()+3600);
-  $message = "User is loged in.";
-  http_response_code(200);
-  exit($message);
 
-?>
+  if(!$this->test){
+    setcookie(COOKIE, $cookie, time() + 3600);
+  }
+  
+  $message = "User is loged in.";
+  return new HttpResponse(HttpCode::OK, $message);
+ }
+}
