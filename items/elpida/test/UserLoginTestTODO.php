@@ -131,32 +131,4 @@ class ItemTest extends PHPUnit\Framework\TestCase
   // assert
   $this->assertEquals($value, $assert->value);
  }
-
- /** @test */
- public function isSet_Should_Return_True_When_value_IsSet()
- {
-  // arrange
-  $key = "test";
-  $value = 42;
-  $assert = Item::set($key, $value);
-  
-  // act
-  $result = $assert->isSet();
-
-  // assert
-  $this->assertTrue($result);
- }
-
- /** @test */
- public function isSet_Should_Return_False_When_value_Is_Not_Set()
- {
-  // arrange
-  $assert = new Item();
-  
-  // act
-  $result = $assert->isSet();
-
-  // assert
-  $this->assertFalse($result);
- }
 }

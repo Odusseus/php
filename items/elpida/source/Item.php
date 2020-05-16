@@ -87,12 +87,10 @@ class Item
   return json_encode($itemEntity, JSON_FORCE_OBJECT);
  }
 
+ function isSet() {
+  if (isset($this->value)) {
+   return true;
+  }
+  return false;
+ }
 }
-
-// TODO clean if no used
-//  function isSet() {
-//    if (isset($this->value)) {
-//     return true;
-//    }
-//    return false;
-//   }
