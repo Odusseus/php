@@ -3,6 +3,7 @@
 require_once("UserLoginEntity.php");
 require_once("Cookie.php");
 require_once("Common.php");
+require_once "Constant.php";
 
 class UserLogin {
   public $entity;

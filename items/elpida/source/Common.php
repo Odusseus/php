@@ -1,6 +1,6 @@
 <?php namespace Items;
 
-require_once("Constant.php");
+require_once("Environment.php");
 
 class Common
 {
