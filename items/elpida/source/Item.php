@@ -1,6 +1,6 @@
 <?php namespace Items;
 
-require_once "enum/error.php";
+require_once "enum/Error.php";
 require_once "Common.php";
 require_once "Constant.php";
 require_once "ItemEntity.php";

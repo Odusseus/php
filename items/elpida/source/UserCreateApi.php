@@ -1,5 +1,8 @@
 <?php namespace Items;
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once "enum/HttpCode.php";
 require_once "Constant.php";
 require_once "UserCreateLogic.php";
