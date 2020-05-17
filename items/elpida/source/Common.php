@@ -1,6 +1,7 @@
 <?php namespace Items;
 
 require_once("Environment.php");
+require_once("Constant.php");
 
 class Common
 {

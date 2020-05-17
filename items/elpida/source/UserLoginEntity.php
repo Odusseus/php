@@ -1,6 +1,6 @@
 <?php namespace Items;
 
-  class LoginEntity {
+  class UserLoginEntity {
     public $appname,
            $nickname,
            $cookie;

@@ -29,7 +29,7 @@ class ItemSetLogic
   }
 
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
-  if (empty($user)) {
+  if (!$user->isset()) {
    $message = "User is missing.";
    return new HttpResponse(HttpCode::NOT_FOUND, $message);
   }
@@ -62,6 +62,13 @@ class ItemSetLogic
    return new HttpResponse(HttpCode::NOT_FOUND, $message);
   }
 
+  $currentItem = Item::get($user->entity->id);
+  if($currentItem->isSet() and $currentItem->itemEntity->version != $version)
+  {
+    $message = "version $version is obsolete. Refresh the your item.";
+    return new HttpResponse(HttpCode::BAD_REQUEST, $message);
+  }
+  $version++;
   $item = Item::set($user->entity->id, $value, $version);
   if (!$item->isSet()) {
    $message = "Item is missing.";

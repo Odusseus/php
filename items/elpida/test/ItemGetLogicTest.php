@@ -148,9 +148,9 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $user = User::set($appname, $nickname, $hashPassword, $email);
 
   $cookie = Cookie::set($appname, $nickname);
-  Item::set($user->entity->id,"123");
+  Item::set($user->entity->id,"123", 0);
 
-  $message = '{"value":"123"}' ;
+  $message = '{"value":"123","version":0}' ;
 
   $itemGetLogic = new ItemGetLogic();
   // act

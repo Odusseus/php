@@ -29,7 +29,7 @@ class ItemGetLogic
   }
 
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
-  if(empty($user)) {
+  if(!$user->isSet()) {
     $message = "User is missing.";
     return new HttpResponse(HttpCode::NOT_FOUND, $message);
   }

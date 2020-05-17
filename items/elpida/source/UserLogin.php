@@ -44,7 +44,7 @@ class UserLogin {
       $cookie->delete();
     }
 
-    $this->entity = new LoginEntity();
+    $this->entity = new UserLoginEntity();
     $this->entity->appname = $appname;
     $this->entity->nickname = $nickname;
     $cookie = Cookie::set($this->entity->appname, $this->entity->nickname);

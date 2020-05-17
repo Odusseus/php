@@ -72,8 +72,7 @@ class Item
 
  public function getJsonGetRespons()
  {
-  $itemEntity = new ItemEntity($this->value, );
-  return json_encode($itemEntity, JSON_FORCE_OBJECT);
+  return json_encode($this->itemEntity, JSON_FORCE_OBJECT);
  }
 
  function isSet() {

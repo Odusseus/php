@@ -118,7 +118,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
  }
 
  /** @test */
- public function setItem_Should_Return_HttpResponse_OK_When_Item_Is_Saved()
+ public function setItem_Should_Return_HttpResponse_NOT_FOUND_When_Version_Is_Missing()
  {
   // arrange
   $appname = "appname ";
@@ -129,14 +129,62 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
 
   $cookie = Cookie::set($appname, $nickname);
   $content = '{"value":"toto tata titi tutu"}';
-  $message = 'Item is saved.';
+  $value = VERSION;
+  $message = "$value is missing.";
   $itemSetLogic = new ItemSetLogic();
 
   // act
   $result = $itemSetLogic->setItem($cookie->entity->cookie, $content);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code, );
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->code, );
   $this->assertEquals($message, $result->message);
  }
+
+ /** @test */
+ public function setItem_Should_Return_HttpResponse_BAD_REQUEST_When_Version_Is_Obsolete()
+ {
+  // arrange
+  $appname = "appname ";
+  $nickname = "nickname";
+  $hashPassword = "hashPassword";
+  $email = "email@mail.com";
+  $user = User::set($appname, $nickname, $hashPassword, $email);
+
+  $cookie = Cookie::set($appname, $nickname);
+  $content = '{"value":"toto tata titi tutu", "version":0}';
+  $message = "version 0 is obsolete. Refresh the your item.";
+  $itemSetLogic = new ItemSetLogic();
+  
+  // act
+  $result = $itemSetLogic->setItem($cookie->entity->cookie, $content);
+  $result = $itemSetLogic->setItem($cookie->entity->cookie, $content);
+
+  // assert
+  $this->assertEquals(HttpCode::BAD_REQUEST, $result->code, );
+  $this->assertEquals($message, $result->message);
+ }
+
+ /** @test */
+ public function setItem_Should_Return_HttpResponse_OK_When_Item_Is_Saved()
+ {
+  // arrange
+  $appname = "appname ";
+  $nickname = "nickname";
+  $hashPassword = "hashPassword";
+  $email = "email@mail.com";
+  $user = User::set($appname, $nickname, $hashPassword, $email);
+
+  $cookie = Cookie::set($appname, $nickname);
+  $content = '{"value":"toto tata titi tutu", "version":0}';
+  $message = 'Item is saved.';
+  $itemSetLogic = new ItemSetLogic();  
+
+  // act
+  $result = $itemSetLogic->setItem($cookie->entity->cookie, $content);  
+
+  // assert
+  $this->assertEquals(HttpCode::OK, $result->code, );
+  $this->assertEquals($message, $result->message);  
+ } 
 }

@@ -1,10 +1,10 @@
 <?php
 
-use Items\LoginEntity;
+use Items\UserLoginEntity;
 
-include '/Githup/Odusseus/php/items/elpida/source/LoginEntity.php';
+include '/Githup/Odusseus/php/items/elpida/source/UserLoginEntity.php';
 
-class LoginEntityTest extends PHPUnit\Framework\TestCase
+class UserLoginEntityTest extends PHPUnit\Framework\TestCase
 {
 
  /** @test */
@@ -16,7 +16,7 @@ class LoginEntityTest extends PHPUnit\Framework\TestCase
   $cookie = "dummyCookie";
 
   // act
-  $assert = new LoginEntity();
+  $assert = new UserLoginEntity();
   $assert->appname = $appname;
   $assert->nickname = $nickname;
   $assert->cookie = $cookie;
