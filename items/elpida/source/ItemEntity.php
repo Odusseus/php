@@ -2,10 +2,12 @@
 
 class ItemEntity
 {
- public $value;
+ public $value,
+        $version;
 
- public function __construct($value)
+ public function __construct($value, $version)
  {
   $this->value = $value;
+  $this->version = $version;
  }
 }

@@ -12,12 +12,14 @@ class ItemEntityTest extends PHPUnit\Framework\TestCase
  {
   // arrange
   $value = "dummyValue";
+  $version = 42;
 
   // act
-  $assert = new ItemEntity($value);
+  $assert = new ItemEntity($value, $version);
 
   // assert
-  $this->assertEquals($value, $assert->value);  
+  $this->assertEquals($value, $assert->value);
+  $this->assertEquals($version, $assert->version);
  }
 
 }

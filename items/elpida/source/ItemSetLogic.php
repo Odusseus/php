@@ -33,7 +33,7 @@ class ItemSetLogic
    $message = "User is missing.";
    return new HttpResponse(HttpCode::NOT_FOUND, $message);
   }
- 
+
   //Attempt to decode the incoming RAW post data from JSON.
   $decoded = json_decode($content, true);
 
@@ -48,10 +48,21 @@ class ItemSetLogic
     return new HttpResponse(HttpCode::NOT_ACCEPTABLE, $message);
    }
   } else {
+   $value = VALUE;
+   $message = "$value is missing.";
    return new HttpResponse(HttpCode::NOT_FOUND, $message);
   }
 
-  $item = Item::set($user->entity->id, $value);
+  $version = 0;
+  if (isset($decoded[VERSION])) {
+   $version = $decoded[VERSION];
+  } else {
+   $value = VERSION;
+   $message = "$value is missing.";
+   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+  }
+
+  $item = Item::set($user->entity->id, $value, $version);
   if (!$item->isSet()) {
    $message = "Item is missing.";
    return new HttpResponse(HttpCode::NOT_FOUND, $message);

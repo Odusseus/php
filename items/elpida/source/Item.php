@@ -8,7 +8,7 @@ require_once "ItemEntity.php";
 class Item
 {
  public $key,
-  $value;
+        $itemEntity;
 
  // Multi constructor
  // https://stackoverflow.com/questions/1699796/best-way-to-do-multiple-constructors-in-php
@@ -17,11 +17,11 @@ class Item
   // allocate your stuff
  }
 
- public static function set($key, $value)
+ public static function set($key, $value, $version)
  {
   $instance = new self();
   $instance->key = $key;
-  $instance->value = $value;
+  $instance->itemEntity = new ItemEntity($value, $version);
   $instance->save();
   return $instance;
  }
@@ -31,25 +31,21 @@ class Item
   $instance = new self();
   $instance->key = $key;
   $instance->load();
-  // if(empty($instance->value)) {
-  //   $instance = NULL;
-  // }
   return $instance;
  }
 
  public function delete()
  {
   if (file_exists($this->getFilename())) {
-   $x = $this->getFilename();
    unlink($this->getFilename());
   }
   $this->key = null;
-  $this->value = null;
+  $this->itemEntity = null;
  }
 
  public function getFilename()
  {
-  return DATA_DIR . "/" . VALUE_DIR . "/{$this->key}.bin";
+  return DATA_DIR . "/" . VALUE_DIR . "/{$this->key}.json";
  }
 
  public function save()
@@ -59,36 +55,29 @@ class Item
    return;
   }
 
-  $filename = $this->getFilename();
-  $file = fopen($filename, "wb") or die("Unable to open file!");
-  fwrite($file, $this->value);
-  fclose($file);
+  $filename = $this->getFilename();  
+  $json = json_encode($this->itemEntity, JSON_FORCE_OBJECT);
+  file_put_contents($filename, $json, LOCK_EX);  
  }
 
  public function load()
  {
   $filename = $this->getFilename();
   if (file_exists($filename)) {
-   if (filesize($filename) > 0) {
-    $file = fopen($filename, "rb");
-    $this->value = fread($file, filesize($filename));
-    fclose($file);
-   } else {
-    $this->value = "";
-   }
-  } else {
-   $this->value = null;
+    $json = file_get_contents($filename);
+    $itemEntity = json_decode($json);
+    $this->itemEntity = $itemEntity;
   }
  }
 
  public function getJsonGetRespons()
  {
-  $itemEntity = new ItemEntity($this->value);
+  $itemEntity = new ItemEntity($this->value, );
   return json_encode($itemEntity, JSON_FORCE_OBJECT);
  }
 
  function isSet() {
-  if (isset($this->value)) {
+  if (isset($this->itemEntity)) {
    return true;
   }
   return false;

@@ -44,6 +44,7 @@ class ConstantTest extends TestCase
       [STATE_FALSE, "false"],
       [USER_DIR, "user"],
       [VALUE, "value"],
+      [VERSION, "version"],
       [VALUE_DIR, "value"],
       [TXT_DIR, "txt"]
     ];

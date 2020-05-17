@@ -21,14 +21,16 @@ class ItemTest extends PHPUnit\Framework\TestCase
  {
   // arrange
   $key = "Test";
-  $value = 42;
+  $value = "TestValue";
+  $version = 42;
 
   // act
-  $assert = Item::set($key, $value);
+  $assert = Item::set($key, $value, $version);
 
   // assert
   $this->assertEquals($key, $assert->key);
-  $this->assertEquals($value, $assert->value);
+  $this->assertEquals($value, $assert->itemEntity->value);
+  $this->assertEquals($version, $assert->itemEntity->version);
  }
 
  /** @test */
@@ -36,18 +38,21 @@ class ItemTest extends PHPUnit\Framework\TestCase
  {
   // arrange
   $key = "Test";
-  $value = 42;
-  $item = Item::set($key, $value);
+  $value = "TestValue";
+  $version = 42;
+
+  $item = Item::set($key, $value, $version);
 
   // act
   $item->delete();
   $assert = file_exists($item->getFilename());
 
   // assert
-  $x = $item->getFilename();
+  $result = $item->getFilename();
+
   $this->assertFalse($assert);
   $this->assertNull($item->key);
-  $this->assertNull($item->value);
+  $this->assertNull($item->itemEntity);
  }
 
  /** @test */
@@ -55,15 +60,18 @@ class ItemTest extends PHPUnit\Framework\TestCase
  {
   // arrange
   $key = "Test";
-  $value = 42;
-  $item = Item::set($key, $value);
+  $value = "TestValue";
+  $version = 42;
+
+  $item = Item::set($key, $value, $version);
 
   // act
   $assert = Item::get($key);
 
   // assert
   $this->assertEquals($key, $assert->key);
-  $this->assertEquals($value, $assert->value);
+  $this->assertEquals($value, $assert->itemEntity->value);
+  $this->assertEquals($version, $assert->itemEntity->version);
  }
 
  /** @test */
@@ -71,14 +79,16 @@ class ItemTest extends PHPUnit\Framework\TestCase
  {
   // arrange
   $key = "test";
-  $value = 42;
-  $item = Item::set($key, $value);
+    $value = "TestValue";
+  $version = 42;
+  
+  $item = Item::set($key, $value, $version);
 
   // act
   $assert = $item->getFilename();
 
   // assert
-  $this->assertEquals($assert, "datatest/value/test.bin");
+  $this->assertEquals($assert, "datatest/value/test.json");
  }
 
  /** @test */
@@ -121,15 +131,16 @@ class ItemTest extends PHPUnit\Framework\TestCase
  {
   // arrange
   $key = "test";
-  $value = 42;
-  $assert = Item::set($key, $value);
+  $value = "TestValue";
+  $version = 42;
+  $assert = Item::set($key, $value, $version);
   $assert->$value = null;
 
   // act
   $assert->load();
 
   // assert
-  $this->assertEquals($value, $assert->value);
+  $this->assertEquals($value, $assert->itemEntity->value);
  }
 
  /** @test */
@@ -137,8 +148,9 @@ class ItemTest extends PHPUnit\Framework\TestCase
  {
   // arrange
   $key = "test";
-  $value = 42;
-  $assert = Item::set($key, $value);
+  $value = "TestValue";
+  $version = 42;
+  $assert = Item::set($key, $value, $version);
   
   // act
   $result = $assert->isSet();
