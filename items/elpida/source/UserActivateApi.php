@@ -18,9 +18,9 @@ if (isset($_GET[ISALIVE])) {
  Common::exit($httpResponse);
 }
 
-$appname = empty($_COOKIE[APPNAME]) ? "" : $_COOKIE[APPNAME];
-$nickname = empty($_COOKIE[NICKNAME]) ? "" : $_COOKIE[NICKNAME];
-$activationCode = empty($_COOKIE[ACTIVATION_CODE]) ? "" : $_COOKIE[ACTIVATION_CODE];
+$appname = empty($_GET[APPNAME]) ? "" : $_GET[APPNAME];
+$nickname = empty($_GET[NICKNAME]) ? "" : $_GET[NICKNAME];
+$activationCode = empty($_GET[ACTIVATION_CODE]) ? "" : $_GET[ACTIVATION_CODE];
 
 $httpResponse = $userActivateLogic->activeUser($appname, $nickname, $activationCode);
 Common::exit($httpResponse);

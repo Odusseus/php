@@ -24,7 +24,7 @@ class EnvironmentTest extends TestCase
  public function constantVariables()
  {
   return [
-   [DEBUG, "true"],
+   [DEBUG, true],
    [DATA_DIR, "datatest"],
   ];
  }
