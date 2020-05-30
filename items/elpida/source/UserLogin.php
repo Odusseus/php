@@ -12,6 +12,13 @@ class UserLogin {
     // allocate your stuff
   }
 
+  function isSet() {
+    if (isset($this->entity)) {
+     return true;
+    }
+    return false;
+   }
+
   public static function get($appname, $nickname) {
     $instance = new self();    
     $instance->load($appname, $nickname);

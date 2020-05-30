@@ -124,8 +124,8 @@ class UserCreateLogic
    $user = User::set($appname, $nickname, $hashPassword, $email);
    $idMax = new IdMax(MAX_CREATEUSER);
    $idMax->next();
-
-   $link = "http://www.odusseus.org/php/elpida/UserActivateApi.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
+   $host = HOST;
+   $link = "{$host}/UserActivateApi.php?appname={$appname}&nickname={$nickname}&activationcode={$user->entity->activationCode}";
 
    $to = "{$email}";
    $subject = 'activate your account';

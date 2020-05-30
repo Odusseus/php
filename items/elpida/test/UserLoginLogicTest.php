@@ -2,8 +2,13 @@
 use Items\HttpCode;
 use Items\IpCheck;
 use Items\UserLoginLogic;
+use Items\UserCreateLogic;
+use Items\UserActivateLogic;
+use Items\User;
 
 include '/Githup/Odusseus/php/items/elpida/source/UserLoginLogic.php';
+include '/Githup/Odusseus/php/items/elpida/source/UserCreateLogic.php';
+include '/Githup/Odusseus/php/items/elpida/source/UserActivateLogic.php';
 
 class UserLoginLogicTest extends PHPUnit\Framework\TestCase
 {
@@ -246,6 +251,39 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
  public function loginUser_Should_Return_HttpResponse_Intance_With_State_OK_When_User_Is_Login()
  {
   // arrange
+  $userCreateLogic = new UserCreateLogic();
+  $content = '{
+   "appname": "test",
+   "nickname": "nickname",
+   "password": "password",
+   "email": "testemail@mail.org"
+ }';
+ $userCreateLogic->createUser($content); 
+
+ $userActivateLogic = new UserActivateLogic();
+ $appname = "test";
+ $nickname = "nicknameTest";
+ $hashPassword = password_hash("password", PASSWORD_DEFAULT);
+ $email = "email@mail.com";
+ $user = User::set($appname, $nickname, $hashPassword, $email);
+ $activationCode = $user->entity->activationCode;
+ $userActivateLogic->activeUser($appname, $nickname, $activationCode);
+
+ $userLoginLogic = new UserLoginLogic();
+  // Cannot modify header information - headers already sent by (output started at phar://C:/phpunit/phpunit-9.0.1.phar/phpunit/Util/Printer.php:64)
+  $userLoginLogic->test = true;
+
+  // act
+  $result = $userLoginLogic->loginUser($content);
+
+  // assert
+  $this->assertEquals(HttpCode::OK, $result->code);
+ }
+
+ /** @test */
+ public function loginUser_Should_Return_HttpResponse_Not_Found_When_Combination_Appname_Nickname_Is_Not_Found()
+ {
+  // arrange
   $userLoginLogic = new UserLoginLogic();
   // Cannot modify header information - headers already sent by (output started at phar://C:/phpunit/phpunit-9.0.1.phar/phpunit/Util/Printer.php:64)
   $userLoginLogic->test = true;
@@ -260,7 +298,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->loginUser($content);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
  }
 
 }

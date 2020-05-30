@@ -1,5 +1,16 @@
 <?php namespace Items;
 
+/**
+ * @OA\Info(title="Items api", version="1.0")
+ */
+
+/**
+ * @OA\Get(
+ *     path="/UserActivateApi.php?isalive",
+ *     @OA\Response(response="200", description="When is alive.")
+ * )
+ */
+
 require_once("enum/HttpCode.php");
 require_once("Constant.php");
 require_once("UserActivateLogic.php");

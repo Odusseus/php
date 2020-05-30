@@ -21,8 +21,5 @@ if (isset($_GET[ISALIVE])) {
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
 
-$userLoginLogic->loginUser($content);
-
-//Attempt to decode the incoming RAW post data from JSON.
-$decoded = json_decode($content, true);
+$httpResponse = $userLoginLogic->loginUser($content);
 Common::exit($httpResponse);

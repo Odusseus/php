@@ -109,4 +109,35 @@ class UserLoginTest extends PHPUnit\Framework\TestCase
   $this->assertTrue($result);
  }
 
+ /** @test */
+ public function isSet_Should_Return_True_When_entity_Is_Set()
+ {
+  // arrange
+  $appname = "test";
+  $nickname = "testNickname";
+  $userLogin = UserLogin::set($appname, $nickname);
+
+  // act
+  $result = $userLogin->isSet();
+
+  // assert
+  $this->assertTrue($result);
+ }
+
+ /** @test */
+ public function isSet_Should_Return_False_When_entity_Is_Not_Set()
+ {
+  // arrange
+  $userLogin = new UserLogin();
+
+  // act
+  $result = $userLogin->isSet();
+
+  // assert
+  $this->assertFalse($result);
+ }
+
+
+
+
 }

@@ -1,5 +1,12 @@
 <?php namespace Items;
 
+/**
+ * @OA\Get(
+ *     path="/php/elpida/UserCreateApi.php?isalive",
+ *     @OA\Response(response="200", description="When is alive.")
+ * )
+ */
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 

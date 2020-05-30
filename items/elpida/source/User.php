@@ -64,7 +64,7 @@ class User
   file_put_contents($userFilename, $json, LOCK_EX);
  }
 
- function isset() {
+ function isSet() {
   if (isset($this->entity)) {
    return true;
   }
@@ -73,6 +73,9 @@ class User
 
  public function checkHashPassword($password)
  {
+  if(!$this->isSet()){
+    return false;
+  }
   return password_verify($password, $this->entity->hashPassword);
  }
 

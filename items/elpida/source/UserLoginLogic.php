@@ -88,8 +88,15 @@ class UserLoginLogic
   if ($httpResponse->code != HttpCode::OK) {
    return $httpResponse;
   }
+
+  $user = User::get($appname, $nickname);
+  if(!$user->checkHashPassword($password)){
+    $message = "Combination {$appname}/{$nickname} not found.";
+    return new HttpResponse(HttpCode::NOT_FOUND, $message);
+  }
   
   $userLogin = UserLogin::set($appname, $nickname);
+
   $cookie = $userLogin->entity->cookie;
 
   if(!$this->test){
