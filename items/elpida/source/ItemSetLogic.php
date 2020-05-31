@@ -5,10 +5,23 @@ require_once "Constant.php";
 require_once "Cookie.php";
 require_once "HttpResponse.php";
 require_once "Item.php";
+require_once "IpCheck.php";
 require_once "User.php";
 
 class ItemSetLogic
 {
+ public function isIpCheck()
+ {
+  $ipCheck = new IpCheck();
+  if (!$ipCheck->isGood) {
+   $message = "Forbidden, Ip is blacklisted.";
+   return new HttpResponse(HttpCode::FORBIDDEN, $message);
+  } else {
+   $message = SUCCESS;
+   return new HttpResponse(HttpCode::OK, $message);
+  }
+ }
+
  public function getIsAlive()
  {
   return new HttpResponse(HttpCode::OK, STATE_TRUE);
@@ -19,7 +32,7 @@ class ItemSetLogic
   if (empty($cookieValue)) {
    $value = COOKIE;
    $message = "Cookie $value is missing.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
 
   $cookie = Cookie::get($cookieValue);
@@ -30,7 +43,7 @@ class ItemSetLogic
 
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
   if (!$user->isset()) {
-   $message = "User is missing.";
+   $message = "User is not found.";
    return new HttpResponse(HttpCode::NOT_FOUND, $message);
   }
 
@@ -44,13 +57,13 @@ class ItemSetLogic
    if (!Common::checkMaxLength($value)) {
     $maxByte = MAX_BYTE;
     $valueLentgh = strlen($value);
-    $message = "VALUE to long. Value({$valueLentgh}) > max value({$maxByte})";
+    $message = "Item is to long. Value({$valueLentgh}) > max value({$maxByte})";
     return new HttpResponse(HttpCode::NOT_ACCEPTABLE, $message);
    }
   } else {
    $value = VALUE;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
 
   $version = 0;
@@ -63,16 +76,15 @@ class ItemSetLogic
   }
 
   $currentItem = Item::get($user->entity->id);
-  if($currentItem->isSet() and $currentItem->itemEntity->version != $version)
-  {
-    $message = "version $version is obsolete. Refresh the your item.";
-    return new HttpResponse(HttpCode::BAD_REQUEST, $message);
+  if ($currentItem->isSet() and $currentItem->itemEntity->version != $version) {
+   $message = "version $version is obsolete. Refresh the your item.";
+   return new HttpResponse(HttpCode::BAD_REQUEST, $message);
   }
   $version++;
   $item = Item::set($user->entity->id, $value, $version);
   if (!$item->isSet()) {
-   $message = "Item is missing.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   $message = "Item is not saved.";
+   return new HttpResponse(HttpCode::INTERNAL_SERVER_ERROR, $message);
   } else {
    $message = "Item is saved.";
    return new HttpResponse(HttpCode::OK, $message);

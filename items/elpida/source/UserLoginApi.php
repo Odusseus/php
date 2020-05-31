@@ -2,7 +2,15 @@
 
 /**
  * @OA\Get(
- *     path="/php/elpida/UserLoginApi.php?isalive",
+ *     path="/php/elpida/UserLoginApi.php/isalive",
+ *     summary="is Api alive?",
+ *     @OA\Parameter(
+ *       name="isalive",
+ *       @OA\Schema(type="string"),
+ *       in="query",
+ *       description="Check is the methode is alive when string is available in the query.",
+ *       required=false 
+ *       ),
  *     @OA\Response(
  *       response="200",
  *       description="When is alive.")

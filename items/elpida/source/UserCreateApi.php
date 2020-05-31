@@ -1,16 +1,19 @@
 <?php namespace Items;
 
-/**
- * @OA\Info(
- *   title="Items api",
- *   version="1.0",
- *   description="Api to store and get a item for a user and a app.",
- *    )
- */
+require_once "enum/HttpCode.php";
+require_once "UserCreateLogic.php";
 
 /**
  * @OA\Get(
- *     path="/php/elpida/UserCreateApi.php?isalive",
+ *     path="/php/elpida/UserCreateApi.php/isalive",
+ *     summary="is Api alive?",
+ *     @OA\Parameter(
+ *       name="isalive",
+ *       @OA\Schema(type="string"),
+ *       in="query",
+ *       description="Check is the methode is alive when string is available in the query.",
+ *       required=false 
+ *       ),
  *     @OA\Response(
  *       response="200",
  *       description="When is alive.")
@@ -21,7 +24,7 @@
  * @OA\Post(
  *     path="/php/elpida/UserCreateApi.php",
  *     summary="Create a account for a user and a app.",
- *     description="Create a account and send a validation mail.",
+ *     description="Call UserCreateApi with the parameters below to create a account. A email will be send to validate the account",
  *     @OA\RequestBody(
  *         @OA\MediaType(
  *             mediaType="application/json",
@@ -76,10 +79,6 @@
 
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1);
-
-require_once "enum/HttpCode.php";
-require_once "Constant.php";
-require_once "UserCreateLogic.php";
 
 header('Access-Control-Allow-Origin: *');
 

@@ -4,10 +4,23 @@ require_once "enum/HttpCode.php";
 require_once "Constant.php";
 require_once "HttpResponse.php";
 require_once "Item.php";
+require_once "IpCheck.php";
 require_once "User.php";
 
 class ItemGetLogic
 {
+
+  public function isIpCheck()
+ {
+  $ipCheck = new IpCheck();
+  if (!$ipCheck->isGood) {
+   $message = "Forbidden, Ip is blacklisted.";
+   return new HttpResponse(HttpCode::FORBIDDEN, $message);
+  } else {
+   $message = SUCCESS;
+   return new HttpResponse(HttpCode::OK, $message);
+  }
+ }
 
  public function getIsAlive()
  {

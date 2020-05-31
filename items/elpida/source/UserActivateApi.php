@@ -2,7 +2,15 @@
 
 /**
  * @OA\Get(
- *     path="/php/elpida/UserActivateApi.php?isalive",
+ *     path="/php/elpida/UserActivateApi.php/isalive",
+ *     summary="is Api alive?",
+ *     @OA\Parameter(
+ *       name="isalive",
+ *       @OA\Schema(type="string"),
+ *       in="query",
+ *       description="Check is the methode is alive when string is available in the query.",
+ *       required=false 
+ *       ),
  *     @OA\Response(response="200", description="When is alive.")
  * )
  */
@@ -11,6 +19,7 @@
  * @OA\Post(
  *     path="/php/elpida/UserActivateApi.php",
  *     summary="Activate a account",
+ *     description="Call UserActivateApi with the parameters below to activate the account.",
  *     @OA\Parameter(
  *       name="nickname",
  *       in="query",
