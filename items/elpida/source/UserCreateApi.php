@@ -7,6 +7,46 @@
  * )
  */
 
+/**
+ * @OA\Post(
+ *     path="/php/elpida/UserCreateApi.php",
+ *     summary="Create a new account for a user and a app.",
+ *     @OA\RequestBody(
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(
+ *                     property="appname",
+ *                     type="string"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="nickname",
+ *                     type="string"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="password",
+ *                     type="string"
+ *                 ),
+ *                 @OA\Property(
+ *                     property="email",
+ *                     type="string"
+ *                 ),
+ *                 example={
+ *                   "appname": "myApp",
+ *                   "nickname": "myNickname",
+ *                   "password": "myPassword",
+ *                   "email": "my@email.org"
+*                 }
+ *             )
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="OK"
+ *     )
+ * )
+ */
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 

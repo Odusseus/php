@@ -7,4 +7,5 @@ require "Constant.php";
 require SWAGGER_DIR."/autoload.php";
 $openapi = \OpenApi\scan('.');
 header('Content-Type: application/x-yaml');
-echo $openapi->toYaml();
+//echo $openapi->toYaml();
+echo $openapi->toJson();
