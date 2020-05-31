@@ -17,7 +17,7 @@ class UserActivateLogic
    $message = "Forbidden, Ip is blacklisted.";
    return new HttpResponse(HttpCode::FORBIDDEN, $message);
   } else {
-   $message = "OK";
+   $message = SUCCESS;
    return new HttpResponse(HttpCode::OK, $message);
   }
  }
@@ -39,7 +39,7 @@ class UserActivateLogic
     return new HttpResponse(HttpCode::NOT_FOUND, $message);
    }
   }
-  return new HttpResponse(HttpCode::OK, "OK");
+  return new HttpResponse(HttpCode::OK, SUCCESS);
  }
 
  public function checkNickname($nickname)
@@ -49,7 +49,7 @@ class UserActivateLogic
    $message = "$value is missing.";
    return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, "OK");
+  return new HttpResponse(HttpCode::OK, SUCCESS);
  }
 
  public function checkActivationCode($activationCode)

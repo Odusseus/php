@@ -25,7 +25,9 @@ class EnvironmentTest extends TestCase
  {
   return [
    [DEBUG, true],
-   [DATA_DIR, "datatest"],
+   [DATA_DIR, "sb/datatest"],
+   [HOST, "http://local.elpida.odusseus.org"],
+   [SWAGGER_DIR, "/Swagger/vendor"]
   ];
  }
 }

@@ -88,7 +88,7 @@ class ItemTest extends PHPUnit\Framework\TestCase
   $assert = $item->getFilename();
 
   // assert
-  $this->assertEquals($assert, "datatest/value/test.json");
+  $this->assertEquals($assert, "sb/datatest/value/test.json");
  }
 
  /** @test */

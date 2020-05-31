@@ -20,7 +20,7 @@ class UserCreateLogic
    $message = "Forbidden, Ip is blacklisted.";
    return new HttpResponse(HttpCode::FORBIDDEN, $message);
   } else {
-   $message = "OK";
+   $message = SUCCESS;
    return new HttpResponse(HttpCode::OK, $message);
   }
  }
@@ -52,7 +52,7 @@ class UserCreateLogic
     return new HttpResponse(HttpCode::NOT_FOUND, $message);
    }
   }
-  return new HttpResponse(HttpCode::OK, "OK");
+  return new HttpResponse(HttpCode::OK, SUCCESS);
  }
 
  public function checkNickname($nickname)
@@ -62,7 +62,7 @@ class UserCreateLogic
    $message = "$value is missing.";
    return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, "OK");
+  return new HttpResponse(HttpCode::OK, SUCCESS);
  }
 
  public function checkPassword($password)
@@ -72,7 +72,7 @@ class UserCreateLogic
    $message = "$value is missing.";
    return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, "OK");
+  return new HttpResponse(HttpCode::OK, SUCCESS);
  }
 
  public function checkEmail($email)
@@ -82,7 +82,7 @@ class UserCreateLogic
    $message = "$value is missing.";
    return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, "OK");
+  return new HttpResponse(HttpCode::OK, SUCCESS);
  }
 
  public function createUser($content)
@@ -118,7 +118,7 @@ class UserCreateLogic
 
   $filename = DATA_DIR . "/" . JSON_DIR . "/{$appname}-{$nickname}.json";
   if (file_exists($filename)) {
-   $message = "Create user {$nickname} is forbidden.";
+   $message = "User {$nickname} already exists.";
    return new HttpResponse(HttpCode::FORBIDDEN, $message);
   } else {
    $user = User::set($appname, $nickname, $hashPassword, $email);
@@ -151,6 +151,6 @@ class UserCreateLogic
    }
   }
 
-  return new HttpResponse(HttpCode::OK, "OK");
+  return new HttpResponse(HttpCode::OK, SUCCESS);
  }
 }

@@ -30,7 +30,7 @@ class EntitiesTest extends PHPUnit\Framework\TestCase
 
   // assert
   $this->assertEquals($entityname, $assert->entityname);
-  $this->assertEquals("datatest/json/Capital.json", $assert->filename);
+  $this->assertEquals("sb/datatest/json/Capital.json", $assert->filename);
  }
 
  /** @test */

@@ -3,14 +3,17 @@
 /**
  * @OA\Get(
  *     path="/php/elpida/UserCreateApi.php?isalive",
- *     @OA\Response(response="200", description="When is alive.")
+ *     @OA\Response(
+ *       response="200",
+ *       description="When is alive.")
  * )
  */
 
 /**
  * @OA\Post(
  *     path="/php/elpida/UserCreateApi.php",
- *     summary="Create a new account for a user and a app.",
+ *     summary="Create a account for a user and a app.",
+ *     description="Create a account and send a validation mail.",
  *     @OA\RequestBody(
  *         @OA\MediaType(
  *             mediaType="application/json",
@@ -42,13 +45,29 @@
  *     ),
  *     @OA\Response(
  *         response=200,
- *         description="OK"
- *     )
+ *         description="Success when account is created."
+ *     ),
+ *     @OA\Response(
+ *         response=403,
+ *         description="FORBIDDEN when Ip is blacklisted or when User already exists.."
+ *     ),
+ *     @OA\Response(
+ *         response=423,
+ *         description="LOCKED when Maximum users is reached."
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="NOT_FOUND when APPNAME is  not found."
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="UNPROCESSABLE_ENTITY when NICKNAME/PASSWORD/EMAIL/APPNAME is missing."
+ *     ),
  * )
  */
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 
 require_once "enum/HttpCode.php";
 require_once "Constant.php";

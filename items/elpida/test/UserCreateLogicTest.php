@@ -41,7 +41,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
 
   // assert
   $this->assertEquals(HttpCode::OK, $result->code);
-  $this->assertEquals("OK", $result->message);
+  $this->assertEquals(SUCCESS, $result->message);
  }
 
 /** @test */
@@ -147,7 +147,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userCreateLogic = new UserCreateLogic();
   $appname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userCreateLogic->checkAppname($appname);
@@ -180,7 +180,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userCreateLogic = new UserCreateLogic();
   $nickname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userCreateLogic->checkNickname($nickname);
@@ -213,7 +213,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userCreateLogic = new UserCreateLogic();
   $nickname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userCreateLogic->checkPassword($nickname);
@@ -246,7 +246,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userCreateLogic = new UserCreateLogic();
   $nickname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userCreateLogic->checkEmail($nickname);

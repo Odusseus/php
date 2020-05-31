@@ -41,7 +41,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
 
   // assert
   $this->assertEquals(HttpCode::OK, $result->code);
-  $this->assertEquals("OK", $result->message);
+  $this->assertEquals(SUCCESS, $result->message);
  }
 
 /** @test */
@@ -113,7 +113,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userActivateLogic = new UserActivateLogic();
   $appname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userActivateLogic->checkAppname($appname);
@@ -146,7 +146,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userActivateLogic = new UserActivateLogic();
   $nickname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userActivateLogic->checkNickname($nickname);

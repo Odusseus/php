@@ -57,7 +57,7 @@ class UserLoginTest extends PHPUnit\Framework\TestCase
   $result = $userLogin->getFilename($appname, $nickname);
 
   // assert
-  $this->assertEquals("datatest/json/test-testNickname-login.json", $result);
+  $this->assertEquals("sb/datatest/json/test-testNickname-login.json", $result);
  }
 
  /** @test */

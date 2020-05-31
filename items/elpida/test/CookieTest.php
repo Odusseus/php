@@ -99,7 +99,7 @@ class CookieTest extends PHPUnit\Framework\TestCase
   $assert = Cookie::getFilename($cookie);
 
   // assert
-  $this->assertEquals($assert, "datatest/json/123-cookie.json");
+  $this->assertEquals($assert, "sb/datatest/json/123-cookie.json");
  }
 
  /** @test */

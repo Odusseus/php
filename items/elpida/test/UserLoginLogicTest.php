@@ -45,7 +45,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
 
   // assert
   $this->assertEquals(HttpCode::OK, $result->code);
-  $this->assertEquals("OK", $result->message);
+  $this->assertEquals(SUCCESS, $result->message);
  }
 
 /** @test */
@@ -117,7 +117,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userLoginLogic = new UserLoginLogic();
   $appname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userLoginLogic->checkAppname($appname);
@@ -150,7 +150,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userLoginLogic = new UserLoginLogic();
   $nickname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userLoginLogic->checkNickname($nickname);
@@ -183,7 +183,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $userLoginLogic = new UserLoginLogic();
   $nickname = "test";
-  $message = "OK";
+  $message = SUCCESS;
 
   // act
   $result = $userLoginLogic->checkPassword($nickname);

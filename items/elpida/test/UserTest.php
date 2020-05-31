@@ -73,7 +73,7 @@ class UserTest extends PHPUnit\Framework\TestCase
   $assert = $user->getFilename($appname, $nickname);
 
   // assert
-  $this->assertEquals("datatest/json/$appname-$nickname.json", $assert);
+  $this->assertEquals("sb/datatest/json/$appname-$nickname.json", $assert);
  }
 
  /** @test */

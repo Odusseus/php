@@ -42,6 +42,7 @@ class ConstantTest extends TestCase
       [PASSWORD, "password"],
       [STATE_TRUE, "true"],
       [STATE_FALSE, "false"],
+      [SUCCESS, "Success"],
       [USER_DIR, "user"],
       [VALUE, "value"],
       [VERSION, "version"],
