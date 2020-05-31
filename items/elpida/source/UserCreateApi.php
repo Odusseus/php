@@ -11,7 +11,7 @@ require_once "UserCreateLogic.php";
  *       name="isalive",
  *       @OA\Schema(type="string"),
  *       in="query",
- *       description="Check is the methode is alive when string is available in the query.",
+ *       description="Check if the methode is alive when string is available in the query.",
  *       required=false 
  *       ),
  *     @OA\Response(
