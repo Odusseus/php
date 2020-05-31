@@ -2,7 +2,7 @@
 
 /**
  * @OA\Get(
- *     path="/UserActivateApi.php?isalive",
+ *     path="/php/elpida/UserActivateApi.php?isalive",
  *     @OA\Response(response="200", description="When is alive.")
  * )
  */
