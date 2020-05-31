@@ -5,3 +5,4 @@
 define("DEBUG", true);
 define("DATA_DIR", "sb/datatest");
 define("HOST", "http://local.elpida.odusseus.org");
+define("SWAGGER_DIR", "/Swagger/vendor");

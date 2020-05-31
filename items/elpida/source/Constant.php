@@ -18,9 +18,9 @@
     define("PASSWORD", "password");
     define("STATE_TRUE", "true");
     define("STATE_FALSE", "false");
+    define("TXT_DIR", "txt");
     define("USER_DIR", "user");
     define("VALUE", "value");
     define("VERSION", "version");
     define("VALUE_DIR", "value");
-    define("TXT_DIR", "txt");
 ?>
