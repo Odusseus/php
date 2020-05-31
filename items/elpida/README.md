@@ -1,18 +1,22 @@
 # [README](https://www.odusseus.org/php/elpida/README.md)
-# Item System
+# Item's API System
 Save or get a item. Can be use by a app or site.
-The item is a binary value like { "value":"toto tata titi tutu"}
+The item is a binary value like { "value":"my values..."}
+
+# Swagger
+[Item's API Swagger](https://www.odusseus.org/php/elpida/Swagger.php)
+<br />
+[swagger editor](https://editor.swagger.io/)
 
 ## Api's
 1. UserCreateApi
 <br />
 https://www.odusseus.org/php/elpida/UserCreateApi.php
-
+<br />
 a. isalive (GET)
 <br />
 https://www.odusseus.org/php/elpida/userCreateApi.php?isalive
-
-
+<br />
 b. new User (POST)
 <br />
 https://www.odusseus.org/php/elpida/userCreateApi.php
@@ -33,7 +37,7 @@ https://www.odusseus.org/php/elpida/userCreateApi.php
 a. isalive (GET)
 <br/>
 https://www.odusseus.org/php/elpida/UserActivateApi.php?isalive
-
+<br/>
 b. user activate is account (POST)
 <br />
 https://www.odusseus.org/php/elpida/UserActivateApi.php
@@ -45,7 +49,7 @@ https://www.odusseus.org/php/elpida/UserActivateApi.php
 a. isalive (GET)
 <br />
 https://www.odusseus.org/php/elpida/UserLoginApi.php?isalive
-
+<br />
 b. User log in (POST)
 <br />
 https://www.odusseus.org/php/elpida/UserLoginApi.php
@@ -64,7 +68,7 @@ https://www.odusseus.org/php/elpida/UserLoginApi.php
 a. isalive (GET)
 <br />
 https://www.odusseus.org/php/elpida/ItemSetApi.php?isalive
-
+<br />
 b. set a item (POST)
 <br />
 https://www.odusseus.org/php/elpida/ItemSetApi.php
@@ -80,7 +84,7 @@ https://www.odusseus.org/php/elpida/ItemSetApi.php
 a. isalive (GET)
 <br />
 https://www.odusseus.org/php/elpida/ItemGetApi.php?isalive
-
+<br />
 b. get a itiem (GET)
 <br />
 https://www.odusseus.org/php/elpida/ItemGetApi.php
