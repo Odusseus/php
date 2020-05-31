@@ -1,6 +1,14 @@
 <?php namespace Items;
 
 /**
+ * @OA\Info(
+ *   title="Items api",
+ *   version="1.0",
+ *   description="Api to store and get a item for a user and a app.",
+ *    )
+ */
+
+/**
  * @OA\Get(
  *     path="/php/elpida/UserCreateApi.php?isalive",
  *     @OA\Response(
