@@ -83,7 +83,7 @@ header('Access-Control-Allow-Origin: *');
 $itemSetogic = new ItemSetLogic();
 $httpResponse = $itemSetogic->isIpCheck();
 
-if ($httpResponse->code != HttpCode::OK) {
+if ($httpResponse->statusCode != HttpCode::OK) {
   Common::exit($httpResponse);
  }
 

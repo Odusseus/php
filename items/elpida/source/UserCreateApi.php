@@ -16,7 +16,24 @@ require_once "UserCreateLogic.php";
  *       ),
  *     @OA\Response(
  *       response="200",
- *       description="When is alive.")
+ *       description="When is alive.",
+ *       @OA\Schema(
+ *         @OA\Property(
+ *             property="code",
+ *             type="number",
+ *             description="Http status code.",
+ *               @OA\Property(
+ *                   property="message",
+ *                   type="string",
+ *                   description="The message."
+ *               ),
+ *               example={
+ *                 "code": 200,
+ *                 "message": "true"
+ *               }
+ *         )
+ *       )
+ *    )
  * )
  */
 
@@ -86,7 +103,7 @@ $userCreateLogic = new UserCreateLogic();
 
 $httpResponse = $userCreateLogic->isIpCheck();
 
-if ($httpResponse->code != HttpCode::OK) {
+if ($httpResponse->statusCode != HttpCode::OK) {
  Common::exit($httpResponse);
 }
 
@@ -96,7 +113,7 @@ if (isset($_GET[ISALIVE])) {
 }
 
 $httpResponse = $userCreateLogic->isIdMaxCheck();
-if ($httpResponse->code != HttpCode::OK) {
+if ($httpResponse->statusCode != HttpCode::OK) {
  Common::exit($httpResponse);
 }
 

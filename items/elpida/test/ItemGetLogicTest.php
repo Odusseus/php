@@ -41,7 +41,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getIsAlive();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(STATE_TRUE, $result->message);
  }
 
@@ -58,7 +58,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getItem($cookieValue);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -75,7 +75,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getItem($cookieValue);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -91,7 +91,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getItem($cookieValue);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -110,7 +110,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getItem($cookie->entity->cookie);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -133,7 +133,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getItem($cookie->entity->cookie);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -157,7 +157,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getItem($cookie->entity->cookie);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code, );
+  $this->assertEquals(HttpCode::OK, $result->statusCode, );
   $this->assertEquals($message, $result->message);
  }
 
@@ -173,7 +173,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getLength($item);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -189,7 +189,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getLength($item);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -204,7 +204,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemGetLogic->getMaxLength();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 }

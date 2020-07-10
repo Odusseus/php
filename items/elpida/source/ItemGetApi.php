@@ -90,7 +90,7 @@ $itemGetLogic = new ItemGetLogic();
 
 $httpResponse = $itemGetLogic->isIpCheck();
 
-if ($httpResponse->code != HttpCode::OK) {
+if ($httpResponse->statusCode != HttpCode::OK) {
  Common::exit($httpResponse);
 }
 
@@ -107,7 +107,7 @@ if (isset($_GET[MAX_LENGTH])) {
 $cookie = empty($_COOKIE[COOKIE]) ? "" : $_COOKIE[COOKIE];
 $httpResponse = $itemGetLogic->getItem($cookie);
 
-if ($httpResponse->code != HttpCode::OK) {
+if ($httpResponse->statusCode != HttpCode::OK) {
  Common::exit($httpResponse);
 }
 

@@ -44,7 +44,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->isIpCheck();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(SUCCESS, $result->message);
  }
 
@@ -60,7 +60,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->isIpCheck();
 
   // assert
-  $this->assertEquals(HttpCode::FORBIDDEN, $result->code);
+  $this->assertEquals(HttpCode::FORBIDDEN, $result->statusCode);
   $this->assertEquals("Forbidden, Ip is blacklisted.", $result->message);
  }
 
@@ -74,7 +74,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->getIsAlive();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(STATE_TRUE, $result->message);
  }
 
@@ -91,7 +91,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -107,7 +107,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -123,7 +123,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -140,7 +140,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->checkNickname($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -156,7 +156,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->checkNickname($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -173,7 +173,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->checkPassword($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -189,7 +189,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->checkPassword($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -208,7 +208,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->loginUser($content);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -226,7 +226,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->loginUser($content);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -244,7 +244,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->loginUser($content);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
  /** @test */
@@ -277,7 +277,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->loginUser($content);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
  }
 
  /** @test */
@@ -298,7 +298,7 @@ class UserLoginLogicTest extends PHPUnit\Framework\TestCase
   $result = $userLoginLogic->loginUser($content);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
  }
 
 }

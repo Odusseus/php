@@ -73,19 +73,19 @@ class UserLoginLogic
 
   $appname = Common::getJsonValue($decoded, APPNAME);
   $httpResponse = $this->checkAppname($appname);
-  if ($httpResponse->code != HttpCode::OK) {
+  if ($httpResponse->statusCode != HttpCode::OK) {
    return $httpResponse;
   }
 
   $nickname = Common::getJsonValue($decoded, NICKNAME);
   $httpResponse = $this->checkNickname($nickname);
-  if ($httpResponse->code != HttpCode::OK) {
+  if ($httpResponse->statusCode != HttpCode::OK) {
    return $httpResponse;
   }
 
   $password = Common::getJsonValue($decoded, PASSWORD);
   $httpResponse = $this->checkPassword($password);
-  if ($httpResponse->code != HttpCode::OK) {
+  if ($httpResponse->statusCode != HttpCode::OK) {
    return $httpResponse;
   }
 

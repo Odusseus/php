@@ -11,12 +11,12 @@ class HttpCodeTest extends TestCase
   * @dataProvider httpCodeVariables
   *
   */
- public function HttpCode_Should_Return_Value($code, $assert)
+ public function HttpCode_Should_Return_Value($statusCode, $assert)
  {
  // arrange
 
  // act
- $result = constant("Items\HttpCode::$code");
+ $result = constant("Items\HttpCode::$statusCode");
 
 
   //assert

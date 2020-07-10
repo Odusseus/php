@@ -3,12 +3,12 @@
 class HttpResponse
 {
 
- public $code = 0,
+ public $statusCode = 0,
  $message = "";
 
- public function __construct($code, $message)
+ public function __construct($statusCod, $message)
  {
-  $this->code = $code;
+  $this->statusCode = $statusCode;
   $this->message = $message;
  }
 }

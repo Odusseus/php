@@ -40,7 +40,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->isIpCheck();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(SUCCESS, $result->message);
  }
 
@@ -56,7 +56,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->isIpCheck();
 
   // assert
-  $this->assertEquals(HttpCode::FORBIDDEN, $result->code);
+  $this->assertEquals(HttpCode::FORBIDDEN, $result->statusCode);
   $this->assertEquals("Forbidden, Ip is blacklisted.", $result->message);
  }
 
@@ -70,7 +70,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->getIsAlive();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(STATE_TRUE, $result->message);
  }
 
@@ -87,7 +87,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -103,7 +103,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -119,7 +119,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -136,7 +136,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->checkNickname($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -152,7 +152,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->checkNickname($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -169,7 +169,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->activeUser($appname, $nickname, $activationCode);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -185,7 +185,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->activeUser($appname, $nickname, $activationCode);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -201,7 +201,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->activeUser($appname, $nickname, $activationCode);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -218,7 +218,7 @@ class UserActivateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userActivateLogic->activeUser($appname, $nickname, $activationCode);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -241,7 +241,7 @@ public function activeUser_Should_Return_HttpResponse_Intance_With_State_OK_When
  $result = $userActivateLogic->activeUser($appname, $nickname, $activationCode);
 
  // assert
- $this->assertEquals(HttpCode::OK, $result->code);
+ $this->assertEquals(HttpCode::OK, $result->statusCode);
  $this->assertEquals($message, $result->message);
 }
 
@@ -265,7 +265,7 @@ public function activeUser_Should_Return_HttpResponse_Intance_With_State_NOT_FOU
  $result = $userActivateLogic->activeUser($appname, $nickname, $activationCode);
 
  // assert
- $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+ $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
  $this->assertEquals($message, $result->message);
 }
 

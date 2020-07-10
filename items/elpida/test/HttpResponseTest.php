@@ -9,14 +9,14 @@ class HttpResponseTest extends PHPUnit\Framework\TestCase
  public function New_HttpResponse_Return_A_Instance_From_HttpResponse()
  {
   // arrange
-  $code = 100;
+  $statusCode = 100;
   $message = "dummy message";
 
   // act
-  $assert = new HttpResponse($code, $message);
+  $assert = new HttpResponse($statusCode, $message);
 
   // assert
-  $this->assertEquals($code, $assert->code);
+  $this->assertEquals($statusCode, $assert->statusCode);
   $this->assertEquals($message, $assert->message);
  }
 }

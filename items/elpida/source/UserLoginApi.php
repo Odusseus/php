@@ -74,7 +74,7 @@ header('Access-Control-Allow-Origin: *');
 $userLoginLogic = new UserLoginLogic();
 $httpResponse = $userLoginLogic->isIpCheck();
 
-if ($httpResponse->code != HttpCode::OK) {
+if ($httpResponse->statusCode != HttpCode::OK) {
  Common::exit($httpResponse);
 }
 

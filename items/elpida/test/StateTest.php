@@ -11,12 +11,12 @@ class StateTest extends TestCase
   * @dataProvider stateVariables
   *
   */
- public function state_Should_Return_Value($code, $assert)
+ public function state_Should_Return_Value($statusCode, $assert)
  {
  // arrange
 
  // act
- $result = constant("Items\State::$code");
+ $result = constant("Items\State::$statusCode");
 
 
   //assert

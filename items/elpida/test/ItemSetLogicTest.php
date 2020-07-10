@@ -40,7 +40,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemSetLogic->getIsAlive();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(STATE_TRUE, $result->message);
  }
 
@@ -58,7 +58,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemSetLogic->setItem($cookieValue, $content);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -76,7 +76,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemSetLogic->setItem($cookieValue, $content);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -93,7 +93,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemSetLogic->setItem($cookieValue, $content);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -113,7 +113,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemSetLogic->setItem($cookie->entity->cookie, $content);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -137,7 +137,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemSetLogic->setItem($cookie->entity->cookie, $content);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code, );
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode, );
   $this->assertEquals($message, $result->message);
  }
 
@@ -161,7 +161,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemSetLogic->setItem($cookie->entity->cookie, $content);
 
   // assert
-  $this->assertEquals(HttpCode::BAD_REQUEST, $result->code, );
+  $this->assertEquals(HttpCode::BAD_REQUEST, $result->statusCode, );
   $this->assertEquals($message, $result->message);
  }
 
@@ -184,7 +184,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   $result = $itemSetLogic->setItem($cookie->entity->cookie, $content);  
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code, );
+  $this->assertEquals(HttpCode::OK, $result->statusCode, );
   $this->assertEquals($message, $result->message);  
  } 
 }

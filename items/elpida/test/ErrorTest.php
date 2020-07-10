@@ -11,12 +11,12 @@ class ErrorTest extends TestCase
   * @dataProvider errorVariables
   *
   */
- public function Error_Should_Return_Value($code, $assert)
+ public function Error_Should_Return_Value($statusCode, $assert)
  {
  // arrange
 
  // act
- $result = constant("Items\Error::$code");
+ $result = constant("Items\Error::$statusCode");
 
 
   //assert

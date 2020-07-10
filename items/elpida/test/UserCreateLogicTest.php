@@ -40,7 +40,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->isIpCheck();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(SUCCESS, $result->message);
  }
 
@@ -56,7 +56,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->isIpCheck();
 
   // assert
-  $this->assertEquals(HttpCode::FORBIDDEN, $result->code);
+  $this->assertEquals(HttpCode::FORBIDDEN, $result->statusCode);
   $this->assertEquals("Forbidden, Ip is blacklisted.", $result->message);
  }
 
@@ -70,7 +70,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->getIsAlive();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(STATE_TRUE, $result->message);
  }
 
@@ -84,7 +84,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->isIdMaxCheck();
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals(STATE_TRUE, $result->message);
  }
 
@@ -104,7 +104,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->isIdMaxCheck();
 
   // assert
-  $this->assertEquals(HttpCode::LOCKED, $result->code);
+  $this->assertEquals(HttpCode::LOCKED, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -121,7 +121,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -137,7 +137,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->code);
+  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -153,7 +153,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkAppname($appname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -170,7 +170,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkNickname($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -186,7 +186,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkNickname($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -203,7 +203,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkPassword($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -219,7 +219,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkPassword($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -236,7 +236,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkEmail($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->code);
+  $this->assertEquals(HttpCode::UNPROCESSABLE_ENTITY, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -252,7 +252,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->checkEmail($nickname);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 
@@ -272,7 +272,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->createUser($content);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -291,7 +291,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->createUser($content);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -310,7 +310,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->createUser($content);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -329,7 +329,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->createUser($content);
 
   // assert
-  $this->assertNotEquals(HttpCode::OK, $result->code);
+  $this->assertNotEquals(HttpCode::OK, $result->statusCode);
  }
 
 /** @test */
@@ -348,7 +348,7 @@ class UserCreateLogicTest extends PHPUnit\Framework\TestCase
   $result = $userCreateLogic->createUser($content);
 
   // assert
-  $this->assertEquals(HttpCode::OK, $result->code);
+  $this->assertEquals(HttpCode::OK, $result->statusCode);
  }
 
 }

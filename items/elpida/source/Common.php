@@ -2,6 +2,7 @@
 
 require_once("Environment.php");
 require_once("Constant.php");
+require_once("enum/HttpCode.php");
 
 class Common
 {
@@ -64,8 +65,10 @@ class Common
  {
    if(isset($httpResponse))
    {
-     http_response_code($httpResponse->code);      
-     exit($httpResponse->message);
+     http_response_code($httpResponse->statusCode);
+     $message = json_encode($httpResponse, JSON_FORCE_OBJECT);
+     exit($message);
    }
+   exit(HttpCode::OK);
  }
 }

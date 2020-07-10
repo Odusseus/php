@@ -66,17 +66,17 @@ class UserActivateLogic
  {
 
   $httpResponse = $this->checkAppname($appname);
-  if ($httpResponse->code != HttpCode::OK) {
+  if ($httpResponse->statusCode != HttpCode::OK) {
    return $httpResponse;
   }
 
   $httpResponse = $this->checkNickname($nickname);
-  if ($httpResponse->code != HttpCode::OK) {
+  if ($httpResponse->statusCode != HttpCode::OK) {
    return $httpResponse;
   }
 
   $httpResponse = $this->checkActivationCode($activationCode);
-  if ($httpResponse->code != HttpCode::OK) {
+  if ($httpResponse->statusCode != HttpCode::OK) {
    return $httpResponse;
   }
 
