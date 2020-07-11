@@ -84,7 +84,7 @@ require_once "Constant.php";
 require_once "ItemGetLogic.php";
 require_once "Common.php";
 
-header('Access-Control-Allow-Origin: *');
+//header('Access-Control-Allow-Origin: http://local.elpida.odusseus.org:3000');
 
 $itemGetLogic = new ItemGetLogic();
 
@@ -100,18 +100,18 @@ if (isset($_GET[ISALIVE])) {
 }
 
 if (isset($_GET[MAX_LENGTH])) {
- $httpResponse = $itemGetLogic->getMaxLength();
- Common::exit($httpResponse);
-}
+  $httpResponse = $itemGetLogic->getMaxLength();
+  Common::exit($httpResponse);
+ }
 
 $cookie = empty($_COOKIE[COOKIE]) ? "" : $_COOKIE[COOKIE];
 $httpResponse = $itemGetLogic->getItem($cookie);
 
 if ($httpResponse->statusCode != HttpCode::OK) {
- Common::exit($httpResponse);
+  Common::exit($httpResponse);
 }
 
-if (isset($_GET[ITEMLENGTH])) {
+  if (isset($_GET[ITEMLENGTH])) {
  $httpResponse = $itemGetLogic->getLength($httpResponse->message);
 }
 

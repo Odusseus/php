@@ -47,10 +47,10 @@ class ItemGetLogic
     return new HttpResponse(HttpCode::NOT_FOUND, $message);
   }
   $item = Item::get($user->entity->id);
-  if (!$item->isSet()) {
-   $message = "Item is missing.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
-  }
+//  if (!$item->isSet()) {
+//   $message = "Item is missing.";
+//   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+//  }
 
   $itemGetRespons = $item->getJsonGetRespons();
   return new HttpResponse(HttpCode::OK, $itemGetRespons);
@@ -58,6 +58,7 @@ class ItemGetLogic
 
  public function getLength($item)
  {
+   if($item == 'null'){$item = '';}
   $length = strlen($item);
   $percent = 0;
   if ($length > 0 && MAX_BYTE > 0) {

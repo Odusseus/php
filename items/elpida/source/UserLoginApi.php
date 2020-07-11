@@ -69,7 +69,7 @@ require_once "enum/HttpCode.php";
 require_once "Constant.php";
 require_once "UserLoginLogic.php";
 
-header('Access-Control-Allow-Origin: *');
+//header('Access-Control-Allow-Origin: *');
 
 $userLoginLogic = new UserLoginLogic();
 $httpResponse = $userLoginLogic->isIpCheck();
