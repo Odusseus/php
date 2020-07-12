@@ -76,8 +76,8 @@ class ItemSetLogic
   }
 
   $currentItem = Item::get($user->entity->id);
-  if ($currentItem->isSet() and $currentItem->itemEntity->version != $version) {
-   $message = "version $version is obsolete. Refresh the your item.";
+  if ($currentItem->isSet() and $currentItem->itemEntity->version > $version) {
+   $message = "version $version is obsolete. Refresh your item.";
    return new HttpResponse(HttpCode::BAD_REQUEST, $message);
   }
   $version++;
