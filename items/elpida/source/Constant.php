@@ -19,6 +19,7 @@
     define("STATE_TRUE", "true");
     define("STATE_FALSE", "false");
     define("SUCCESS", "Success");
+    define("TIMEOUT", 3600); //secondes
     define("TXT_DIR", "txt");
     define("USER_DIR", "user");
     define("VALUE", "value");

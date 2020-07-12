@@ -95,13 +95,8 @@ class UserLoginLogic
   $userLogin = UserLogin::set($appname, $nickname);
 
   $cookie = $userLogin->entity->cookie;
+  setcookie(COOKIE, $cookie, time() + TIMEOUT);
 
-    $domain = '*.elpida.odusseus.org';//parse_url($http_referer, PHP_URL_HOST);
-    //$statusCoolie = setcookie(COOKIE, $cookie, time() + 3600, $domain);
-    //setcookie(COOKIE, $cookie, time() + 3600, $domain);
-    //setcookie(COOKIE, $cookie, time() + 3600, '', $domain);
-    setcookie(COOKIE, $cookie, time() + 36000);
-  
   $message = "User is loged in.";
   return new HttpResponse(HttpCode::OK, $message);
  }
