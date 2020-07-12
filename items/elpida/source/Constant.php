@@ -8,7 +8,8 @@
     define("ID", "id");
     define("BADIP", "badip");
     define("ITEMLENGTH", "itemlength");
-    define("ISALIVE", "isalive");
+    define("IS_ALIVE", "isalive");
+    define("IS_COOKIE_PERMANENT", "iscookiepermanent"); //secondes
     define("JSON_DIR", "json");
     define("MAIL_DIR", "mail");
     define("MAX_BYTE", 10000);
@@ -19,7 +20,8 @@
     define("STATE_TRUE", "true");
     define("STATE_FALSE", "false");
     define("SUCCESS", "Success");
-    define("TIMEOUT", 3600); //secondes
+    define("COOKIE_TIMEOUT", 3600); // The cookie will expire when the browser closes.
+    define("COOKIE_PERMANENT", 315360000); // (10 * 365 * 24 * 60 * 60)) = 10 years.
     define("TXT_DIR", "txt");
     define("USER_DIR", "user");
     define("VALUE", "value");

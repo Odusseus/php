@@ -87,7 +87,7 @@ if ($httpResponse->statusCode != HttpCode::OK) {
   Common::exit($httpResponse);
  }
 
-if (isset($_GET[ISALIVE])) {
+if (isset($_GET[IS_ALIVE])) {
  $httpResponse = $itemSetogic->getIsAlive();
  Common::exit($httpResponse);
 }

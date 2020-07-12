@@ -31,7 +31,7 @@ class ConstantTest extends TestCase
       [EMAIL, "email"],
       [ID, "id"],
       [BADIP, "badip"],      
-      [ISALIVE, "isalive"],
+      [IS_ALIVE, "isalive"],
       [ITEMLENGTH, "itemlength"],
       [JSON_DIR, "json"],
       [MAIL_DIR, "mail"],

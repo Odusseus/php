@@ -95,7 +95,16 @@ class UserLoginLogic
   $userLogin = UserLogin::set($appname, $nickname);
 
   $cookie = $userLogin->entity->cookie;
-  setcookie(COOKIE, $cookie, time() + TIMEOUT);
+  $isCookiePermanent = Common::getJsonValue($decoded, IS_COOKIE_PERMANENT);
+
+  if($isCookiePermanent) {
+    $cookieTimeout = COOKIE_PERMANENT;
+  }
+  else {
+    $cookieTimeout = COOKIE_TIMEOUT;
+  }
+  
+  setcookie(COOKIE, $cookie, time() + $cookieTimeout);
 
   $message = "User is loged in.";
   return new HttpResponse(HttpCode::OK, $message);
