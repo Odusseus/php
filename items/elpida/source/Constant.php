@@ -26,5 +26,6 @@
     define("USER_DIR", "user");
     define("VALUE", "value");
     define("VERSION", "version");
+    define("VERSION_CHECK_ENABLED", false);
     define("VALUE_DIR", "value");
 ?>

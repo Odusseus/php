@@ -37,8 +37,8 @@ class ItemSetLogic
 
   $cookie = Cookie::get($cookieValue);
   if (empty($cookie)) {
-   $message = "Cookie $cookieValue is not found.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   $message = "Cookie $cookieValue is unauthorised.";
+   return new HttpResponse(HttpCode::UNAUTHORIZED, $message);
   }
 
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
@@ -76,7 +76,7 @@ class ItemSetLogic
   }
 
   $currentItem = Item::get($user->entity->id);
-  if ($currentItem->isSet() and $currentItem->itemEntity->version > $version) {
+  if ($currentItem->isSet() and ( !VERSION_CHECK_ENABLED || $currentItem->itemEntity->version > $version)) {
    $message = "version $version is obsolete. Refresh your item.";
    return new HttpResponse(HttpCode::BAD_REQUEST, $message);
   }

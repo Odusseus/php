@@ -71,7 +71,7 @@ class Common
    if(isset($httpResponse))
    {
      http_response_code($httpResponse->statusCode);
-     header('Access-Control-Allow-Credentials: true');
+     header("Access-Control-Allow-Credentials: true");
      header("Access-Control-Allow-Origin: {$AccessControlAllowOrigin}");
      
      $message = json_encode($httpResponse, JSON_FORCE_OBJECT);

@@ -80,18 +80,18 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
  }
 
  /** @test */
- public function getItem_Should_Return_HttpResponse_Intance_With_State_Not_Found_When_Cookiefile_Is_Missing()
+ public function getItem_Should_Return_HttpResponse_Intance_With_State_Unauthorized_When_Cookiefile_Is_Missing()
  {
   // arrange
   $itemGetLogic = new ItemGetLogic();
   $cookieValue = "123";
-  $message = "Cookie $cookieValue is not found.";
+  $message = "Cookie $cookieValue is unauthorised.";
 
   // act
   $result = $itemGetLogic->getItem($cookieValue);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
+  $this->assertEquals(HttpCode::UNAUTHORIZED, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 

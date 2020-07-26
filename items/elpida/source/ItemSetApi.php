@@ -51,6 +51,10 @@
  *         response=400,
  *         description="BAD_REQUEST when version of the item is obsolete."
  *     ),
+       * @OA\Response(
+ *         response=401,
+ *         description="UNAUTHORIZED  when cookie is unauthorised of not found."
+ *     ),
  *     @OA\Response(
  *         response=403,
  *         description="FORBIDDEN when Ip is blacklisted or when User already exists.."

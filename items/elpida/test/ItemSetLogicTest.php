@@ -81,19 +81,19 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
  }
 
  /** @test */
- public function setItem_Should_Return_HttpResponse_Intance_With_State_Not_Found_When_Cookiefile_Is_Missing()
+ public function setItem_Should_Return_HttpResponse_Intance_With_Status_Unauthorized_When_Cookiefile_Is_Missing()
  {
   // arrange
   $itemSetLogic = new ItemSetLogic();
   $cookieValue = "123";
-  $message = "Cookie $cookieValue is not found.";
+  $message = "Cookie $cookieValue is unauthorised.";
   $content = "dummy content";
 
   // act
   $result = $itemSetLogic->setItem($cookieValue, $content);
 
   // assert
-  $this->assertEquals(HttpCode::NOT_FOUND, $result->statusCode);
+  $this->assertEquals(HttpCode::UNAUTHORIZED, $result->statusCode);
   $this->assertEquals($message, $result->message);
  }
 

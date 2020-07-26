@@ -48,7 +48,9 @@ class UserLogin {
   function save($appname, $nickname){
     if(isset($this->entity) and isset($this->entity->cookie)){
       $cookie = Cookie::get($this->entity->cookie);
-      $cookie->delete();
+      if(isset($cookie)) {        
+        $cookie->delete();
+      }
     }
 
     $this->entity = new UserLoginEntity();

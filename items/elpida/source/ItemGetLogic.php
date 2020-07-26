@@ -37,8 +37,8 @@ class ItemGetLogic
 
   $cookie = Cookie::get($cookieValue);
   if(empty($cookie)) {
-    $message = "Cookie $cookieValue is not found.";
-    return new HttpResponse(HttpCode::NOT_FOUND, $message);
+    $message = "Cookie $cookieValue is unauthorised.";    
+    return new HttpResponse(HttpCode::UNAUTHORIZED, $message);
   }
 
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
