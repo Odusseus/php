@@ -106,7 +106,7 @@ class UserLoginLogic
   
   setcookie(COOKIE, $cookie, time() + $cookieTimeout);
 
-  $message = "User is loged in.";
+  $message = "User is logged in.";
   return new HttpResponse(HttpCode::OK, $message);
  }
 }
