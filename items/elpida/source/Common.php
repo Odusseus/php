@@ -63,11 +63,16 @@ class Common
 
  public static function Exit($httpResponse)
  {
+  $AccessControlAllowOrigin = "*";
+  if(isset($_SERVER['HTTP_ORIGIN'])) {
+    $AccessControlAllowOrigin = $_SERVER['HTTP_ORIGIN'];
+  } 
+
    if(isset($httpResponse))
    {
      http_response_code($httpResponse->statusCode);
      header('Access-Control-Allow-Credentials: true');
-     header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+     header("Access-Control-Allow-Origin: {$AccessControlAllowOrigin}");
      
      $message = json_encode($httpResponse, JSON_FORCE_OBJECT);
      exit($message);
