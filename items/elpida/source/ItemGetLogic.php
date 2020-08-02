@@ -7,6 +7,7 @@ require_once "Item.php";
 require_once "IpCheck.php";
 require_once "User.php";
 
+
 class ItemGetLogic
 {
 
@@ -15,16 +16,16 @@ class ItemGetLogic
   $ipCheck = new IpCheck();
   if (!$ipCheck->isGood) {
    $message = "Forbidden, Ip is blacklisted.";
-   return new HttpResponse(HttpCode::FORBIDDEN, $message);
+   return HttpResponse::builder(HttpCode::FORBIDDEN, $message);
   } else {
    $message = SUCCESS;
-   return new HttpResponse(HttpCode::OK, $message);
+   return HttpResponse::builder(HttpCode::OK, $message);
   }
  }
 
  public function getIsAlive()
  {
-  return new HttpResponse(HttpCode::OK, STATE_TRUE);
+  return HttpResponse::builder(HttpCode::OK, STATE_TRUE);
  }
 
  public function getItem($cookieValue)
@@ -32,28 +33,28 @@ class ItemGetLogic
   if (empty($cookieValue)) {
    $value = COOKIE;
    $message = "Cookie $value is missing.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }
 
   $cookie = Cookie::get($cookieValue);
   if(empty($cookie)) {
     $message = "Cookie $cookieValue is unauthorised.";    
-    return new HttpResponse(HttpCode::UNAUTHORIZED, $message);
+    return HttpResponse::builder(HttpCode::UNAUTHORIZED, $message);
   }
 
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
   if(!$user->isSet()) {
     $message = "User is missing.";
-    return new HttpResponse(HttpCode::NOT_FOUND, $message);
+    return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }
   $item = Item::get($user->entity->id);
 //  if (!$item->isSet()) {
 //   $message = "Item is missing.";
-//   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+//   return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
 //  }
 
   $itemGetRespons = $item->getJsonGetRespons();
-  return new HttpResponse(HttpCode::OK, $itemGetRespons);
+  return HttpResponse::builder(HttpCode::OK, $itemGetRespons);
  }
 
  public function getLength($item)
@@ -68,14 +69,14 @@ class ItemGetLogic
   else {
     $message = "{$length} byte, {$percent}%.";
   }
-  return new HttpResponse(HttpCode::OK, $message);
+  return HttpResponse::builder(HttpCode::OK, $message);
  }
 
  public function getMaxLength()
  {
   $value = MAX_BYTE;
   $message = "{$value} bytes.";
-  return new HttpResponse(HttpCode::OK, $message);
+  return HttpResponse::builder(HttpCode::OK, $message);
  }
 
 }

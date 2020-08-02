@@ -18,16 +18,16 @@ class UserCreateLogic
   $ipCheck = new IpCheck();
   if (!$ipCheck->isGood) {
    $message = "Forbidden, Ip is blacklisted.";
-   return new HttpResponse(HttpCode::FORBIDDEN, $message);
+   return HttpResponse::builder(HttpCode::FORBIDDEN, $message);
   } else {
    $message = SUCCESS;
-   return new HttpResponse(HttpCode::OK, $message);
+   return HttpResponse::builder(HttpCode::OK, $message);
   }
  }
 
  public function getIsAlive()
  {
-  return new HttpResponse(HttpCode::OK, STATE_TRUE);
+  return HttpResponse::builder(HttpCode::OK, STATE_TRUE);
  }
 
  public function isIdMaxCheck()
@@ -35,9 +35,9 @@ class UserCreateLogic
   $userIdMax = new IdMax(MAX_CREATEUSER);
   if ($userIdMax->get() > 100) {
    $message = "Maximum users is reached.";
-   return new HttpResponse(HttpCode::LOCKED, $message);
+   return HttpResponse::builder(HttpCode::LOCKED, $message);
   };
-  return new HttpResponse(HttpCode::OK, STATE_TRUE);
+  return HttpResponse::builder(HttpCode::OK, STATE_TRUE);
  }
 
  public function checkAppname($appname)
@@ -45,14 +45,14 @@ class UserCreateLogic
   if (empty($appname)) {
    $value = APPNAME;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   } else {
    if (!App::check($appname)) {
     $message = "{$appname} not found.";
-    return new HttpResponse(HttpCode::NOT_FOUND, $message);
+    return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
    }
   }
-  return new HttpResponse(HttpCode::OK, SUCCESS);
+  return HttpResponse::builder(HttpCode::OK, SUCCESS);
  }
 
  public function checkNickname($nickname)
@@ -60,9 +60,9 @@ class UserCreateLogic
   if (empty($nickname)) {
    $value = NICKNAME;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, SUCCESS);
+  return HttpResponse::builder(HttpCode::OK, SUCCESS);
  }
 
  public function checkPassword($password)
@@ -70,9 +70,9 @@ class UserCreateLogic
   if (empty($password)) {
    $value = PASSWORD;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, SUCCESS);
+  return HttpResponse::builder(HttpCode::OK, SUCCESS);
  }
 
  public function checkEmail($email)
@@ -80,9 +80,9 @@ class UserCreateLogic
   if (empty($email)) {
    $value = EMAIL;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, SUCCESS);
+  return HttpResponse::builder(HttpCode::OK, SUCCESS);
  }
 
  public function createUser($content)
@@ -119,7 +119,7 @@ class UserCreateLogic
   $filename = DATA_DIR . "/" . JSON_DIR . "/{$appname}-{$nickname}.json";
   if (file_exists($filename)) {
    $message = "User {$nickname} already exists.";
-   return new HttpResponse(HttpCode::FORBIDDEN, $message);
+   return HttpResponse::builder(HttpCode::FORBIDDEN, $message);
   } else {
    $user = User::set($appname, $nickname, $hashPassword, $email);
    $idMax = new IdMax(MAX_CREATEUSER);
@@ -151,6 +151,6 @@ class UserCreateLogic
    }
   }
 
-  return new HttpResponse(HttpCode::OK, SUCCESS);
+  return HttpResponse::builder(HttpCode::OK, SUCCESS);
  }
 }

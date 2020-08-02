@@ -13,7 +13,7 @@ class HttpResponseTest extends PHPUnit\Framework\TestCase
   $message = "dummy message";
 
   // act
-  $assert = new HttpResponse($statusCode, $message);
+  $assert = HttpResponse::builder($statusCode, $message);
 
   // assert
   $this->assertEquals($statusCode, $assert->statusCode);

@@ -15,16 +15,16 @@ class ItemSetLogic
   $ipCheck = new IpCheck();
   if (!$ipCheck->isGood) {
    $message = "Forbidden, Ip is blacklisted.";
-   return new HttpResponse(HttpCode::FORBIDDEN, $message);
+   return HttpResponse::builder(HttpCode::FORBIDDEN, $message);
   } else {
    $message = SUCCESS;
-   return new HttpResponse(HttpCode::OK, $message);
+   return HttpResponse::builder(HttpCode::OK, $message);
   }
  }
 
  public function getIsAlive()
  {
-  return new HttpResponse(HttpCode::OK, STATE_TRUE);
+  return HttpResponse::builder(HttpCode::OK, STATE_TRUE);
  }
 
  public function setItem($cookieValue, $content)
@@ -32,19 +32,19 @@ class ItemSetLogic
   if (empty($cookieValue)) {
    $value = COOKIE;
    $message = "Cookie $value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
 
   $cookie = Cookie::get($cookieValue);
   if (empty($cookie)) {
    $message = "Cookie $cookieValue is unauthorised.";
-   return new HttpResponse(HttpCode::UNAUTHORIZED, $message);
+   return HttpResponse::builder(HttpCode::UNAUTHORIZED, $message);
   }
 
   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
   if (!$user->isset()) {
    $message = "User is not found.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }
 
   //Attempt to decode the incoming RAW post data from JSON.
@@ -58,12 +58,12 @@ class ItemSetLogic
     $maxByte = MAX_BYTE;
     $valueLentgh = strlen($value);
     $message = "Item is to long. Value({$valueLentgh}) > max value({$maxByte})";
-    return new HttpResponse(HttpCode::NOT_ACCEPTABLE, $message);
+    return HttpResponse::builder(HttpCode::NOT_ACCEPTABLE, $message);
    }
   } else {
    $value = VALUE;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
 
   $version = 0;
@@ -72,22 +72,22 @@ class ItemSetLogic
   } else {
    $value = VERSION;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }
 
   $currentItem = Item::get($user->entity->id);
   if ($currentItem->isSet() and VERSION_CHECK_ENABLED and $currentItem->itemEntity->version > $version) {
    $message = "version $version is obsolete. Refresh your item.";
-   return new HttpResponse(HttpCode::BAD_REQUEST, $message);
+   return HttpResponse::builder(HttpCode::BAD_REQUEST, $message);
   }
   $version++;
   $item = Item::set($user->entity->id, $value, $version);
   if (!$item->isSet()) {
    $message = "Item is not saved.";
-   return new HttpResponse(HttpCode::INTERNAL_SERVER_ERROR, $message);
+   return HttpResponse::builder(HttpCode::INTERNAL_SERVER_ERROR, $message);
   } else {
    $message = "Item is saved.";
-   return new HttpResponse(HttpCode::OK, $message);
+   return HttpResponse::builder(HttpCode::OK, $message);
   }
  }
 }

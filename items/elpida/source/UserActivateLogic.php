@@ -15,16 +15,16 @@ class UserActivateLogic
   $ipCheck = new IpCheck();
   if (!$ipCheck->isGood) {
    $message = "Forbidden, Ip is blacklisted.";
-   return new HttpResponse(HttpCode::FORBIDDEN, $message);
+   return HttpResponse::builder(HttpCode::FORBIDDEN, $message);
   } else {
    $message = SUCCESS;
-   return new HttpResponse(HttpCode::OK, $message);
+   return HttpResponse::builder(HttpCode::OK, $message);
   }
  }
 
  public function getIsAlive()
  {
-  return new HttpResponse(HttpCode::OK, STATE_TRUE);
+  return HttpResponse::builder(HttpCode::OK, STATE_TRUE);
  }
 
  public function checkAppname($appname)
@@ -32,14 +32,14 @@ class UserActivateLogic
   if (empty($appname)) {
    $value = APPNAME;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   } else {
    if (!App::check($appname)) {
     $message = "{$appname} not found.";
-    return new HttpResponse(HttpCode::NOT_FOUND, $message);
+    return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
    }
   }
-  return new HttpResponse(HttpCode::OK, SUCCESS);
+  return HttpResponse::builder(HttpCode::OK, SUCCESS);
  }
 
  public function checkNickname($nickname)
@@ -47,9 +47,9 @@ class UserActivateLogic
   if (empty($nickname)) {
    $value = NICKNAME;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, SUCCESS);
+  return HttpResponse::builder(HttpCode::OK, SUCCESS);
  }
 
  public function checkActivationCode($activationCode)
@@ -57,9 +57,9 @@ class UserActivateLogic
   if (empty($activationCode)) {
    $value = ACTIVATION_CODE;
    $message = "$value is missing.";
-   return new HttpResponse(HttpCode::UNPROCESSABLE_ENTITY, $message);
+   return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }
-  return new HttpResponse(HttpCode::OK, "");
+  return HttpResponse::builder(HttpCode::OK, "");
  }
 
  public function activeUser($appname, $nickname, $activationCode)
@@ -83,16 +83,16 @@ class UserActivateLogic
   $user = User::get($appname, $nickname);
   if (!$user->isSet()) {
    $message = "User is not found.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }
 
   if ($user->activate($activationCode)) {
    $message = "Account is activated.";
-   return new HttpResponse(HttpCode::OK, $message);
+   return HttpResponse::builder(HttpCode::OK, $message);
   } else {
    $value = ACTIVATION_CODE;
    $message = "{$value} not found.";
-   return new HttpResponse(HttpCode::NOT_FOUND, $message);
+   return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }
  }
 

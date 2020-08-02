@@ -3,7 +3,7 @@
     
     define("ACTIVATION_CODE", "activationcode");
     define("APPNAME", "appname");
-    define("COOKIE", "items");
+    define("COOKIE", "token");
     define("EMAIL", "email");
     define("ID", "id");
     define("BADIP", "badip");
