@@ -106,7 +106,7 @@ if (isset($_GET[MAX_LENGTH])) {
 
 $cookie = empty($_COOKIE[COOKIE]) ? "" : $_COOKIE[COOKIE];
 if(empty($cookie)){
-  $cookie = $_GET['token'];
+  $cookie = $_GET[COOKIE];
 }
 $httpResponse = $itemGetLogic->getItem($cookie);
 

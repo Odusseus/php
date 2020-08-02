@@ -9,14 +9,14 @@
  *       @OA\Schema(type="string"),
  *       in="query",
  *       description="Check if the methode is alive when string is available in the query.",
- *       required=false 
+ *       required=false
  *       ),
  *     @OA\Response(
  *       response="200",
  *       description="When is alive.")
  * )
  */
- 
+
 /**
  * @OA\Post(
  *     path="/php/elpida/ItemSetApi.php",
@@ -36,10 +36,10 @@
  *                     type="number",
  *                     description="The version of the item. The new version must always be higher than the saved version."
  *                 ),
- *                 example={ 
-*	                   "value":"demo value...",
-*	                   "version": 2
-*                  }
+ *                 example={
+ *                    "value":"demo value...",
+ *                    "version": 2
+ *                  }
  *             )
  *         )
  *     ),
@@ -51,7 +51,7 @@
  *         response=400,
  *         description="BAD_REQUEST when version of the item is obsolete."
  *     ),
-       * @OA\Response(
+ * @OA\Response(
  *         response=401,
  *         description="UNAUTHORIZED  when cookie is unauthorised of not found."
  *     ),
@@ -88,8 +88,8 @@ $itemSetogic = new ItemSetLogic();
 $httpResponse = $itemSetogic->isIpCheck();
 
 if ($httpResponse->statusCode != HttpCode::OK) {
-  Common::exit($httpResponse);
- }
+ Common::exit($httpResponse);
+}
 
 if (isset($_GET[IS_ALIVE])) {
  $httpResponse = $itemSetogic->getIsAlive();
@@ -97,7 +97,9 @@ if (isset($_GET[IS_ALIVE])) {
 }
 
 $cookie = empty($_COOKIE[COOKIE]) ? "" : $_COOKIE[COOKIE];
-
+if (empty($cookie)) {
+ $cookie = $_GET[COOKIE];
+}
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
 
