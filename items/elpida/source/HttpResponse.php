@@ -6,7 +6,7 @@ class HttpResponse
  public $statusCode = 0,
  $message = "",
  $token = "",
- $tokenTimeout = "",
+ $tokenTimeoutSeconde = "",
  $disclaimer  = "";
 
  public function __construct()
@@ -21,18 +21,18 @@ class HttpResponse
   return $instance;
 }
 
-public static function builderWithToken($statusCode, $message, $token, $tokenTimeout)
+public static function builderWithToken($statusCode, $message, $token, $tokenTimeoutSeconde)
 {
   $instance = new self();
-  $instance->buildHttpResponse($statusCode, $message, $token, $tokenTimeout);
+  $instance->buildHttpResponse($statusCode, $message, $token, $tokenTimeoutSeconde);
   return $instance;
  }
 
- protected function buildHttpResponse($statusCode, $message, $token, $tokenTimeout)
+ protected function buildHttpResponse($statusCode, $message, $token, $tokenTimeoutSeconde)
  {
   $this->statusCode = $statusCode;
   $this->message = $message;
   $this->token = $token;
-  $this->tokenTimeout = $tokenTimeout;
+  $this->tokenTimeoutSeconde = $tokenTimeoutSeconde;
  }
 }

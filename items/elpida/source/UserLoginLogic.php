@@ -103,11 +103,11 @@ class UserLoginLogic
   else {
     $cookieTimeout = COOKIE_TIMEOUT;
   }
-  
-  setcookie(COOKIE, $cookie, time() + $cookieTimeout);
+  $cookieTime =  time() + $cookieTimeout;
+  setcookie(COOKIE, $cookie, $cookieTime);
 
   $message = "User is logged in.";
-  $tokenTimeout =  strval($cookieTimeout);
-  return HttpResponse::builderWithToken(HttpCode::OK, $message, $cookie, $tokenTimeout);
+  $tokenTimeoutSeconde =  strval($cookieTime);
+  return HttpResponse::builderWithToken(HttpCode::OK, $message, $cookie, $tokenTimeoutSeconde);
  }
 }
