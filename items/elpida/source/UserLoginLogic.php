@@ -88,7 +88,7 @@ class UserLoginLogic
 
   $user = User::get($appname, $nickname);
   if(!$user->checkHashPassword($password)){
-    $message = "Combination {$appname}/{$nickname} not found.";
+    $message = "Combination {$nickname}/{$password} not found.";
     return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }
   
