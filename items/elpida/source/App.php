@@ -7,7 +7,8 @@
       if(DEBUG) {  
         array_push($apps, 'test');
       }
-      array_push($apps, 'vocaquiz');
+      array_push($apps, 'voca');
+      array_push($apps, 'VocaQuiz');
 
       if (in_array($name, $apps)) {
         return true;
