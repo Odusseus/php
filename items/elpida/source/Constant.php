@@ -3,7 +3,7 @@
     
     define("ACTIVATION_CODE", "activationcode");
     define("APPNAME", "appname");
-    define("COOKIE_TOKEN_PERMANENT", 315360000); // (10 * 365 * 24 * 60 * 60)) = 10 years.
+    define("COOKIE_PERMANENT", 315360000); // (10 * 365 * 24 * 60 * 60)) = 10 years.
     define("COOKIE_TIMEOUT", 3600); // The cookie will expire when the browser closes.
     define("COOKIE_TOKEN", "token");
     define("EMAIL", "email");
