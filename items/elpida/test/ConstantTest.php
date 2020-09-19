@@ -27,7 +27,7 @@ class ConstantTest extends TestCase
     return [
       [ACTIVATION_CODE, "activationcode"],
       [APPNAME, "appname"],
-      [COOKIE, "items"],
+      [COOKIE_TOKEN, "token"],
       [EMAIL, "email"],
       [ID, "id"],
       [BADIP, "badip"],      

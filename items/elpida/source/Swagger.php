@@ -6,7 +6,7 @@ require SWAGGER_DIR."/autoload.php";
 /**
  * @OA\Info(
  *   title="Items api",
- *   version="1.1 Elpida",
+ *   version="1.1.2 Elpida 19-9-2020",
  *   description="Items api is a api to store or get a item based on a user and a app.
  *   [Readme](https://matteobrusa.github.io/md-styler/?url=https://www.odusseus.org/php/elpida/README.md)
  *   [swagger editor](https://editor.swagger.io/)

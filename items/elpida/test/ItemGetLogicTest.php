@@ -51,7 +51,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $itemGetLogic = new ItemGetLogic();
   $cookieValue = null;
-  $value = COOKIE;
+  $value = COOKIE_TOKEN;
   $message = "Cookie $value is missing.";
 
   // act
@@ -68,7 +68,7 @@ class ItemGetLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $itemGetLogic = new ItemGetLogic();
   $cookieValue = "";
-  $value = COOKIE;
+  $value = COOKIE_TOKEN;
   $message = "Cookie $value is missing.";
 
   // act

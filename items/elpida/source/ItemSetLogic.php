@@ -30,7 +30,7 @@ class ItemSetLogic
  public function setItem($cookieValue, $content)
  {
   if (empty($cookieValue)) {
-   $value = COOKIE;
+   $value = COOKIE_TOKEN;
    $message = "Cookie $value is missing.";
    return HttpResponse::builder(HttpCode::UNPROCESSABLE_ENTITY, $message);
   }

@@ -104,9 +104,9 @@ if (isset($_GET[MAX_LENGTH])) {
   Common::exit($httpResponse);
  }
 
-$cookie = empty($_COOKIE[COOKIE]) ? "" : $_COOKIE[COOKIE];
+$cookie = empty($_COOKIE[COOKIE_TOKEN]) ? "" : $_COOKIE[COOKIE_TOKEN];
 if(empty($cookie)){
-  $cookie = $_GET[COOKIE];
+  $cookie = $_GET[COOKIE_TOKEN];
 }
 $httpResponse = $itemGetLogic->getItem($cookie);
 

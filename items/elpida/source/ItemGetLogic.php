@@ -31,7 +31,7 @@ class ItemGetLogic
  public function getItem($cookieValue)
  {
   if (empty($cookieValue)) {
-   $value = COOKIE;
+   $value = COOKIE_TOKEN;
    $message = "Cookie $value is missing.";
    return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }

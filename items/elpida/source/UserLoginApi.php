@@ -18,6 +18,23 @@
  */
 
 /**
+ * @OA\Get(
+ *     path="/php/elpida/UserLoginApi.php/isloggedin",
+ *     summary="Api is user logged in?",
+ *     @OA\Parameter(
+ *       name="isloggedin",
+ *       @OA\Schema(type="string"),
+ *       in="query",
+ *       description="Check if the user is logged in when a active cookie match with a user.",
+ *       required=false 
+ *       ),
+ *     @OA\Response(
+ *       response="200",
+ *       description="When is logged in.")
+ * )
+ */
+
+/**
  * @OA\Post(
  *     path="/php/elpida/UserLoginApi.php",
  *     summary="User log in for a app and get a authorisation cookie.",
@@ -82,6 +99,15 @@ if (isset($_GET[IS_ALIVE])) {
  $httpResponse = $userLoginLogic->getIsAlive();
  Common::exit($httpResponse);
 }
+
+if (isset($_GET[IS_LOGGED_IN])) {
+  $cookie = empty($_COOKIE[COOKIE_TOKEN]) ? "" : $_COOKIE[COOKIE_TOKEN];
+  if(empty($cookie) and isset($_GET[COOKIE_TOKEN])){
+    $cookie = $_GET[COOKIE_TOKEN];
+  }
+  $httpResponse = $userLoginLogic->getIsLoggedIn($cookie);
+  Common::exit($httpResponse);
+ }
 
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));

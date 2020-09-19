@@ -50,7 +50,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $itemSetLogic = new ItemSetLogic();
   $cookieValue = null;
-  $value = COOKIE;
+  $value = COOKIE_TOKEN;
   $message = "Cookie $value is missing.";
   $content = "dummy content";
 
@@ -68,7 +68,7 @@ class ItemSetLogicTest extends PHPUnit\Framework\TestCase
   // arrange
   $itemSetLogic = new ItemSetLogic();
   $cookieValue = "";
-  $value = COOKIE;
+  $value = COOKIE_TOKEN;
   $message = "Cookie $value is missing.";
   $content = "dummy content";
 

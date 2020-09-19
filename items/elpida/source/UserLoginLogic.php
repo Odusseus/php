@@ -27,6 +27,27 @@ class UserLoginLogic
  {
   return HttpResponse::builder(HttpCode::OK, STATE_TRUE);
  }
+ 
+ public function getIsLoggedIn($cookieValue)
+ {
+  if (empty($cookieValue)) {
+    $value = COOKIE_TOKEN;
+    $message = "Cookie $value is missing.";
+    return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
+   }
+ 
+   $cookie = Cookie::get($cookieValue);
+   if(empty($cookie)) {
+     $message = "Cookie $cookieValue is unauthorised.";    
+     return HttpResponse::builder(HttpCode::UNAUTHORIZED, $message);
+   }
+   $user = User::get($cookie->entity->appname, $cookie->entity->nickname);
+  if(!$user->isSet()) {
+    $message = "User is missing.";
+    return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
+  }
+  return HttpResponse::builder(HttpCode::OK, STATE_TRUE);
+ }
 
  public function checkAppname($appname)
  {
@@ -88,7 +109,7 @@ class UserLoginLogic
 
   $user = User::get($appname, $nickname);
   if(!$user->checkHashPassword($password)){
-    $message = "Combination {$nickname}/{$password} not found.";
+    $message = "Combination {$nickname}:password not found.";
     return HttpResponse::builder(HttpCode::NOT_FOUND, $message);
   }
   
@@ -104,7 +125,7 @@ class UserLoginLogic
     $cookieTimeout = COOKIE_TIMEOUT;
   }
   $cookieTime =  time() + $cookieTimeout;
-  setcookie(COOKIE, $cookie, $cookieTime);
+  setcookie(COOKIE_TOKEN, $cookie, $cookieTime);
 
   $message = "User is logged in.";
   $tokenTimeoutSeconde =  strval($cookieTime);

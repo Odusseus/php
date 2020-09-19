@@ -61,7 +61,7 @@
  *     ),
  *     @OA\Response(
  *         response=404,
- *         description="NOT_FOUND when COOKIE/USER/VALUE is not found."
+ *         description="NOT_FOUND when COOKIE_TOKEN/USER/VALUE is not found."
  *     ),
  *     @OA\Response(
  *         response=406,
@@ -69,7 +69,7 @@
  *     ),
  *     @OA\Response(
  *         response=422,
- *         description="UNPROCESSABLE_ENTITY when COOKIE/VALUE is missing."
+ *         description="UNPROCESSABLE_ENTITY when COOKIE_TOKEN/VALUE is missing."
  *     ),
  *     @OA\Response(
  *         response=500,
@@ -96,9 +96,9 @@ if (isset($_GET[IS_ALIVE])) {
  Common::exit($httpResponse);
 }
 
-$cookie = empty($_COOKIE[COOKIE]) ? "" : $_COOKIE[COOKIE];
+$cookie = empty($_COOKIE[COOKIE_TOKEN]) ? "" : $_COOKIE[COOKIE_TOKEN];
 if (empty($cookie)) {
- $cookie = $_GET[COOKIE];
+ $cookie = $_GET[COOKIE_TOKEN];
 }
 //Receive the RAW post data.
 $content = trim(file_get_contents("php://input"));
